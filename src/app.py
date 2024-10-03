@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for, send_from_directory
+from flask import Flask, jsonify, request
 from flask_migrate import Migrate
 from flask_swagger import swagger
 from api.utils import APIException, generate_sitemap
@@ -66,6 +66,37 @@ def serve_any_other_file(path):
     response = send_from_directory(static_file_dir, path)
     response.cache_control.max_age = 0  # avoid cache memory
     return response
+
+
+
+
+app = Flask(__name__)
+
+
+walker = {
+    "name": "Juan Pérez",
+    "bio": "Amante de los perros y paseador profesional con más de 5 años de experiencia. Me encanta cuidar y jugar con ellos.",
+    "rating": 4.8,
+    "dogs": [
+        {"name": "Fido", "breed": "Labrador"},
+        {"name": "Rex", "breed": "Pastor Alemán"},
+    ],
+    "reviews": [
+        {"id": 1, "text": "¡Juan es increíble! Mis perros siempre están felices después de pasear con él."},
+        {"id": 2, "text": "Excelente paseador. Muy responsable y cariñoso."},
+    ],
+}
+
+@app.route('/api/walker', methods=['GET', 'PUT'])
+def get_or_update_walker():
+    if request.method == 'PUT':
+        data = request.json
+        walker.update(data)
+        return jsonify(walker), 200
+    return jsonify(walker), 200
+
+if __name__ == '__main__':
+    app.run(debug=True)
 
 
 # this only runs if `$ python src/main.py` is executed

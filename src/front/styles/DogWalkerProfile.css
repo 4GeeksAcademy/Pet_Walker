@@ -1,0 +1,29 @@
+.profile-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.bio {
+    font-style: italic;
+}
+
+.rating {
+    font-size: 1.5em;
+    color: #f39c12;
+}
+
+.reviews {
+    list-style-type: none;
+    padding: 0;
+}
+
+.reviews li {
+    background: #eaeaea;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+}
