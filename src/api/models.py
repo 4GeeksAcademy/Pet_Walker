@@ -24,7 +24,7 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
-    
+
 class Owner(db.Model):
     __tablename__ = 'owner'
     id = db.Column(db.Integer, primary_key = True)
@@ -59,7 +59,7 @@ class Walker(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     direccion = db.Column(db.String(120), unique = False, nullable = False)
     distrito = db.Column(db.String(120), unique = False, nullable = False)
-    # fotoPerfil: null,
+    # fotoPerfil: null,  PREGUNTAR COMO SE PONE
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
 
     def __repr__(self):

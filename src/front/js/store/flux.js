@@ -1,6 +1,11 @@
+import toast from "react-hot-toast";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			owner : null,
+			walker : null,
+			token: localStorage.getItem("token") || null,
 			message: null,
 			demo: [
 				{
@@ -20,6 +25,107 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+			
+			//FALTA COLOCAR LA FOTO DE PERFIL
+			createOwnerProfile: async (nombre, apellido, edad, telefono, email, direccion, distrito, contraseña) => { 
+				const resp = await fetch(process.env.BACKEND_URL + "/api/register-owner", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						nombre: nombre,
+						apellido: apellido,
+						edad: edad,
+						telefono: telefono,
+						email: email,
+						direccion: direccion,
+						distrito: distrito,
+						contraseña: contraseña
+					})
+				});
+				const data = await resp.json();
+
+				localStorage.setItem("token", data.token);
+
+				setStore({ owner: data.owner });
+				setStore({ token: data.token });
+
+				if (resp.ok) {
+					toast.success("Owner registered! 🎉");
+				}
+				else {
+					toast.error("Error registering owner 🛑");
+				}
+			},
+
+			//FALTA COLOCAR LA FOTO DE PERFIL
+			createOwnerProfile: async (nombre, apellido, edad, telefono, email, direccion, distrito, contraseña) => { 
+				const resp = await fetch(process.env.BACKEND_URL + "/api/register-owner", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						nombre: nombre,
+						apellido: apellido,
+						edad: edad,
+						telefono: telefono,
+						email: email,
+						direccion: direccion,
+						distrito: distrito,
+						contraseña: contraseña
+					})
+				});
+				const data = await resp.json();
+
+				localStorage.setItem("token", data.token);
+
+				setStore({ owner: data.owner });
+				setStore({ token: data.token });
+
+				if (resp.ok) {
+					toast.success("Owner registered! 🎉");
+				}
+				else {
+					toast.error("Error registering owner 🛑");
+				}
+			},
+
+
+			//FALTA COLOCAR LA FOTO DE PERFIL
+			createWalkerProfile: async (nombre, apellido, edad, telefono, email, direccion, distrito, contraseña) => { 
+				const resp = await fetch(process.env.BACKEND_URL + "/api/register-walker", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						nombre: nombre,
+						apellido: apellido,
+						edad: edad,
+						telefono: telefono,
+						email: email,
+						direccion: direccion,
+						distrito: distrito,
+						contraseña: contraseña
+					})
+				});
+				const data = await resp.json();
+
+				localStorage.setItem("token", data.token);
+
+				setStore({ walker: data.walker });
+				setStore({ token: data.token });
+
+				if (resp.ok) {
+					toast.success("Walker registered! 🎉");
+				}
+				else {
+					toast.error("Error registering Walker 🛑");
+				}
+			},
+
 
 			getMessage: async () => {
 				try{
