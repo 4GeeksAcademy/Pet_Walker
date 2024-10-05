@@ -24,6 +24,11 @@ export const Home = () => {
 					create profile Walker
 				</span>
 			</Link>
+			<Link to="/ownerProfile">
+				<span className="btn btn-primary btn-lg" href="#" role="button">
+					Perfil de owner
+				</span>
+			</Link>
 			<div className="alert alert-info">
 				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
 			</div>

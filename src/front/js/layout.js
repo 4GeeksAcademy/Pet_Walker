@@ -8,6 +8,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import {CreateProfileOwner} from "./pages/createProfileOwner";
 import {CreateProfileWalker} from "./pages/createProfileWalker";
+import { OwnerProfile } from "./pages/OwnerProfile";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
@@ -33,6 +34,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<CreateProfileOwner/>} path="/createProfileOwner" />
                         <Route element={<CreateProfileWalker/>} path="/createProfileWalker" />
+                        <Route element={<OwnerProfile/>} path="/ownerProfile"/>
                     </Routes>
                     <Footer />
                 </ScrollToTop>

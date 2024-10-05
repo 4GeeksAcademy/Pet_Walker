@@ -6,6 +6,7 @@ export const CreateProfileOwner = () => {
     const [formData, setFormData] = useState({
         nombre: '',
         apellido: '',
+        edad: '',
         telefono: '',
         email: '',
         direccion: '',
@@ -65,6 +66,17 @@ export const CreateProfileOwner = () => {
                         className="form-control"
                         name="apellido"
                         value={formData.apellido}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+                <div className="mb-3">
+                    <label className="form-label fw-bold">Edad</label>
+                    <input 
+                        type="number" 
+                        className="form-control"
+                        name="edad"
+                        value={formData.edad}
                         onChange={handleChange}
                         required
                     />
