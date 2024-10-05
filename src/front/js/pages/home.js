@@ -13,14 +13,21 @@ export const Home = () => {
 			<p>
 				<img src={rigoImageUrl} />
 			</p>
+			<div className="text-center mt-5"></div>
 			<Link to="/createProfileOwner">
 				<span className="btn btn-primary btn-lg" href="#" role="button">
 					create profile owner
 				</span>
 			</Link>
+			<Link to="/createProfileWalker">
+				<span className="btn btn-primary btn-lg" href="#" role="button">
+					create profile Walker
+				</span>
+			</Link>
 			<div className="alert alert-info">
 				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
 			</div>
+			
 			<p>
 				This boilerplate comes with lots of documentation:{" "}
 				<a href="https://start.4geeksacademy.com/starters/react-flask">
