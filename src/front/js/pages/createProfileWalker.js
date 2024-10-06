@@ -54,6 +54,7 @@ export const CreateProfileWalker = () => {
                     <label className="form-label fw-bold">Nombre</label>
                     <input 
                         type="text" 
+                        placeholder="Juan Sánchez"
                         className="form-control"
                         name="nombre"
                         value={formData.nombre}
@@ -61,7 +62,7 @@ export const CreateProfileWalker = () => {
                         required
                     />
                 </div>
-                <div className="mb-3">
+                {/*<div className="mb-3">
                     <label className="form-label fw-bold">Apellido</label>
                     <input 
                         type="text" 
@@ -71,13 +72,14 @@ export const CreateProfileWalker = () => {
                         onChange={handleChange}
                         required
                     />
-                </div>
+                </div>*/}
                 <div className="mb-3">
                     <label className="form-label fw-bold">Edad</label>
                     <input 
                         type="number" 
                         className="form-control"
                         name="edad"
+                        placeholder="45"
                         value={formData.edad}
                         onChange={handleChange}
                         required
@@ -92,7 +94,7 @@ export const CreateProfileWalker = () => {
                         value={formData.telefono}
                         onChange={handleChange}
                         pattern="[0-9]{9}"
-                        placeholder="Debe tener 9 dígitos"
+                        placeholder="XXX-XXX-XXX"
                         required
                     />
                 </div>
@@ -101,6 +103,7 @@ export const CreateProfileWalker = () => {
                     <input 
                         type="email" 
                         className="form-control"
+                        placeholder="doglover97@myemail.com"
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
@@ -113,6 +116,7 @@ export const CreateProfileWalker = () => {
                         type="text" 
                         className="form-control"
                         name="direccion"
+                        placeholder="Calle Brisas 34, Depto. 101."
                         value={formData.direccion}
                         onChange={handleChange}
                     />
