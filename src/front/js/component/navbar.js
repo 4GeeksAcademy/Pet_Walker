@@ -1,19 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+
 export const Navbar = () => {
 	return (
-		<nav className="navbar navbar-light bg-light">
-			<div className="container">
-				<Link to="/">
-					<span className="navbar-brand mb-0 h1">React Boilerplate</span>
-				</Link>
-				<div className="ml-auto">
-					<Link to="/demo">
-						<button className="btn btn-primary">Check the Context in action</button>
-					</Link>
-				</div>
-			</div>
+		<nav className="navbar navbar-light bg-light justify-content-between p-2 ">
+			<a className="navbar-brand text-align-center">Petwalker</a>
+
+
+			<button className="btn btn-outline-danger my-2 my-sm-0" type="submit">Login</button>
+
 		</nav>
-	);
+	)
+
 };
+

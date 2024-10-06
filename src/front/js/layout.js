@@ -14,6 +14,9 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Cards } from "./component/cards";
+import { Carousel } from "./component/carousel";
+import { Jumbotron } from "./component/Jumbotron";
 
 //create your first component
 const Layout = () => {
@@ -28,6 +31,13 @@ const Layout = () => {
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
+                    <Jumbotron />
+                    <div className="cards justify-content-between d-flex">
+                    <Cards /> 
+                    <Cards />
+                    
+                    </div>
+                    <Carousel />
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />

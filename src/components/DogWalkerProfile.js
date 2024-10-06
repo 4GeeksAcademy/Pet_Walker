@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './DogWalkerProfile.css';
 
+
 const DogWalkerProfile = () => {
     const [walker, setWalker] = useState(null);
     const [isEditing, setIsEditing] = useState(false);
@@ -79,7 +80,7 @@ const DogWalkerProfile = () => {
                     </label>
                     <label>
                         Calificación:
-                        <input
+                        <input 
                             type="number"
                             name="rating"
                             value={editedWalker.rating}
@@ -97,3 +98,5 @@ const DogWalkerProfile = () => {
 };
 
 export default DogWalkerProfile;
+
+
