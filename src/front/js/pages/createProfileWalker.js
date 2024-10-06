@@ -43,7 +43,9 @@ export const CreateProfileWalker = () => {
     };
     
     return (
-        <div className="container">
+        <div className="container mt-5 mb-5 d-flex justify-content-center">
+            <div className="card px-1 py-4">
+                <div class="card-body">
             <h1 className="text-center mt-5 mb-5">
                 Crear perfil de paseador
             </h1>
@@ -185,7 +187,10 @@ export const CreateProfileWalker = () => {
                 <div className="d-flex justify-content-center mt-5">
                     <button type="submit" className="btn btn-primary">Guardar perfil</button>
                 </div>
+                
             </form>
+                </div>
+            </div>
         </div>
         
     )

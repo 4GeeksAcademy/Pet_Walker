@@ -1,11 +1,8 @@
-import React, { useContext, useState } from "react";
-import { Context } from "../store/appContext";
 
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 
-export const ProfileWalker = () => {
-    const { store, actions } = useContext(Context);
+export const Profilewalker = () => {
 
     return (
         <div className="container">
@@ -65,3 +62,5 @@ export const ProfileWalker = () => {
         </div>
     );
 };
+
+export default Profilewalker;
