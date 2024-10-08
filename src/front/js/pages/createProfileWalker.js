@@ -24,12 +24,15 @@ export const CreateProfileWalker = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+
+    
+
+    const handleSubmit = async (e,formData) => {
         e.preventDefault();
-        if (formData.distrito === "Seleccionar") {
-            alert("Por favor selecciona un distrito.");
-            return;
-        }
+        // if (formData.distrito === "Seleccionar") {
+        //     alert("Por favor selecciona un distrito.");
+        //     return;
+        // }
         if (formData.contraseña.length < 6) {
             alert("La contraseña debe tener al menos 6 caracteres.");
             return;
@@ -38,8 +41,12 @@ export const CreateProfileWalker = () => {
             alert("Las contraseñas no coinciden.");
             return;
         }
+
         console.log(formData);
-        actions.createWalkerProfile(formData);
+        await actions.createWalkerProfile(formData.nombre, formData.apellido , formData.edad , formData.telefono 
+            , formData.email , formData.direccion, formData.distrito , formData.contraseña
+        );
+        navigate("/");
     };
     
     return (
@@ -49,7 +56,7 @@ export const CreateProfileWalker = () => {
             <h1 className="text-center mt-5 mb-5 text-info">
                 Crea tu perfil de paseador <br/>:D
             </h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e, formData)}>
                 <div className="mb-3">
                     <label className="form-label fw-bold">Nombre</label>
                     <input 

@@ -13,14 +13,19 @@ api = Blueprint('api', __name__)
 CORS(api)
 
 
-@api.route('/hello', methods=['POST', 'GET'])
-def handle_hello():
+@api.route("/owners", methods=["GET"])
+def get_owners():
+    owners = Owner.query.all()  
+    owners_list = [owner.serialize() for owner in owners] 
+    return jsonify(owners_list), 200 
 
-    response_body = {
-        "message": "Hello! I'm a message that came from the backend, check the network tab on the google inspector and you will see the GET request"
-    }
+@api.route("/owner/<int:id>", methods=["GET"])
+def get_owner(id):
+    owner = Owner.query.get(id) 
+    if owner is None:
+        return jsonify({"msg": "Owner not found"}), 404  
+    return jsonify(owner.serialize()), 200  
 
-    return jsonify(response_body), 200
 
 @api.route("/register-owner", methods=["POST"])
 def register_owner():
@@ -49,8 +54,23 @@ def register_owner():
     db.session.commit()
 
     return jsonify({ "owner": new_owner.serialize(),
-            # "token": create_access_token(identity=email)            
+            "token": create_access_token(identity=email)            
         }), 200
+
+
+@api.route("/walkers", methods=["GET"])
+def get_walkers():
+    walkers = Walker.query.all()  
+    walkers_list = [walker.serialize() for walker in walkers] 
+    return jsonify(walkers_list), 200 
+
+@api.route("/walker/<int:id>", methods=["GET"])
+def get_walker(id):
+    walker = Walker.query.get(id) 
+    if walker is None:
+        return jsonify({"msg": "Walker not found"}), 404  
+    return jsonify(walker.serialize()), 200  
+
 
 @api.route("/register-walker", methods=["POST"])
 def register_walker():

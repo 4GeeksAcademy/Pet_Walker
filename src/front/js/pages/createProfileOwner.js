@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import {  useNavigate } from "react-router-dom";
 
 export const CreateProfileOwner = () => {
     const { store, actions } = useContext(Context);
@@ -28,10 +29,10 @@ export const CreateProfileOwner = () => {
 
     const handleSubmit = async (e,formData) => {
         e.preventDefault();
-        if (formData.distrito === "Seleccionar") {
-            alert("Por favor selecciona un distrito.");
-            return;
-        }
+        // if (formData.distrito === "Seleccionar") {
+        //     alert("Por favor selecciona un distrito.");
+        //     return;
+        // }
         if (formData.contraseña.length < 6) {
             alert("La contraseña debe tener al menos 6 caracteres.");
             return;
@@ -54,7 +55,7 @@ export const CreateProfileOwner = () => {
             <h1 className="text-center mt-5 mb-5">
                 Crear perfil de dueño
             </h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={(e) => handleSubmit(e, formData)}>
                 <div className="mb-3">
                     <label className="form-label fw-bold">Nombre</label>
                     <input 
