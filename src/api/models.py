@@ -35,7 +35,7 @@ class Owner(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     direccion = db.Column(db.String(120), unique = False, nullable = False)
     distrito = db.Column(db.String(120), unique = False, nullable = False)
-    # fotoPerfil: null,
+    #fotoPerfil: null,
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
 
     def __repr__(self):

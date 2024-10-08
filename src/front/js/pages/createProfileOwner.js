@@ -16,6 +16,8 @@ export const CreateProfileOwner = () => {
         confirmarContraseña: '',
     });
 
+    const navigate = useNavigate();
+
     const handleChange = (e) => {
         const { name, value, files } = e.target;
         setFormData({
@@ -24,7 +26,7 @@ export const CreateProfileOwner = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e,formData) => {
         e.preventDefault();
         if (formData.distrito === "Seleccionar") {
             alert("Por favor selecciona un distrito.");
@@ -38,10 +40,15 @@ export const CreateProfileOwner = () => {
             alert("Las contraseñas no coinciden.");
             return;
         }
+
         console.log(formData);
-        actions.createOwnerProfile(formData);
+        await actions.createOwnerProfile(formData.nombre, formData.apellido , formData.edad , formData.telefono 
+            , formData.email , formData.direccion, formData.distrito , formData.contraseña
+        );
+        navigate("/");
     };
-    
+
+
     return (
         <div className="container">
             <h1 className="text-center mt-5 mb-5">

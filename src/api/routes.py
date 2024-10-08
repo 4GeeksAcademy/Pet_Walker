@@ -49,7 +49,7 @@ def register_owner():
     db.session.commit()
 
     return jsonify({ "owner": new_owner.serialize(),
-            "token": create_access_token(identity=email)            
+            # "token": create_access_token(identity=email)            
         }), 200
 
 @api.route("/register-walker", methods=["POST"])
@@ -85,19 +85,21 @@ def register_walker():
 @api.route("/register-mascota", methods=["POST"])
 def register_mascota():
     
-    #owner = request.json.get(request_body["owner.id"]) #VER SI SE AGREGA O NO
+    owner = request.json.get("owner.email") #VER SI SE AGREGA O NO
     nombre = request.json.get("nombre", None)
     raza = request.json.get("raza", None)
     edad = request.json.get("edad", None)
     detalles = request.json.get("detalles", None)
 
     if any(field is None for field in [nombre, raza, edad, detalles]):
-        return jsonify({"msg": "Missing required fields."}), 401    
+        return jsonify({"msg": "Missing required fields."}), 401  
 
-    mascota = Mascota.query.filter_by(owner = owner).first()  #MISMO, SE RESUELVE CON LO DE ARRIBA
+    owner = Owner.query.filter_by(owner = owner.email).first()  #MISMO, SE RESUELVE CON LO DE ARRIBA
 
-    if mascota != None:
-        return jsonify({"msg": "Mascota already exists!"}), 401
+    if owner == None:
+        return jsonify({"msg": "Owner doesn't exists!"}), 401
+
+    mascota = Owner.query.filter_by(owner = owner.email).first()
 
     new_mascota = Mascota(nombre = nombre, raza = raza, edad = edad, detalles = detalles)
     db.session.add(new_mascota)
@@ -106,3 +108,4 @@ def register_mascota():
     return jsonify({ "mascota": new_mascota.serialize(),
             "token": create_access_token(identity=owner)   #MISMA DUDA          
         }), 200
+        
