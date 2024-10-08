@@ -18,6 +18,7 @@ import { CardWalkers } from "./component/cardWalkers";
 import { Carousel } from "./component/carousel";
 import { Jumbotron } from "./component/Jumbotron";
 import { CardOwners } from "./component/cardOwners";
+import { Comments } from "./component/comments";
 
 //create your first component
 const Layout = () => {
@@ -38,6 +39,8 @@ const Layout = () => {
                     
                     <CardOwners />
                     
+                    <Cards /> 
+                    <Cards />
                     </div>
                     <Carousel />
                    
