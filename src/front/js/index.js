@@ -1,10 +1,11 @@
 //import react into the bundle
 import React from "react";
 import ReactDOM from "react-dom";
-import { Cards } from "./component/cards";
+import { CardWalkers } from "./component/cardWalkers";
 import { Carousel } from "./component/carousel";
 import { Jumbotron } from "./component/Jumbotron";
 import { Navbar } from "./component/navbar";
+import { CardOwners } from "./component/cardOwners";
 
 //include your index.scss file into the bundle
 import "../styles/index.css";

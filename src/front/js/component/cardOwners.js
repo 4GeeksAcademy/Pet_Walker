@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-export const Cards = () => {
+export const CardOwners = () => {
   return (
     <div className="container mt-5 d-flex justify-content-center">
       <div className="card p-3">
@@ -12,11 +12,11 @@ export const Cards = () => {
           </div>
           <div className="ml-3 w-100 p-3 ">
             <h4 className="mb-0 mt-0">Alex HMorrision</h4>
-            <span>Paseador</span>
+            <span>Dueño</span>
             <div className="p-2 mt-2 bg-danger d-flex justify-content-between rounded text-white stats">
               <div className="d-flex flex-column p-2">
-                <span className="articles">Paseos</span>
-                <span className="number1">569</span>
+                <span className="articles">Mascotas</span>
+                <span className="number1">3</span>
               </div>
               <div className="d-flex flex-column p-2">
                 <span className="followers">Followers</span>
