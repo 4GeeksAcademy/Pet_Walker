@@ -6,6 +6,7 @@ import { Carousel } from "./component/carousel";
 import { Jumbotron } from "./component/Jumbotron";
 import { Navbar } from "./component/navbar";
 import { CardOwners } from "./component/cardOwners";
+import { Comments } from "./component/comments";
 
 //include your index.scss file into the bundle
 import "../styles/index.css";
