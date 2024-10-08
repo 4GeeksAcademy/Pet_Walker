@@ -39,10 +39,10 @@ const Layout = () => {
                     
                     <CardOwners />
                     
-                    <Cards /> 
-                    <Cards />
+                    
                     </div>
                     <Carousel />
+                    <Comments />
                    
                     <Routes>
                         <Route element={<Home />} path="/" />
