@@ -37,10 +37,7 @@ const Layout = () => {
                     <Jumbotron />
                     <div className="cards justify-content-between d-flex">
                         <CardWalkers />
-
                         <CardOwners />
-
-
                     </div>
                     <Carousel />
                     <Comments />

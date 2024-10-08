@@ -26,8 +26,8 @@ export const CardWalkers = () => {
               <div className="container-fluid d-flex-column p-2 ">
                 <div className="d-flex">
                   <span className="rating ">Rating</span>
-                  </div>
-                
+                </div>
+
                 <div className="rating-container-fluid">
                   <i class="fa fa-star rating-color"></i>
                   <i class="fa fa-star rating-color"></i>
@@ -35,12 +35,12 @@ export const CardWalkers = () => {
                   <i class="fa fa-star rating-color"></i>
                   <i class="fa fa-star"></i>
                 </div>
-                
-                
+
+
               </div>
             </div>
-            <div className="button mt-2 d-flex flex-row align-items-center ">
-              <button className="btn btn-sm btn-outline-danger w-100 ">Agendar paseo</button>
+            <div className="button mt-2 d-flex flex-row align-items-center gap-2 ">
+              <button className="btn btn-sm btn-outline-danger w-100 btnSecondary textColor ">Agendar paseo</button>
               <button className="btnPrimary btn btn-sm w-100 ml-2 ">Follow</button>
             </div>
           </div>
