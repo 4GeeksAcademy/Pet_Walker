@@ -13,14 +13,14 @@ export const Carousel = () => {
                         <p>Encuentra al tuyo</p>
                         </div> 
                 </div>
-                <div className="carousel-item active">
+                <div className="carousel-item">
                 <img className="d-block w-100"  style={{ width: '100%', height: '400px', objectFit: 'cover' }}  src="https://www.diariodesevilla.es/2024/01/22/mascotas/paseador-perros-indicado-mascota_1868823531_202046393_667x375.jpg" alt="First slide"/>
                 <div className="carousel-caption d-none d-md-block">
                     <h1>Paseador de perros</h1>
                         <p>Encuentra al tuyo</p>
                         </div>
                 </div>
-                <div className="carousel-item active ">
+                <div className="carousel-item">
                 <img className="d-block w-100 "  style={{ width: '100%', height: '400px', objectFit: 'cover' }}  src="https://conmismascotas.com/wp-content/uploads/2022/12/1672166647_Razones-para-contratar-a-un-paseador-de-perros-768x432.jpg" alt="First slide"/>
                 <div className="carousel-caption d-none d-md-block">
                     <h1>Paseador de perros</h1>
