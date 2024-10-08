@@ -17,6 +17,7 @@ import { Footer } from "./component/footer";
 import { Cards } from "./component/cards";
 import { Carousel } from "./component/carousel";
 import { Jumbotron } from "./component/Jumbotron";
+import { Comments } from "./component/comments";
 
 //create your first component
 const Layout = () => {
@@ -35,7 +36,6 @@ const Layout = () => {
                     <div className="cards justify-content-between d-flex">
                     <Cards /> 
                     <Cards />
-                    
                     </div>
                     <Carousel />
                     <Routes>
