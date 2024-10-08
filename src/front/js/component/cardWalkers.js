@@ -22,9 +22,12 @@ export const CardWalkers = () => {
                 <span className="followers">Followers</span>
                 <span className="number2">980</span>
               </div>
-              <div className="d-flex p-2 ">
-                <span className="rating ">Rating</span>
-                <div className="rating-container">
+              <div className="container-fluid d-flex-column p-2 ">
+                <div className="d-flex">
+                  <span className="rating ">Rating</span>
+                  </div>
+                
+                <div className="rating-container-fluid">
                   <i class="fa fa-star rating-color"></i>
                   <i class="fa fa-star rating-color"></i>
                   <i class="fa fa-star rating-color"></i>
