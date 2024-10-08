@@ -1,3 +1,13 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+.btnPrimary{
+    background-color: #ffc800;
+    color: white;
+    border-style: none;
+
+}
+
+.navbarPrueba{
+    background-color: #ffffff;
+}

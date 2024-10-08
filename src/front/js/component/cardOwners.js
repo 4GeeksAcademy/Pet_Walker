@@ -29,11 +29,11 @@ export const CardOwners = () => {
             </div>
             <div className="button mt-2 d-flex flex-row align-items-center">
               <button className="btn btn-sm btn-outline-danger w-100">Agendar paseo</button>
-              <button className="btn btn-sm btn-danger w-100 ml-2">Follow</button>
+              <button className="btnPrimary btn btn-sm  w-100 ml-2">Follow</button>
             </div>
           </div>
         </div>
-       </div>
+      </div>
     </div>
   )
 };
