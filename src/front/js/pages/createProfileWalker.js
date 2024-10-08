@@ -61,7 +61,7 @@ export const CreateProfileWalker = () => {
                             <label className="form-label fw-bold">Nombre</label>
                             <input 
                                 type="text" 
-                                placeholder="Juan Sánchez"
+                                placeholder="John"
                                 className="form-control"
                                 name="nombre"
                                 value={formData.nombre}
@@ -69,24 +69,25 @@ export const CreateProfileWalker = () => {
                                 required
                             />
                         </div>
-                        {/*<div className="mb-3">
+                        <div className="mb-3">
                             <label className="form-label fw-bold">Apellido</label>
                             <input 
                                 type="text" 
+                                placeholder="Snow"
                                 className="form-control"
                                 name="apellido"
                                 value={formData.apellido}
                                 onChange={handleChange}
                                 required
                             />
-                        </div>*/}
+                        </div>
                         <div className="mb-3">
                             <label className="form-label fw-bold">Edad</label>
                             <input 
                                 type="number" 
                                 className="form-control"
                                 name="edad"
-                                placeholder="45"
+                                placeholder="24"
                                 value={formData.edad}
                                 onChange={handleChange}
                                 required
@@ -101,7 +102,7 @@ export const CreateProfileWalker = () => {
                                 value={formData.telefono}
                                 onChange={handleChange}
                                 pattern="[0-9]{9}"
-                                placeholder="XXX-XXX-XXX"
+                                placeholder="987654321"
                                 required
                             />
                         </div>
