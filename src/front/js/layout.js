@@ -6,14 +6,16 @@ import { BackendURL } from "./component/backendURL";
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
-import {CreateProfileOwner} from "./pages/createProfileOwner";
-import {CreateProfileWalker} from "./pages/createProfileWalker";
+import { CreateProfileOwner } from "./pages/createProfileOwner";
+import { CreateProfileWalker } from "./pages/createProfileWalker";
 import { OwnerProfile } from "./pages/OwnerProfile";
 //import { Profilewalker } from "./pages/profileWalker";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { CarouselWalkers } from "./component/carouselWalkers";
+import { CarouselOwners } from "./component/carouselOwners";
 import { CardWalkers } from "./component/cardWalkers";
 import { Carousel } from "./component/carousel";
 import { Jumbotron } from "./component/Jumbotron";
@@ -26,14 +28,16 @@ const Layout = () => {
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
     const basename = process.env.BASENAME || "";
 
-    if(!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL/ >;
+    if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
+
                     <Jumbotron />
+<<<<<<< HEAD
                     <div className="cards justify-content-between d-flex">
                     <CardWalkers /> 
                     
@@ -42,19 +46,28 @@ const Layout = () => {
                     
                     
                     
+=======
+                    <div className="cards justify-content-around d-flex mb-5">
+                        <div>
+                            <CarouselWalkers />
+                        </div>
+                        <div>
+                            <CarouselOwners />
+                        </div>
+>>>>>>> d2b1fec768962629bd9a61174e1ff06b73f69f17
                     </div>
                     <Carousel />
                     <Comments />
-                   
+
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
-                        <Route element={<CreateProfileOwner/>} path="/createProfileOwner" />
-                        <Route element={<CreateProfileWalker/>} path="/createProfileWalker" />
+                        <Route element={<CreateProfileOwner />} path="/createProfileOwner" />
+                        <Route element={<CreateProfileWalker />} path="/createProfileWalker" />
                         {/* <Route element={<Profilewalker/>} path="/createProfileWalker" /> */}
-                        <Route element={<OwnerProfile/>} path="/ownerProfile"/>
+                        <Route element={<OwnerProfile />} path="/ownerProfile" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

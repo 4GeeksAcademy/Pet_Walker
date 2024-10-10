@@ -1,3 +1,34 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+/*
+--text: #b87100;
+--background: #ffffff;
+--primary: #ffc800;
+--secondary: #ffc05c;
+--accent: #ff99ee;
+*/
+
+
+.btnPrimary{
+    background-color: #ffc800;
+    color: white;
+    border-style: none;
+
+}
+
+.btnSecondary{
+    background-color: #ffecce;
+    color: white;
+    border-style: none;
+
+}
+
+.navbarPrueba{
+    background-color: #ffffff;
+}
+
+.textColor{
+    color: #b87100;
+}
