@@ -19,31 +19,16 @@ export const Carousel = () => {
                     ="carousel-item active">
                     <img style={{ width: '100%', height: '400px', objectFit: 'cover' }} src="https://conmismascotas.com/wp-content/uploads/2022/12/1672166647_Razones-para-contratar-a-un-paseador-de-perros-768x432.jpg" className
                         ="d-block w-100" alt="..." />
-                    <div className
-                        ="carousel-caption d-none d-md-block">
-                        <h5>First slide label</h5>
-                        <p>Some representative placeholder content for the first slide.</p>
-                    </div>
                 </div>
                 <div className
                     ="carousel-item">
                     <img style={{ width: '100%', height: '400px', objectFit: 'cover' }} src="https://transportedemascotas.net/wp-content/uploads/2019/08/Paseador-de-perros.jpg" className
                         ="d-block w-100" alt="..." />
-                    <div className
-                        ="carousel-caption d-none d-md-block">
-                        <h5>Second slide label</h5>
-                        <p>Some representative placeholder content for the second slide.</p>
-                    </div>
                 </div>
                 <div className
                     ="carousel-item">
                     <img style={{ width: '100%', height: '400px', objectFit: 'cover' }} src="https://www.diariodesevilla.es/2024/01/22/mascotas/paseador-perros-indicado-mascota_1868823531_202046393_667x375.jpg" className
                         ="d-block w-100" alt="..." />
-                    <div className
-                        ="carousel-caption d-none d-md-block">
-                        <h5>Third slide label</h5>
-                        <p>Some representative placeholder content for the third slide.</p>
-                    </div>
                 </div>
             </div>
             <button className

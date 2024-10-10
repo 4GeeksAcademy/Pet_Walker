@@ -24,7 +24,7 @@ export const Navbar = () => {
 					</ul>
 				</div>
 				<div className="login me-3">
-					<button className="btnSecondary textColor btn active btn-outline-primary">Registrarme</button>
+					<button className="btnSecondary textColor btn  btn-outline-primary">Registrarme</button>
 				</div>
 				<div className="login">
 					<button className="btnPrimary btn btn-outline-primary">Login</button>
