@@ -36,7 +36,7 @@ const Layout = () => {
 
                     <Jumbotron />
                     <Carousel />
-                    <div className="cards justify-content-around d-flex mb-5">
+                    <div className="cards justify-content-around d-flex mb-5 max">
                         <div className="d-flex">
                             <CardWalkers />
                             <CardWalkers />
