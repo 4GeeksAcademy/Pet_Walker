@@ -27,7 +27,7 @@ export const CardWalkers = () => {
                   <span className="rating ">Rating</span>
                   </div>
                 
-                <div className="rating-container-fluid">
+                <div className="rating-container-fluid d-flex">
                   <i class="fa fa-star rating-color"></i>
                   <i class="fa fa-star rating-color"></i>
                   <i class="fa fa-star rating-color"></i>
