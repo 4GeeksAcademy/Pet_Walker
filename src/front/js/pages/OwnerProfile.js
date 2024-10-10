@@ -94,17 +94,16 @@ export const OwnerProfile = () => {
                                 <label htmlFor="exampleFormControlTextarea1" className="form-label fw-bold">Detalles</label>
                                 <textarea 
                                     className="form-control" 
-                                    id="exampleFormControlTextarea1" 
+                                    id="exampleFormControlTextarea1"
                                     rows="5"
                                     name="detalles" 
                                     value={formData.detalles} 
                                     onChange={handleChange} 
-                                    placeholder="Máximo 800 letras" 
+                                    placeholder="Detalla las necesidades y actitudes de tu perrito ¡Lo queremos conocer para saber cómo cuidarlo! Usa como máximo 800 letras" 
                                     maxLength="800"
                                     required 
                                 />
                             </div>
-
                         </form>
 
                     </div>

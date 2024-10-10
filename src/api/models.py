@@ -37,6 +37,7 @@ class Owner(db.Model):
     distrito = db.Column(db.String(120), unique = False, nullable = False)
     #fotoPerfil: null,
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
+    mascota = None
 
     def __repr__(self):
         return f'<Owner {self.email}>'
@@ -76,17 +77,18 @@ class Walker(db.Model):
 class Mascota(db.Model):
     __tablename__ = 'mascota'
     id = Column(Integer, primary_key = True)
-    owner = Column(db.Integer, ForeignKey('owner.id'))
+    owner_id = Column(db.Integer, ForeignKey('owner.id'))
+    owner = relationship(Owner)
     nombre = db.Column(db.String(120), unique = False,  nullable = False)
     raza = db.Column(db.String(120), unique = False,  nullable = False)
     edad = db.Column(db.Integer, unique = False, nullable = False)
     detalles = db.Column(db.String(800), unique = False,  nullable = False)
 
     def __repr__(self):
-            return f'<Mascota {self.owner}>'
+            return f'<Mascota {self.id}>'
 
     def serialize(self):
          return {
             "id": self.id,
-            "owner": self.owner
+            "owner": self.owner_id
         }

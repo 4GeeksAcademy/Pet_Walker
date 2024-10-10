@@ -52,43 +52,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ token: data.token });
 
 				if (resp.ok) {
-					toast.success("Owner registered! 🎉");
+					toast.success("Dueño creado!! 🎉");
 				}
 				else {
-					toast.error("Error registering owner 🛑");
-				}
-			},
-
-			//FALTA COLOCAR LA FOTO DE PERFIL
-			createOwnerProfile: async (nombre, apellido, edad, telefono, email, direccion, distrito, contraseña) => { 
-				const resp = await fetch(process.env.BACKEND_URL + "/api/register-owner", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						nombre: nombre,
-						apellido: apellido,
-						edad: edad,
-						telefono: telefono,
-						email: email,
-						direccion: direccion,
-						distrito: distrito,
-						contraseña: contraseña
-					})
-				});
-				const data = await resp.json();
-
-				localStorage.setItem("token", data.token);
-
-				setStore({ owner: data.owner });
-				setStore({ token: data.token });
-
-				if (resp.ok) {
-					toast.success("Owner registered! 🎉");
-				}
-				else {
-					toast.error("Error registering owner 🛑");
+					toast.error("Error al registrar al dueño 🛑");
 				}
 			},
 
@@ -119,10 +86,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ token: data.token });
 
 				if (resp.ok) {
-					toast.success("Walker registered! 🎉");
+					toast.success("Paseador registrado! 🎉");
 				}
 				else {
-					toast.error("Error registering Walker 🛑");
+					toast.error("Error al registrar al paseador 🛑");
+				}
+			},
+
+			createMascota: async (owner, nombre, raza, edad, detalles) => {
+				const resp = await fetch(process.env.BACKEND_URL + "/api/register-mascota", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						owner: owner,
+						nombre: nombre,
+						raza: raza,
+						edad: edad,
+						detalles: detalles
+					})
+				});
+			
+				const data = await resp.json();
+
+				localStorage.setItem("token", data.token);
+
+				setStore({ mascota: data.mascota });
+				setStore({ token: data.token });
+			
+				if (resp.ok) {
+					console.log("Mascota creada:", data);
+					toast.success("Tu mascota ha sido registrada! 🎉");
+				} else {
+					console.error("Error al crear mascota:", data);
+					toast.error("Error al registrar a tu mascota 🛑");
 				}
 			},
 
