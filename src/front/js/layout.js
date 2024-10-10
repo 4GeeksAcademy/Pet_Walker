@@ -37,16 +37,6 @@ const Layout = () => {
                     <Navbar />
 
                     <Jumbotron />
-<<<<<<< HEAD
-                    <div className="cards justify-content-between d-flex">
-                    <CardWalkers /> 
-                    
-                    
-                    <CardOwners />
-                    
-                    
-                    
-=======
                     <div className="cards justify-content-around d-flex mb-5">
                         <div>
                             <CarouselWalkers />
@@ -54,7 +44,6 @@ const Layout = () => {
                         <div>
                             <CarouselOwners />
                         </div>
->>>>>>> d2b1fec768962629bd9a61174e1ff06b73f69f17
                     </div>
                     <Carousel />
                     <Comments />

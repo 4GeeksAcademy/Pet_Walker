@@ -31,18 +31,7 @@ export const CardWalkers = () => {
               <div className="container-fluid d-flex-column p-2 ">
                 <div className="d-flex flex-column ">
                   <span className="rating ">Rating</span>
-<<<<<<< HEAD
-                  </div>
-                
-                <div className="rating-container-fluid d-flex">
-                  <i class="fa fa-star rating-color"></i>
-                  <i class="fa fa-star rating-color"></i>
-                  <i class="fa fa-star rating-color"></i>
-                  <i class="fa fa-star rating-color"></i>
-                  <i class="fa fa-star"></i>
-=======
                   <span className="number3">8.9</span>
->>>>>>> d2b1fec768962629bd9a61174e1ff06b73f69f17
                 </div>
 
 
