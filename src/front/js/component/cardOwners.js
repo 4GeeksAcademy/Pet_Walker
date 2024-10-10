@@ -16,7 +16,9 @@ export const CardOwners = () => {
               <span>Dueño</span>
             </div>
             <div className="p-2 mt-2  d-flex justify-content-between rounded text-white stats"
-              style={{ backgroundColor: "#ffc05c" }}>
+              style={{
+                backgroundColor: "#ff99ee"
+              }}>
               <div className="d-flex flex-column p-2">
                 <span className="articles">Mascotas</span>
                 <span className="number1">3</span>

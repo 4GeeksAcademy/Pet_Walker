@@ -18,10 +18,24 @@
 
 }
 
+.btnPrimary:hover{
+    background-color: #ffffff;
+    color: #b87100;
+    border: 2px solid #ffc800;
+
+}
+
 .btnSecondary{
     background-color: #ffecce;
     color: white;
     border-style: none;
+
+}
+
+.btnSecondary:hover{
+    background-color: #ffffff;
+    color: #b87100;
+    border: 2px solid #b87100;
 
 }
 
@@ -31,4 +45,8 @@
 
 .textColor{
     color: #b87100;
+}
+
+.prueba{
+    background-color:#ffc800 ;
 }

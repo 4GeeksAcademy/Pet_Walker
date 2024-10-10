@@ -14,8 +14,6 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-import { CarouselWalkers } from "./component/carouselWalkers";
-import { CarouselOwners } from "./component/carouselOwners";
 import { CardWalkers } from "./component/cardWalkers";
 import { Carousel } from "./component/carousel";
 import { Jumbotron } from "./component/Jumbotron";
@@ -37,15 +35,18 @@ const Layout = () => {
                     <Navbar />
 
                     <Jumbotron />
+                    <Carousel />
                     <div className="cards justify-content-around d-flex mb-5">
-                        <div>
-                            <CarouselWalkers />
+                        <div className="d-flex">
+                            <CardWalkers />
+                            <CardWalkers />
                         </div>
-                        <div>
-                            <CarouselOwners />
+
+                        <div className="d-flex">
+                            <CardOwners />
+                            <CardOwners />
                         </div>
                     </div>
-                    <Carousel />
                     <Comments />
 
                     <Routes>
