@@ -12,6 +12,8 @@ api = Blueprint('api', __name__)
 # Allow CORS requests to this API
 CORS(api)
 
+                #REGISTRAR Y GET
+
 
 @api.route("/owners", methods=["GET"])
 def get_owners():
@@ -104,26 +106,56 @@ def register_walker():
 
 @api.route("/register-mascota", methods=["POST"])
 def register_mascota():
-    owner = request.json.get("owner.email") #VER SI SE AGREGA O NO
+    email = request.json.get("email", None)
     nombre = request.json.get("nombre", None)
     raza = request.json.get("raza", None)
     edad = request.json.get("edad", None)
     detalles = request.json.get("detalles", None)
 
-    if any(field is None for field in [nombre, raza, edad, detalles]):
+    if any(field is None for field in [email, nombre, raza, edad, detalles]):
         return jsonify({"msg": "Missing required fields."}), 401  
 
-    owner = Owner.query.filter_by(owner = owner.email).first()  #MISMO, SE RESUELVE CON LO DE ARRIBA
+    owner = Owner.query.filter_by(email=email).first()
 
-    if owner == None:
-        return jsonify({"msg": "Owner doesn't exists!"}), 401
+    if owner is None:
+        return jsonify({"msg": "¡El dueño no existe! ¡Revisar el correo por favor!"}), 401
 
-    new_mascota = Mascota(owner = owner, nombre = nombre, raza = raza, edad = edad, detalles = detalles)
+    new_mascota = Mascota(owner_id=owner.id, nombre=nombre, raza=raza,
+        edad=edad, detalles=detalles)
+    
     db.session.add(new_mascota)
     db.session.commit()
 
-    return jsonify({ "mascota": new_mascota.serialize(),
-            "token": create_access_token(identity=owner)   #MISMA DUDA          
-        }), 200
-        
+    return jsonify({
+        "mascota": new_mascota.serialize(),
+        "token": create_access_token(identity=email)
+    }), 200
+
+
+                #LOGIN
+
+@api.route("/login", methods=["POST"])
+def login():
+    email = request.json.get("email", None)
+    contraseña = request.json.get("password", None)
+
+    if email == None or contraseña == None:
+        return jsonify({"msg": "Espacios faltantes, revisar."}), 401
+
+    user = (Owner or Walker).query.filter_by(email=email).first()
+
+    if user == None:
+        return jsonify({"msg": "¡El usuario no fue encontrado!"}), 404
+
+    if user.contraseña != contraseña:
+        return jsonify({"msg": "¡Contraseña errónea!"}), 401
+
+    access_token = create_access_token(identity=email)
+
+    return jsonify({
+        "token": access_token,
+        "user": user.serialize() 
+    }), 200
+
+
     #HACER MIGRATE

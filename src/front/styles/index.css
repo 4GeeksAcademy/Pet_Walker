@@ -10,6 +10,10 @@
 --accent: #ff99ee;
 */
 
+body{
+    color:#b87100 ;
+    background-color: #ffffff;
+}
 
 .btnPrimary{
     background-color: #ffc800;

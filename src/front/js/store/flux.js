@@ -93,14 +93,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			createMascota: async (owner, nombre, raza, edad, detalles) => {
+			createMascota: async (email, nombre, raza, edad, detalles) => {
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-mascota", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						owner: owner,
+						email: email,
 						nombre: nombre,
 						raza: raza,
 						edad: edad,
@@ -124,6 +124,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
+			login: async (email, contraseña) => {
+				const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						contraseña: contraseña
+					})
+				});
+				const data = await resp.json();
+
+				localStorage.setItem("token", data.token);
+
+				setStore({ token: data.token });
+				setStore({ user: data.user });
+
+				if (resp.ok) {
+					toast.success("¡Ingresaste con éxito!");
+				}
+				else {
+					toast.error("¡Revisa tu correo o contraseña!");
+				}
+			},
 
 			getMessage: async () => {
 				try{
