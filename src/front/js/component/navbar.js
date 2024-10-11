@@ -24,8 +24,9 @@ export const Navbar = () => {
 					</ul>
 				</div>
 				<div className="login me-3">
-					<Link to="/profileWalker"></Link>
+					<Link to="/createProfileWalker">
 					<button className="btnSecondary textColor btn ">Registrarme</button>
+					</Link>
 				</div>
 				<div className="login">
 					<button className="btnPrimary btn ">Login</button>
