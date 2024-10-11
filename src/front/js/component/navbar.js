@@ -23,13 +23,11 @@ export const Navbar = () => {
 						</li>
 					</ul>
 				</div>
-				<div className="login me-3" >
-					<Link to="/createProfileWalker"> 
-					<button className="btnSecondary textColor btn  btn-outline-primary">Registrarme</button>
-					</Link>
+				<div className="login me-3">
+					<button className="btnSecondary textColor btn ">Registrarme</button>
 				</div>
 				<div className="login">
-					<button className="btnPrimary btn btn-outline-primary">Login</button>
+					<button className="btnPrimary btn ">Login</button>
 				</div>
 			</div>
 		</nav>

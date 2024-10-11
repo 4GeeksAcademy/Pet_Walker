@@ -16,7 +16,9 @@ export const CardOwners = () => {
               <span>Dueño</span>
             </div>
             <div className="p-2 mt-2  d-flex justify-content-between rounded text-white stats"
-              style={{ backgroundColor: "#ffc05c" }}>
+              style={{
+                backgroundColor: "#ff99ee"
+              }}>
               <div className="d-flex flex-column p-2">
                 <span className="articles">Mascotas</span>
                 <span className="number1">3</span>
@@ -31,7 +33,7 @@ export const CardOwners = () => {
               </div>
             </div>
             <div className="button mt-2 d-flex flex-row align-items-center gap-2">
-              <button className="btn btn-sm btn-outline-danger w-100 btnSecondary textColor">Agendar paseo</button>
+              <button className="btn btn-sm  w-100 btnSecondary textColor">Agendar paseo</button>
               <button className="btnPrimary btn btn-sm  w-100 ml-2">Follow</button>
             </div>
           </div>

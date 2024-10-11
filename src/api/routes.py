@@ -104,7 +104,6 @@ def register_walker():
 
 @api.route("/register-mascota", methods=["POST"])
 def register_mascota():
-    
     owner = request.json.get("owner.email") #VER SI SE AGREGA O NO
     nombre = request.json.get("nombre", None)
     raza = request.json.get("raza", None)
@@ -119,9 +118,7 @@ def register_mascota():
     if owner == None:
         return jsonify({"msg": "Owner doesn't exists!"}), 401
 
-    mascota = Owner.query.filter_by(owner = owner.email).first()
-
-    new_mascota = Mascota(nombre = nombre, raza = raza, edad = edad, detalles = detalles)
+    new_mascota = Mascota(owner = owner, nombre = nombre, raza = raza, edad = edad, detalles = detalles)
     db.session.add(new_mascota)
     db.session.commit()
 
@@ -129,3 +126,4 @@ def register_mascota():
             "token": create_access_token(identity=owner)   #MISMA DUDA          
         }), 200
         
+    #HACER MIGRATE
