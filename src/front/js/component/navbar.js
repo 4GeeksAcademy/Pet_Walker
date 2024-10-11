@@ -25,7 +25,12 @@ export const Navbar = () => {
 				</div>
 				<div className="login me-3">
 					<Link to="/createProfileWalker">
-					<button className="btnSecondary textColor btn ">Registrarme</button>
+					<button className="btnSecondary textColor btn ">Registrarme como Walker</button>
+					</Link>
+				</div>
+				<div className="login me-3">
+					<Link to="/createProfileOwner">
+					<button className="btnSecondary textColor btn ">Registrarme como Dueño</button>
 					</Link>
 				</div>
 				<div className="login">
