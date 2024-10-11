@@ -13,18 +13,20 @@ export const Navbar = () => {
 				<div className="collapse navbar-collapse " id="navbarNav">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<a className="nav-link active textColor" aria-current="page" href="#">Home</a>
+							<a className="nav-link active textColor" aria-current="page" href="#">Inicio</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link textColor" href="#">Features</a>
+							<a className="nav-link textColor" href="#">Walkers</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link textColor" href="#">Pricing</a>
+							<a className="nav-link textColor" href="#">Dueños</a>
 						</li>
 					</ul>
 				</div>
-				<div className="login me-3">
+				<div className="login me-3" >
+					<Link to="/createProfileOwner"> 
 					<button className="btnSecondary textColor btn  btn-outline-primary">Registrarme</button>
+					</Link>
 				</div>
 				<div className="login">
 					<button className="btnPrimary btn btn-outline-primary">Login</button>
