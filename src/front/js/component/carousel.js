@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Carousel = () => {
     return (
 
-        <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div id="carouselExampleFade" className="carousel slide carousel-fade" data-bs-ride="carousel" style={{ border: "2px solid #499587" }}>
             <div className
                 ="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="0" className
@@ -13,14 +13,14 @@ export const Carousel = () => {
                 <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="1" aria-label="Slide 2"></button>
                 <button type="button" data-bs-target="#carouselExampleFade" data-bs-slide-to="2" aria-label="Slide 3"></button>
             </div>
-            <div className="carousel-inner">
+            <div className="carousel-inner" >
                 <div className
-                    ="carousel-item active">
+                    ="carousel-item active" >
                     <img style={{ width: '100%', height: '400px', objectFit: 'cover' }} src="https://conmismascotas.com/wp-content/uploads/2022/12/1672166647_Razones-para-contratar-a-un-paseador-de-perros-768x432.jpg" className
                         ="d-block w-100" alt="..." />
                     <div className
-                        ="carousel-caption d-none d-md-block prueba" >
-                        <h5>First slide label</h5>
+                        ="carousel-caption d-none d-md-block prueba" style={{ border: "2px rounded #ef7029" }}>
+                        <h5 className="primaryText">First slide label</h5>
                         <p>Some representative placeholder content for the first slide.</p>
                     </div>
                 </div>
@@ -32,7 +32,7 @@ export const Carousel = () => {
                     <div className
                         ="carousel-caption d-none d-md-block prueba"
                     >
-                        <h5>Second slide label</h5>
+                        <h5 className="primaryText">Second slide label</h5>
                         <p>Some representative placeholder content for the second slide.</p>
                     </div>
                 </div>
@@ -42,7 +42,7 @@ export const Carousel = () => {
                         ="d-block w-100" alt="..." />
                     <div className
                         ="carousel-caption d-none d-md-block prueba">
-                        <h5>Third slide label</h5>
+                        <h5 className="primaryText">Third slide label</h5>
                         <p>Some representative placeholder content for the third slide.</p>
                     </div>
                 </div>

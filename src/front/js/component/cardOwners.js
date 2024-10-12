@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-
+font-family: 'League Spartan';
+    font-size: 40px;
 export const CardOwners = () => {
   return (
     <div className="container mt-5 d-flex justify-content-center">
-      <div className="card p-3">
+      <div className="card p-3" style={{ border: "2px solid #499587" }}>
         <div className="d-flex align-items-center">
           <div className="image">
             <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" className="rounded" width="155" />
@@ -17,7 +18,7 @@ export const CardOwners = () => {
             </div>
             <div className="p-2 mt-2  d-flex justify-content-between rounded text-white stats"
               style={{
-                backgroundColor: "#ff99ee"
+                backgroundColor: "#76c9b2"
               }}>
               <div className="d-flex flex-column p-2">
                 <span className="articles">Mascotas</span>
