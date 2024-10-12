@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import {  useNavigate } from "react-router-dom";
+import { Navbar } from "../component/navbar";
+
 
 export const CreateProfileOwner = () => {
     const { store, actions } = useContext(Context);
@@ -52,6 +54,7 @@ export const CreateProfileOwner = () => {
 
     return (
         <div className="container mt-5 mb-5 d-flex justify-content-center">
+            <Navbar />
             <div className="card px-1 py-4">
                 <div class="card-body">
                     <h1 className="text-center mt-5 mb-5 text-info">

@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { Navbar } from "../component/navbar";
+
 
 export const CreateProfileWalker = () => {
     const { store, actions } = useContext(Context);
@@ -51,6 +53,7 @@ export const CreateProfileWalker = () => {
     
     return (
         <div className="container mt-5 mb-5 d-flex justify-content-center">
+            <Navbar />
             <div className="card px-1 py-4">
                 <div class="card-body">
                     <h1 className="text-center mt-5 mb-5 text-info">

@@ -1,5 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { Navbar } from "../component/navbar";
+
 
 export const OwnerProfile = () => {
 
@@ -26,6 +28,7 @@ export const OwnerProfile = () => {
 
     return (
         <div className="container">
+            <Navbar />
             <div className="profile-card d-flex align-items-start p-4 border rounded shadow">
                 <div className="profile-photo">
                     <img 

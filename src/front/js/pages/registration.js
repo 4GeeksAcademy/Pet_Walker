@@ -2,12 +2,15 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Link, useParams } from "react-router-dom";
+import { Navbar } from "../component/navbar";
+
 
 export const Registration = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<div className="text-center my-5 regBackground">
+			<Navbar />
 			<div class="card-body">
 				<div className="card d-flex justify-content-center flex-row container-sm">
 					<div class="card-body">

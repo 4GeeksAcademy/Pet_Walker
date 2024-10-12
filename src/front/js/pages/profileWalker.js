@@ -1,11 +1,14 @@
 
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Navbar } from "../component/navbar";
+
 
 export const Profilewalker = () => {
 
     return (
         <div className="container">
+            <Navbar />
             <div className="row">
                 <div className="col-sm-6 col-md-4 col-lg-3 mt-4">
                     <div className="card">
