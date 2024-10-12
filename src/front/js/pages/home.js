@@ -34,7 +34,7 @@ export const Home = () => {
 			</div>
 			<Comments />
 
-			<div className="text-center d-flex flex-column my-3">
+			{/* <div className="text-center d-flex flex-column my-3">
 			<Link to="/createProfileOwner">
 				<span className="btn btn-primary btn-lg my-3" href="#" role="button">
 					create profile owner
@@ -60,7 +60,7 @@ export const Home = () => {
 				<a href="https://start.4geeksacademy.com/starters/react-flask">
 					Read documentation
 				</a>
-			</p>
+			</p> */}
 		</div>
 	);
 };
