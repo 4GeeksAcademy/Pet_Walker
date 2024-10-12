@@ -1,13 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 37b965f111be0514fc4cc760a9d2a8436a36b23f
->>>>>>> b9bcc62294cab0e29c42ba212e76d894f27184c2
 export const CardOwners = () => {
   return (
     <div className="container mt-5 d-flex justify-content-center">
