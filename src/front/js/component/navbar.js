@@ -23,16 +23,7 @@ export const Navbar = () => {
 						</li>
 					</ul>
 				</div>
-				<div className="login me-3">
-					<Link to="/createProfileWalker">
-					<button className="btnSecondary  btn ">Registrarme como Walker</button>
-					</Link>
-				</div>
-				<div className="login me-3">
-					<Link to="/createProfileOwner">
-					<button className="btnSecondary  btn ">Registrarme como Dueño</button>
-					</Link>
-				</div>
+			
 				<div className="login me-3">
 					<Link to="/registration">
 					<button className="btnSecondary textColor btn ">Registrarme</button>
