@@ -15,15 +15,27 @@ export const Registration = () => {
 					<img src="https://images.unsplash.com/photo-1601758124096-1fd661873b95?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8ZG9nc3xlbnwwfHwwfHx8Mg%3D%3D" className="rounded" width="250" />
 							<h5 class="card-title">Quiero registrarme como paseador</h5>
 							<p class="card-text">¡Regístrate como paseador y comienza a ofertar tus servicios!</p>
+<<<<<<< HEAD
 						
 							<a href="/createProfileWalker" className="btn btnPrimary">Registrarme como paseador/a</a>
+=======
+							<Link to="/createProfileWalker">
+							<a href="#" className="btn btnPrimary">Registrarme como paseador/a</a>
+							</Link>
+>>>>>>> 37b965f111be0514fc4cc760a9d2a8436a36b23f
 					</div>
 					<div className="vr"></div>
 					<div className="card-body">
 					<img src="https://images.unsplash.com/photo-1591208333284-825682219525?q=80&w=2676&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="rounded" width="250" />
 							<h5 class="card-title my-2">Quiero registrarme como dueño</h5>
 							<p class="card-text">¡Regístrate como dueñ@ y descubre paseadores cerca de tu localidad!</p>
+<<<<<<< HEAD
 							<a href="/createProfileOwner" className="btn btnPrimary">Registrarme como dueño/a</a>
+=======
+							<Link to="/createProfileWalker">
+							<a href="#" className="btn btnPrimary">Registrarme como dueño/a</a>
+							</Link>
+>>>>>>> 37b965f111be0514fc4cc760a9d2a8436a36b23f
 					</div>
 				</div>
 			</div>
