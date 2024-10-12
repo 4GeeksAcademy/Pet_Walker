@@ -37,7 +37,6 @@ class Owner(db.Model):
     distrito = db.Column(db.String(120), unique = False, nullable = False)
     #fotoPerfil: null,
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
-    # mascota = Column(db.String(80), ForeignKey('mascota.nombre'))
 
     def __repr__(self):
         return f'<Owner {self.email}>'

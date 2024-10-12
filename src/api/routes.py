@@ -157,5 +157,6 @@ def login():
         "user": user.serialize() 
     }), 200
 
+#MASCOTAS GET CON FOR 
 
-    #HACER MIGRATE
+#HACER MIGRATE
