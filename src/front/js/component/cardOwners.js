@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-font-family: 'League Spartan';
-    font-size: 40px;
 export const CardOwners = () => {
   return (
     <div className="container mt-5 d-flex justify-content-center">
