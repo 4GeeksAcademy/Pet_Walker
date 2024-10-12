@@ -33,22 +33,6 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-                    <Navbar />
-
-                    <Jumbotron />
-                    <Carousel />
-                    <div className="cards justify-content-around d-flex mb-5">
-                        <div className="d-flex">
-                            <CardWalkers />
-                            <CardWalkers />
-                        </div>
-
-                        <div className="d-flex">
-                            <CardOwners />
-                            <CardOwners />
-                        </div>
-                    </div>
-                    <Comments />
 
                     <Routes>
                         <Route element={<Home />} path="/" />

@@ -31,7 +31,7 @@ export const CardOwners = () => {
                 <span className="number3">8.9</span>
               </div>
             </div>
-            <div className="button mt-2 d-flex flex-row align-items-center gap-2">
+            <div className="button mt-2 d-flex flex-row align-items-center gap-2 ">
               <button className="btn btn-sm  w-100 btnSecondary textColor">Agendar paseo</button>
               <button className="btnPrimary btn btn-sm  w-100 ml-2">Follow</button>
             </div>
