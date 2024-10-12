@@ -33,6 +33,11 @@ export const Navbar = () => {
 					<button className="btnSecondary textColor btn ">Registrarme como Dueño</button>
 					</Link>
 				</div>
+				<div className="login me-3">
+					<Link to="/registration">
+					<button className="btnSecondary textColor btn ">Registrarme</button>
+					</Link>
+				</div>
 				<div className="login">
 					<button className="btnPrimary btn ">Login</button>
 				</div>

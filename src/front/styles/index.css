@@ -54,3 +54,17 @@ body{
 .prueba{
     background-color:#ffc800 ;
 }
+
+.regBackground{
+    --s: 60px; /* control the size*/
+    --c1: #499587;
+    --c2: #76C9B2;
+    
+    background:
+      repeating-conic-gradient(var(--c1) 0 25%,#0000 0 50%)
+       0 0/calc(4*var(--s)) calc(2*var(--s)),
+      conic-gradient(#0000 50%,var(--c2) 0)
+       calc(var(--s)/2) 0/calc(2*var(--s)) 1%,
+      radial-gradient(var(--c2) 70%,var(--c1) 72%)
+       0 0/var(--s) var(--s);
+}
