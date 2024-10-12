@@ -9,6 +9,7 @@ import { Single } from "./pages/single";
 import { CreateProfileOwner } from "./pages/createProfileOwner";
 import { CreateProfileWalker } from "./pages/createProfileWalker";
 import { OwnerProfile } from "./pages/OwnerProfile";
+import { Registration } from "./pages/registration";
 //import { Profilewalker } from "./pages/profileWalker";
 import injectContext from "./store/appContext";
 
@@ -36,7 +37,7 @@ const Layout = () => {
 
                     <Jumbotron />
                     <Carousel />
-                    <div className="cards justify-content-around d-flex mb-5 max">
+                    <div className="cards justify-content-around d-flex mb-5">
                         <div className="d-flex">
                             <CardWalkers />
                             <CardWalkers />
@@ -58,6 +59,7 @@ const Layout = () => {
                         <Route element={<CreateProfileWalker />} path="/createProfileWalker" />
                         {/* <Route element={<Profilewalker/>} path="/createProfileWalker" /> */}
                         <Route element={<OwnerProfile />} path="/ownerProfile" />
+                        <Route element={<Registration />} path="/registration" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
