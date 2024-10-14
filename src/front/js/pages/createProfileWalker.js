@@ -1,6 +1,30 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 import { Navbar } from "../component/navbar";
+
+
+// Componente Modal
+const Modal = ({ show, onClose, message }) => {
+    return (
+        <div className={`modal ${show ? 'show' : ''}`} style={{ display: show ? 'block' : 'none' }} tabIndex="-1">
+            <div className="modal-dialog">
+                <div className="modal-content">
+                    <div className="modal-header">
+                        <h5 className="modal-title">Mensaje</h5>
+                        <button type="button" className="btn-close" onClick={onClose}></button>
+                    </div>
+                    <div className="modal-body">
+                        <p>{message}</p>
+                    </div>
+                    <div className="modal-footer">
+                        <button type="button" className="btn btn-secondary" onClick={onClose}>Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 
 export const CreateProfileWalker = () => {
@@ -12,11 +36,14 @@ export const CreateProfileWalker = () => {
         telefono: '',
         email: '',
         direccion: '',
-        distrito: '', // POR AHORA EL DISTRITO SE DARAN OPCIONES DE PAISES
+        distrito: '',
         fotoPerfil: null,
         contraseña: '',
         confirmarContraseña: '',
     });
+
+    const [showModal, setShowModal] = useState(false); 
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -26,45 +53,37 @@ export const CreateProfileWalker = () => {
         });
     };
 
-
-    
-
-    const handleSubmit = async (e,formData) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // if (formData.distrito === "Seleccionar") {
-        //     alert("Por favor selecciona un distrito.");
-        //     return;
-        // }
-        if (formData.contraseña.length < 6) {
-            alert("La contraseña debe tener al menos 6 caracteres.");
-            return;
-        }
-        if (formData.contraseña !== formData.confirmarContraseña) {
-            alert("Las contraseñas no coinciden.");
-            return;
-        }
-
-        console.log(formData);
-        await actions.createWalkerProfile(formData.nombre, formData.apellido , formData.edad , formData.telefono 
-            , formData.email , formData.direccion, formData.distrito , formData.contraseña
-        );
-        navigate("/");
-    };
     
+        try {
+            await actions.createWalkerProfile(formData); 
+            setShowModal(true);
+        } catch (error) {
+            console.error("Error al crear el perfil:", error);
+            alert("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
+        }
+    };
+
+    const handleCloseModal = () => {
+        setShowModal(false);
+        navigate("/"); 
+    };
+
     return (
         <div className="container mt-5 mb-5 d-flex justify-content-center">
             <Navbar />
-            <div className="card px-1 py-4 mt-5 pt-5" style={{ border: "2px solid #EF7029", borderRadius: "0.25rem" }}>
+            <div className="card px-1 py-4">
                 <div class="card-body">
-                    <h1 className="text-center mt-5 mb-5 ">
-                        ¡Crea tu perfil de paseador! <br/>
+                    <h1 className="text-center mt-5 mb-5 text-info">
+                    ¡Crea tu perfil de paseador! <br/>
                     </h1>
-                    <form onSubmit={(e) => handleSubmit(e, formData)}>
+                    <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label className="form-label fw-bold">Nombre</label>
                             <input 
                                 type="text" 
-                                placeholder="John"
+                                placeholder="Juan"
                                 className="form-control"
                                 name="nombre"
                                 value={formData.nombre}
@@ -76,7 +95,7 @@ export const CreateProfileWalker = () => {
                             <label className="form-label fw-bold">Apellido</label>
                             <input 
                                 type="text" 
-                                placeholder="Snow"
+                                placeholder="Sanchez"
                                 className="form-control"
                                 name="apellido"
                                 value={formData.apellido}
@@ -90,7 +109,7 @@ export const CreateProfileWalker = () => {
                                 type="number" 
                                 className="form-control"
                                 name="edad"
-                                placeholder="24"
+                                placeholder="45"
                                 value={formData.edad}
                                 onChange={handleChange}
                                 required
@@ -139,18 +158,16 @@ export const CreateProfileWalker = () => {
                                 name="distrito" 
                                 value={formData.distrito} 
                                 onChange={handleChange}
-                                placeholder = "Selecciona tu distrito" 
                                 required
                             >
-                                <option value="Seleccionar">Selecciona tu distrito</option>
+                                <option value="">Selecciona tu distrito</option>
                                 <option value="Peru">Perú</option>
-                                <option value="Mexico">Mexico</option>
+                                <option value="Mexico">México</option>
                                 <option value="Colombia">Colombia</option>
                                 <option value="Venezuela">Venezuela</option>
                                 <option value="Ecuador">Ecuador</option>
                                 <option value="Bolivia">Bolivia</option>
                                 <option value="Chile">Chile</option>
-                            
                             </select>
                         </div>
                         <div className="mb-3">
@@ -202,10 +219,29 @@ export const CreateProfileWalker = () => {
                         <div className="d-flex justify-content-center mt-5">
                             <button type="submit" className="btn btnPrimary">Guardar perfil</button>
                         </div>
-                        
                     </form>
                 </div>
             </div>
+
+            
+            <div className={`modal fade ${showModal ? 'show' : ''}`} style={{ display: showModal ? 'block' : 'none' }} tabIndex="-1" role="dialog" aria-hidden={!showModal}>
+                <div className="modal-dialog" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Éxito</h5>
+                            <button type="button" className="close" onClick={handleCloseModal}>
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <p>¡Perfil guardado con éxito!</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Cerrar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    )
-}
+    );
+};
