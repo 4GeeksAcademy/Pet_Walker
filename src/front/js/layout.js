@@ -12,7 +12,7 @@ import { OwnerProfile } from "./pages/OwnerProfile";
 import { Registration } from "./pages/registration";
 //import { Profilewalker } from "./pages/profileWalker";
 import injectContext from "./store/appContext";
-
+import { Login } from "./component/login";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { CardWalkers } from "./component/cardWalkers";
@@ -41,9 +41,9 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<CreateProfileOwner />} path="/createProfileOwner" />
                         <Route element={<CreateProfileWalker />} path="/createProfileWalker" />
-                        {/* <Route element={<Profilewalker/>} path="/createProfileWalker" /> */}
                         <Route element={<OwnerProfile />} path="/ownerProfile" />
                         <Route element={<Registration />} path="/registration" />
+                        <Route element={<Login />} path="/login" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

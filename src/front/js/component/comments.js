@@ -6,25 +6,25 @@ export const Comments = () => {
 
         <div className="container-fluid my-5  d-flex justify-content-center  ">
 
-           <div class="card mx-2">
-                <div class="card-body">
-                    <h5 class="card-title">Francisco</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Paseador</h6>
-                    <p class="card-text">"En ocasiones me encuentro saturado y entonces puedo remitir a otro compañero cuando me ofrecen un cliente."</p>
+           <div className="card mx-2" style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
+                <div className="card-body">
+                    <h4 className="card-title">Francisco</h4>
+                    <h5 className="card-subtitle mb-2 text-muted">Paseador</h5>
+                    <p className="card-text">"En ocasiones me encuentro saturado y entonces puedo remitir a otro compañero cuando me ofrecen un cliente."</p>
                 </div>
             </div>
-            <div class="card mx-2">
-                <div class="card-body">
-                    <h5 class="card-title">Alejandra</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Dueña</h6>
-                    <p class="card-text">"Es muy fácil encontrar paseadores y estar en contacto con ellos. Además, las experiencias con otros usuarios hace fácil elegir."</p>
+            <div className="card mx-2" style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
+                <div className="card-body">
+                    <h4 className="card-title">Alejandra</h4>
+                    <h5 className="card-subtitle mb-2 text-muted">Dueña</h5>
+                    <p className="card-text">"Es muy fácil encontrar paseadores y estar en contacto con ellos. Además, las experiencias con otros usuarios hace fácil elegir."</p>
                 </div>
             </div>
-            <div class="card mx-2">
-                <div class="card-body">
-                    <h5 class="card-title">Fernando</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Dueño</h6>
-                    <p class="card-text">"Mi paseador fue muy atento y en todo momento estuvo contacto conmigo el primer día"</p>
+            <div className="card mx-2" style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
+                <div className="card-body">
+                    <h4 className="card-title">Fernando</h4>
+                    <h5 className="card-subtitle mb-2 text-muted">Dueño</h5>
+                    <p className="card-text">"Mi paseador fue muy atento y en todo momento estuvo contacto conmigo el primer día"</p>
                 </div>
             </div>
         </div>

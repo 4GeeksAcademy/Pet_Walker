@@ -143,7 +143,8 @@ def login():
         return jsonify({"msg": "Espacios faltantes, revisar."}), 401
 
     user = (Owner or Walker).query.filter_by(email=email).first()
-
+    #PRIMERO BUSQUEDA DE OWNER Y LUEGO DE WALKER Y SINO NONE
+    
     if user == None:
         return jsonify({"msg": "¡El usuario no fue encontrado!"}), 404
 
@@ -160,3 +161,8 @@ def login():
 #MASCOTAS GET CON FOR 
 
 #HACER MIGRATE
+
+
+#RUTA DE PASEOS: 
+#   LOS PASEADORES SON  LOS QUE OFRECEN EL PASEO
+#   LOS DUENOS SON LOS QUE ELIGEN EL PASEO OFRECIDO, PONIENDO SU MASCOTA A PASEAR 

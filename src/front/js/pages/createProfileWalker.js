@@ -54,10 +54,10 @@ export const CreateProfileWalker = () => {
     return (
         <div className="container mt-5 mb-5 d-flex justify-content-center">
             <Navbar />
-            <div className="card px-1 py-4">
+            <div className="card px-1 py-4 mt-5 pt-5" style={{ border: "2px solid #EF7029", borderRadius: "0.25rem" }}>
                 <div class="card-body">
-                    <h1 className="text-center mt-5 mb-5 text-info">
-                        Crea tu perfil de paseador <br/>:D
+                    <h1 className="text-center mt-5 mb-5 ">
+                        ¡Crea tu perfil de paseador! <br/>
                     </h1>
                     <form onSubmit={(e) => handleSubmit(e, formData)}>
                         <div className="mb-3">
@@ -200,7 +200,7 @@ export const CreateProfileWalker = () => {
                         </div>
                         
                         <div className="d-flex justify-content-center mt-5">
-                            <button type="submit" className="btn btn-primary">Guardar perfil</button>
+                            <button type="submit" className="btn btnPrimary">Guardar perfil</button>
                         </div>
                         
                     </form>

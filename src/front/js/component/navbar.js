@@ -7,7 +7,7 @@ export const Navbar = () => {
 		<nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
 			<div className="container-fluid">
 				<Link to="/">
-				<a className="navbar-brand textColorNavBar" >Pet Walker</a>
+					<span className="navbar-brand textColorNavBar" >Pet Walker</span>
 				</Link>
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>
@@ -30,11 +30,14 @@ export const Navbar = () => {
 			
 				<div className="login me-3">
 					<Link to="/registration">
-					<button className="btnSecondary textColor btn ">Registrarme</button>
+						<button className="btnSecondary textColor btn ">Registrarme</button>
 					</Link>
 				</div>
 				<div className="login">
-					<button className="btnPrimary btn ">Login</button>
+
+					<Link to="/login">
+						<button className="btnPrimary btn">Log In</button>
+					</Link>
 				</div>
 			</div>
 		</nav>

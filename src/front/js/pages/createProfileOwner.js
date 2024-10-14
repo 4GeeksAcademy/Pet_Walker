@@ -55,10 +55,10 @@ export const CreateProfileOwner = () => {
     return (
         <div className="container mt-5 mb-5 d-flex justify-content-center">
             <Navbar />
-            <div className="card px-1 py-4">
+            <div className="card px-1 py-4 mt-5 pt-5" style={{ border: "2px solid #EF7029", borderRadius: "0.25rem" }}>
                 <div class="card-body">
                     <h1 className="text-center mt-5 mb-5 text-info">
-                        Crea tu perfil de dueño <br/>:D
+                        ¡Crea tu perfil de dueño! <br/>
                     </h1>
                     <form onSubmit={(e) => handleSubmit(e, formData)}>
                         <div className="mb-3">
@@ -201,7 +201,7 @@ export const CreateProfileOwner = () => {
                         </div>
                         
                         <div className="d-flex justify-content-center mt-5">
-                            <button type="submit" className="btn btn-primary">Guardar perfil</button>
+                            <button type="submit" className="btn btnPrimary">Guardar perfil</button>
                         </div>
                     </form>
                 </div>

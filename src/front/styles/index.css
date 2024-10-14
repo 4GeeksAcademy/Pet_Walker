@@ -3,11 +3,10 @@
 */
 
 /*
---text: #b87100;
---background: #ffffff;
---primary: #ffc800;
---secondary: #ffc05c;
---accent: #ff99ee;
+--text--->    color: #ffffff; o color: #499587 (verde agua oscuro)
+--background: #ffffff;   o   #76C9B2
+--boton login/ logout: #EF7029;
+--secondary: #3F4551; o    #F0E0D2    o     #E7F8F3
 */
 @import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
@@ -18,13 +17,29 @@ body{
     background-color: #ffffff;
 }
 
+h4{
+    font-family: 'League Spartan'
+}
+
+h5{
+    font-family: 'League Spartan'
+}
+
+p{
+    font-family: 'Avenir', sans-serif 
+}
+
+span{
+    font-family: 'Avenir', sans-serif
+}
+
 .primaryText {
     font-family: 'League Spartan';
     font-size: 40px;
 }
 
-.secondayText {
-    font-family: 'Avenir';
+.secondaryText {
+    font-family: 'Avenir', sans-serif;
     font-size: 20px;
 }
 
@@ -34,14 +49,15 @@ body{
     border-style: none; */
     font-family: 'League Spartan';
     background-color: #ef7029;
-    color: #ffffff
+    color: #f0e0d2
 }
 
 .btnPrimary:hover{
     /* background-color: #ffffff;
     color: #b87100;
     border: 2px solid #ffc800; */
-    background-color: #ffffff;
+    background-color: #f0e0d2;
+    font-family: 'League Spartan';
     color: #ef7029;
     border: 2px solid #ef7029;
 }
@@ -50,14 +66,16 @@ body{
     /* background-color: #ffecce;
     color: white; */
     border-style: none;
+    font-family: 'Avenir', sans-serif;
     background-color: #e7f8f3;
-    color: #3f4551
+    color: #499587
 }
 
 .btnSecondary:hover{
     background-color: #e7f8f3;
-    color: #3f4551;
-    border: 2px solid #3f4551;
+    font-family: 'Avenir', sans-serif;
+    color: #499587;
+    border: 2px solid #499587;
 
 }
 
@@ -76,7 +94,7 @@ body{
     /* color: #b87100; */
     color:#ffffff ;
     font-family: 'League Spartan';
-    font-size: 25px
+    font-size: 30px
 }
 
 .prueba{
