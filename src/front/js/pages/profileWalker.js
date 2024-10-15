@@ -1,69 +1,60 @@
 
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import "../../styles/home.css";
+import { Link, useParams } from "react-router-dom";
 import { Navbar } from "../component/navbar";
 
 
-export const Profilewalker = () => {
+export const ProfileWalker = () => {
+    const { store, actions } = useContext(Context);
 
     return (
-        <div className="container">
-            <Navbar />
-            <div className="row">
-                <div className="col-sm-6 col-md-4 col-lg-3 mt-4">
-                    <div className="card">
-                        <img className="card-img-top" src="https://picsum.photos/200/150/?random" alt="Card image" />
-                        <div className="card-block">
-                            <figure className="profile">
-                                <img src="https://picsum.photos/200/150/?random" className="profile-avatar" alt="Avatar" />
-                            </figure>
-                            <h4 className="card-title mt-3">Tawshif Ahsan Khan</h4>
-                            <div className="meta">
-                                <a href="#">Friends</a>
-                            </div>
-                            <div className="card-text">
-                                Tawshif is a web designer living in Bangladesh.
-                            </div>
-                        </div>
-                        <div className="card-footer">
-                            <small>Last updated 3 mins ago</small>
-                            <button className="btn btn-secondary float-right btn-sm">Show</button>
-                        </div>
-                        <div className="card-footer tab-card-header">
-                            <ul className="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-                                <li className="nav-item">
-                                    <a className="nav-link" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="one" aria-selected="true">One</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="two" aria-selected="false">Two</a>
-                                </li>
-                                <li className="nav-item">
-                                    <a className="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="three" aria-selected="false">Three</a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div className="tab-content" id="myTabContent">
-                            <div className="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
-                                <h5 className="card-title">Acerca de mí</h5>
-                                <p className="card-text">Descripción de acerca de mí</p>
-                                <a href="#" className="btn btn-primary">Botón opcional</a>
-                            </div>
-                            <div className="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
-                                <h5 className="card-title">Mis servicios</h5>
-                                <p className="card-text">LISTA DE MIS SERVICIOS</p>
-                            </div>
-                            <div className="tab-pane fade p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
-                                <h5 className="card-title">Fotos de mis paseos</h5>
-                                <p className="card-text">Desplegado de fotos</p>
-                                <a href="#" className="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+       
+        <div className="my-5 regBackground">
+            <div className="my-5">
+             <Navbar />
             </div>
+            <div className="d-flex my-10">
+                    <div className="card d-flex my-5 mx-3 p-2 justify-content flex-row container-sm">
+         
+                    <div className="mx-2">
+                    <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" className="rounded" width="155" />
+                    </div>
+                    <div className=" text-left my-2 mx-2">
+                    <h5 class="card-title">Alex H. Morrison</h5>
+                    <p class="card-text">En línea hace <strong>5 semanas</strong>.</p>
+                    <p class="card-text">Cuida en <strong>Bogotá, Colombia</strong>.</p>
+            
+							<a href="#" className="btn btnPrimary"><strong>45</strong> Calificaciones</a>	
+                    </div>
+
+                </div>
+                   
+            </div>
+            <h5 className="card d-flex my-2 mx-3 p-2 justify-content flex-row container-sm">Galería de fotos</h5>
+                <div className="card d-flex my-2 mx-2 justify-content-between container-sm">
+                    <div className="card-group border-0 my-2">
+                    
+                        <div class="border-0">
+                            <img src="https://images.unsplash.com/photo-1601758176481-e81a6b713126?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="rounded mx-2 my-2" width="250" />
+                        </div>
+                        <div class="border-0">
+                            <img src="https://images.unsplash.com/photo-1601758063890-1167f394febb?q=80&w=2602&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="rounded mx-2 my-2 " width="250" />
+                        </div>
+                        <div class="border-0">
+                            <img src="https://images.unsplash.com/photo-1533404367653-794d4cecb66c?q=80&w=2676&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="rounded mx-2 my-2" width="250" />
+                        </div>
+                        <div class="border-0">
+                            <img src="https://images.unsplash.com/photo-1517443191895-202c31142ccd?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="rounded mx-2 my-2" width="250" />
+                        </div>
+                      </div>
+            
+							
+                    </div>
         </div>
+      
+
     );
 };
 
-export default Profilewalker;

@@ -10,7 +10,7 @@ import { CreateProfileOwner } from "./pages/createProfileOwner";
 import { CreateProfileWalker } from "./pages/createProfileWalker";
 import { OwnerProfile } from "./pages/OwnerProfile";
 import { Registration } from "./pages/registration";
-//import { Profilewalker } from "./pages/profileWalker";
+import { ProfileWalker } from "./pages/profileWalker";
 import injectContext from "./store/appContext";
 import { Login } from "./component/login";
 import { Navbar } from "./component/navbar";
@@ -42,6 +42,7 @@ const Layout = () => {
                         <Route element={<CreateProfileOwner />} path="/createProfileOwner" />
                         <Route element={<CreateProfileWalker />} path="/createProfileWalker" />
                         <Route element={<OwnerProfile />} path="/ownerProfile" />
+                        <Route element={<ProfileWalker />} path="/profileWalker" />
                         <Route element={<Registration />} path="/registration" />
                         <Route element={<Login />} path="/login" />
                         {/* <Route element={<Login />} path="/login" />
