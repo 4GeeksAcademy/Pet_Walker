@@ -64,6 +64,7 @@ export const CreateProfileWalker = () => {
             alert("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
         }
     };
+    
 
     const handleCloseModal = () => {
         setShowModal(false);

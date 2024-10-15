@@ -29,7 +29,7 @@ export const Navbar = () => {
                             </Link>
                         </div>
                         <div className="login">
-                            <Link to="/schedule">
+                            <Link to="/profile-owner">
                                 <button className="btnPrimary btn">Mi perfil</button>
                             </Link>
                         </div>

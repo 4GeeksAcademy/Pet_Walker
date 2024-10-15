@@ -8,7 +8,7 @@ import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { CreateProfileOwner } from "./pages/createProfileOwner";
 import { CreateProfileWalker } from "./pages/createProfileWalker";
-import { OwnerProfile } from "./pages/OwnerProfile";
+import { OwnerProfile } from "./pages/profileOwner";
 import { Registration } from "./pages/registration";
 import { ProfileWalker } from "./pages/profileWalker";
 import injectContext from "./store/appContext";
@@ -41,12 +41,12 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<CreateProfileOwner />} path="/createProfileOwner" />
                         <Route element={<CreateProfileWalker />} path="/createProfileWalker" />
-                        <Route element={<OwnerProfile />} path="/ownerProfile" />
-                        <Route element={<ProfileWalker />} path="/profileWalker" />
+                        <Route element={<OwnerProfile />} path="/profile-owner" />
+                        <Route element={<ProfileWalker />} path="/profile-walker" />
                         <Route element={<Registration />} path="/registration" />
                         <Route element={<Login />} path="/login" />
-                        {/* <Route element={<Login />} path="/login" />
-                        <Route element={<Login />} path="/login" />  PARA COLOCAR PARA PERFIL DE OWNER Y DE WALKER*/}
+                        {/* {/* <Route element={<Login />} path="/login" />PARA COLOCAR PARA PERFIL DE OWNER Y DE WALKER*/} 
+                        
                     </Routes>
                     <Footer />
                 </ScrollToTop>

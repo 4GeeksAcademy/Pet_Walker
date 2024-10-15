@@ -57,13 +57,13 @@ export const CreateProfileOwner = () => {
         e.preventDefault();
     
         try {
-            await actions.createOwnerProfile(formData); 
+            await actions.createOwnerProfile(formData);
             setShowModal(true);
         } catch (error) {
             console.error("Error al crear el perfil:", error);
             alert("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
         }
-    };
+    };    
 
     const handleCloseModal = () => {
         setShowModal(false);

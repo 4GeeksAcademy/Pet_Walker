@@ -27,71 +27,69 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			
 			//FALTA COLOCAR LA FOTO DE PERFIL
-			createOwnerProfile: async (nombre, apellido, edad, telefono, email, direccion, distrito, contraseña) => { 
+			createOwnerProfile: async (formData) => { 
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-owner", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						nombre: nombre,
-						apellido: apellido,
-						edad: edad,
-						telefono: telefono,
-						email: email,
-						direccion: direccion,
-						distrito: distrito,
-						contraseña: contraseña
+						nombre: formData.nombre,
+						apellido: formData.apellido,
+						edad: formData.edad,
+						telefono: formData.telefono,
+						email: formData.email,
+						direccion: formData.direccion,
+						distrito: formData.distrito,
+						contraseña: formData.contraseña
 					})
 				});
+			
 				const data = await resp.json();
-
-				localStorage.setItem("token", data.token);
-
-				setStore({ owner: data.owner });
-				setStore({ token: data.token });
-
+			
 				if (resp.ok) {
+					localStorage.setItem("token", data.token);
+					setStore({ owner: data.owner });
+					setStore({ token: data.token });
 					toast.success("Dueño creado!! 🎉");
-				}
-				else {
+				} else {
 					toast.error("Error al registrar al dueño 🛑");
+					console.error("Error:", data.msg);
 				}
 			},
 
-
 			//FALTA COLOCAR LA FOTO DE PERFIL
-			createWalkerProfile: async (nombre, apellido, edad, telefono, email, direccion, distrito, contraseña) => { 
+			createWalkerProfile: async (formData) => { 
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-walker", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify({
-						nombre: nombre,
-						apellido: apellido,
-						edad: edad,
-						telefono: telefono,
-						email: email,
-						direccion: direccion,
-						distrito: distrito,
-						contraseña: contraseña
+						nombre: formData.nombre,
+						apellido: formData.apellido,
+						edad: formData.edad,
+						telefono: formData.telefono,
+						email: formData.email,
+						direccion: formData.direccion,
+						distrito: formData.distrito,
+						contraseña: formData.contraseña
 					})
 				});
+			
 				const data = await resp.json();
-
-				localStorage.setItem("token", data.token);
-
-				setStore({ walker: data.walker });
-				setStore({ token: data.token });
-
+			
 				if (resp.ok) {
+					localStorage.setItem("token", data.token);
+					setStore({ walker: data.walker });
+					setStore({ token: data.token });
 					toast.success("Paseador registrado! 🎉");
-				}
-				else {
+				} else {
 					toast.error("Error al registrar al paseador 🛑");
+					console.error("Error:", data.msg);
 				}
 			},
+			
 
 			createMascota: async (email, nombre, raza, edad, detalles) => {
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-mascota", {
