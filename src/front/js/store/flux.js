@@ -125,30 +125,52 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			login: async (email, contraseña) => {
-				const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						email: email,
-						contraseña: contraseña
-					})
-				});
-				const data = await resp.json();
-
-				localStorage.setItem("token", data.token);
-
-				setStore({ token: data.token });
-				setStore({ user: data.user });
-
-				if (resp.ok) {
-					toast.success("¡Ingresaste con éxito!");
-				}
-				else {
-					toast.error("¡Revisa tu correo o contraseña!");
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							email: email,
+							contraseña: contraseña
+						})
+					});
+			
+					if (resp.ok) {
+						const data = await resp.json();
+						
+						localStorage.setItem("token", data.token); 
+						setStore({ token: data.token, user: data.user }); 
+						
+						toast.success("¡Ingresaste con éxito!");
+					} else {
+						const errorData = await resp.json();
+						toast.error(errorData.msg || "¡Revisa tu correo o contraseña!"); 
+					}
+				} catch (error) {
+					console.error("Error en el login:", error);
+					toast.error("Error de conexión con el servidor");
 				}
 			},
+			
+
+			getUserLogged: async () => {
+				const resp = await fetch(process.env.BACKEND_URL + "/api/user", {
+					headers: {
+						Authorization: "Bearer " + getStore().token
+					}
+				});
+				if (resp.ok) {
+					toast.success("User logged in! 🎉");
+				} else {
+					localStorage.removeItem("token");
+					setStore({ token: null });
+				}
+				const data = await resp.json();
+				setStore({ user: data });
+			},
+
 
 			getMessage: async () => {
 				try{

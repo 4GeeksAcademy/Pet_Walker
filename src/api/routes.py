@@ -132,17 +132,27 @@ def register_mascota():
     }), 200
 
 
+@api.route("/mascotas", methods=["GET"])
+def get_mascotas():
+    mascotas = Mascota.query.all()  
+    mascotas_list = [mascota.serialize() for mascota in mascotas] 
+    return jsonify(mascotas_list), 200 
+
+
                 #LOGIN
 
 @api.route("/login", methods=["POST"])
 def login():
     email = request.json.get("email", None)
-    contraseña = request.json.get("password", None)
+    contraseña = request.json.get("contraseña", None)
 
     if email == None or contraseña == None:
         return jsonify({"msg": "Espacios faltantes, revisar."}), 401
 
-    user = (Owner or Walker).query.filter_by(email=email).first()
+    user = Owner.query.filter_by(email=email).first()
+
+    if user == None:
+        user = Walker.query.filter_by(email=email).first()
     #PRIMERO BUSQUEDA DE OWNER Y LUEGO DE WALKER Y SINO NONE
     
     if user == None:
@@ -157,6 +167,16 @@ def login():
         "token": access_token,
         "user": user.serialize() 
     }), 200
+
+
+@api.route("/user", methods=["GET"])
+@jwt_required()
+def get_user_logged():
+    current_user = get_jwt_identity()
+    user = Owner.query.filter_by(email=current_user).first()
+    if user == None:
+        user = Walker.query.filter_by(email = current_user).first()
+    return jsonify(user.serialize()), 200
 
 #MASCOTAS GET CON FOR 
 

@@ -44,6 +44,8 @@ const Layout = () => {
                         <Route element={<OwnerProfile />} path="/ownerProfile" />
                         <Route element={<Registration />} path="/registration" />
                         <Route element={<Login />} path="/login" />
+                        {/* <Route element={<Login />} path="/login" />
+                        <Route element={<Login />} path="/login" />  PARA COLOCAR PARA PERFIL DE OWNER Y DE WALKER*/}
                     </Routes>
                     <Footer />
                 </ScrollToTop>

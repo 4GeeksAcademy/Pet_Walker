@@ -1,47 +1,56 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { useContext } from "react";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-	return (
-		<nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
-			<div className="container-fluid">
-				<Link to="/">
-					<span className="navbar-brand textColorNavBar" >Pet Walker</span>
-				</Link>
-				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-					<span className="navbar-toggler-icon"></span>
-				</button>
-				
-				<div className="collapse navbar-collapse " id="navbarNav">
-				
-					<ul className="navbar-nav">
-						{/* <li className="nav-item">
-							<a className="nav-link textColorNavBar">Inicio</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link textColorNavBar">Walkers</a>
-						</li>
-						<li className="nav-item">
-							<a className="nav-link textColorNavBar">Dueños</a>
-						</li> */}
-					</ul>
-				</div>
-			
-				<div className="login me-3">
-					<Link to="/registration">
-						<button className="btnSecondary textColor btn ">Registrarme</button>
-					</Link>
-				</div>
-				<div className="login">
+    const { store, actions } = useContext(Context);
 
-					<Link to="/login">
-						<button className="btnPrimary btn">Log In</button>
-					</Link>
-				</div>
-			</div>
-		</nav>
-	)
+    return (
+        <nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
+            <div className="container-fluid">
+                <Link to="/">
+                    <span className="navbar-brand textColorNavBar">Pet Walker</span>
+                </Link>
+                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                
+                <div className="collapse navbar-collapse " id="navbarNav">
+                    <ul className="navbar-nav"></ul>
+                </div>
 
+                
+                {store.token ? (
+                    <>
+                        <div className="login me-3">
+                            <Link to="/profile">
+                                <button className="btnSecondary textColor btn">Agendar paseo</button>
+                            </Link>
+                        </div>
+                        <div className="login">
+                            <Link to="/schedule">
+                                <button className="btnPrimary btn">Mi perfil</button>
+                            </Link>
+                        </div>
+                    </>
+                ) : (
+                    <>
+                        <div className="login me-3">
+                            <Link to="/registration">
+                                <button className="btnSecondary textColor btn">Registrarme</button>
+                            </Link>
+                        </div>
+                        <div className="login">
+                            <Link to="/login">
+                                <button className="btnPrimary btn">Log In</button>
+                            </Link>
+                        </div>
+                    </>
+                )}
+            </div>
+        </nav>
+    );
 };
+
 
