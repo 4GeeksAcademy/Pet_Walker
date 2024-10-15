@@ -9,7 +9,7 @@ export const Registration = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center my-5 regBackground">
+		<div className="d-flex justify-content-center text-center my-5 regBackground">
 			<Navbar />
 			<div class="card-body">
 				<div className="card d-flex justify-content-center flex-row container-sm">
