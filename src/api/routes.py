@@ -153,7 +153,6 @@ def login():
 
     if user == None:
         user = Walker.query.filter_by(email=email).first()
-    #PRIMERO BUSQUEDA DE OWNER Y LUEGO DE WALKER Y SINO NONE
     
     if user == None:
         return jsonify({"msg": "¡El usuario no fue encontrado!"}), 404
@@ -177,6 +176,20 @@ def get_user_logged():
     if user == None:
         user = Walker.query.filter_by(email = current_user).first()
     return jsonify(user.serialize()), 200
+
+@api.route("/owner/<email>/mascotas", methods=["GET"])
+def get_mascotas_by_owner(email):
+    owner = Owner.query.filter_by(email=email).first()
+
+    if owner is None:
+        return jsonify({"msg": "Owner not found"}), 404
+
+    mascotas = Mascota.query.filter_by(owner_id=owner.id).all()
+
+    mascotas_list = [mascota.serialize() for mascota in mascotas]
+
+    return jsonify(mascotas_list), 200
+
 
 #MASCOTAS GET CON FOR 
 

@@ -1,125 +1,61 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Navbar } from "../component/navbar";
-
+import { AddMascota } from "../component/addMascota";
 
 export const OwnerProfile = () => {
+    const { store, actions } = useContext(Context);
 
-    const [formData, setFormData] = useState({
-        nombre: '',
-        raza: '',
-        edad: '',
-        detalles: ''
-    });
+    const user = store.user ? store.user : {};
+    const mascotas = store.mascotas ? store.mascotas : [];
 
-    const handleChange = (e) => {
-        const { name, value, files } = e.target;
-        setFormData({
-            ...formData,
-            [name]: files ? files[0] : value
-        });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formData);
-        actions.addMascota(formData);
-    };
+    useEffect(() => {
+        if (user.email) {
+            actions.getMascotasByOwner(user.email);
+        }
+    }, [user.email]);
 
     return (
         <div className="container">
             <Navbar />
-            <div className="profile-card d-flex align-items-start p-4 border rounded shadow">
+            <div>
+                <h1>Mi Perfil</h1>
+            </div>
+            <div className="profile-card d-flex align-items-start p-4 m-4 border rounded shadow">
                 <div className="profile-photo">
                     <img 
                         className="img-fluid rounded" 
+                        src={user.fotoPerfil || "https://i0.wp.com/lanoticia.com/wp-content/uploads/2021/08/AdobeStock_116173569.jpg?fit=1200%2C800&ssl=1"}
+                        alt="Foto de perfil"
                         style={{ width: "150px", height: "150px", objectFit: "cover" }} 
                     />
                 </div>
 
-                
                 <div className="profile-info ms-4">
-                    <p><strong>Nombre:</strong> </p>
-                    <p><strong>Edad:</strong> </p>
-                    <p><strong>Distrito:</strong> </p>
-                    <p><strong>Mascotas</strong> </p>
+                    <p><strong>Nombre:</strong> {user.nombre || "Nombre no disponible"}</p>
+                    <p><strong>Apellido:</strong> {user.apellido || "Apellido no disponible"}</p>
+                    <p><strong>Edad:</strong> {user.edad || "Edad no disponible"}</p>
+                    <p><strong>Distrito:</strong> {user.distrito || "Distrito no disponible"}</p>
+                    <p><strong>Teléfono:</strong> {user.telefono || "Teléfono no disponible"}</p>
+
+                    <p><strong>Mascotas:</strong></p>
+                    {mascotas.length > 0 ? (
+                        <ul>
+                            {mascotas.map((mascota, index) => (
+                                <li key={index}>
+                                    <strong>Nombre:</strong> {mascota.nombre}
+                                    {/* <strong> Raza:</strong> {mascota.raza}  */}
+                                    {/* <strong> Edad:</strong> {mascota.edad}, 
+                                    <strong> Detalles:</strong> {mascota.detalles} */}
+                                </li>
+                            ))}
+                        </ul>
+                    ) : (
+                        <p>No hay mascotas registradas.</p>
+                    )}
                 </div>
             </div>
-
-            <div className = "mt-4 text-center" >
-                <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Agrega tu mascota!
-                </button>
-
-                <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                    <div className="modal-header">
-                        <h1 className="modal-title fs-5" id="exampleModalLabel">Ingresa los datos de tu mascota</h1>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body text-start">
-                        <form onSubmit={handleSubmit}>
-                            <div className="mb-3">
-                                <label className="form-label fw-bold">Nombre</label>
-                                <input 
-                                    type="text" 
-                                    className="form-control"
-                                    name="nombre"
-                                    value={formData.nombre}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label fw-bold">Raza</label>
-                                <input 
-                                    type="text" 
-                                    className="form-control"
-                                    name="raza"
-                                    value={formData.raza}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label className="form-label fw-bold">Edad</label>
-                                <input 
-                                    type="number" 
-                                    className="form-control"
-                                    name="edad"
-                                    value={formData.edad}
-                                    onChange={handleChange}
-                                    required
-                                />
-                            </div>
-                            <div className="mb-3">
-                                <label htmlFor="exampleFormControlTextarea1" className="form-label fw-bold">Detalles</label>
-                                <textarea 
-                                    className="form-control" 
-                                    id="exampleFormControlTextarea1"
-                                    rows="5"
-                                    name="detalles" 
-                                    value={formData.detalles} 
-                                    onChange={handleChange} 
-                                    placeholder="Detalla las necesidades y actitudes de tu perrito ¡Lo queremos conocer para saber cómo cuidarlo! Usa como máximo 800 letras" 
-                                    maxLength="800"
-                                    required 
-                                />
-                            </div>
-                        </form>
-
-                    </div>
-                    <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" className="btn btn-primary">Guardar cambios</button>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-
+            <AddMascota/>
         </div>
-    )
-}
+    );
+};

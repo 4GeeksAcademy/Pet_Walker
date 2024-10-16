@@ -24,7 +24,6 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
-
 class Owner(db.Model):
     __tablename__ = 'owner'
     id = db.Column(db.Integer, primary_key = True)
@@ -35,7 +34,6 @@ class Owner(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     direccion = db.Column(db.String(120), unique = False, nullable = False)
     distrito = db.Column(db.String(120), unique = False, nullable = False)
-    #fotoPerfil: null,
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
 
     def __repr__(self):
@@ -44,11 +42,15 @@ class Owner(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
+            "nombre": self.nombre,         
+            "apellido": self.apellido,     
+            "edad": self.edad,             
             "telefono": self.telefono,
+            "email": self.email,
+            "direccion": self.direccion,
             "distrito": self.distrito
         }
-    
+
 class Walker(db.Model):
     __tablename__ = 'walker'
     id = db.Column(db.Integer, primary_key = True)
@@ -89,5 +91,11 @@ class Mascota(db.Model):
     def serialize(self):
          return {
             "id": self.id,
+            "nombre": self.nombre,   
+            "raza": self.raza,       
+            "edad": self.edad,       
+            "detalles": self.detalles, 
             "owner": self.owner_id
         }
+
+

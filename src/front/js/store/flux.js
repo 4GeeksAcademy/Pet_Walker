@@ -57,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error:", data.msg);
 				}
 			},
+			
 
 			//FALTA COLOCAR LA FOTO DE PERFIL
 			createWalkerProfile: async (formData) => { 
@@ -90,7 +91,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
-
 			createMascota: async (email, nombre, raza, edad, detalles) => {
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-mascota", {
 					method: "POST",
@@ -107,11 +107,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			
 				const data = await resp.json();
-
-				localStorage.setItem("token", data.token);
-
-				setStore({ mascota: data.mascota });
-				setStore({ token: data.token });
 			
 				if (resp.ok) {
 					console.log("Mascota creada:", data);
@@ -121,6 +116,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 					toast.error("Error al registrar a tu mascota 🛑");
 				}
 			},
+
+			getMascotasByOwner: async (email) => {
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + `/api/owner/${email}/mascotas`, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json"
+						}
+					});
+					
+					const data = await resp.json();
+					
+					if (resp.ok) {
+						setStore({ mascotas: data });
+						console.log("Mascotas del owner:", data);
+					} else {
+						toast.error("Error al obtener las mascotas.");
+					}
+				} catch (error) {
+					console.error("Error al obtener las mascotas:", error);
+					toast.error("Error de conexión al obtener las mascotas.");
+				}
+			},			
+			
 
 			login: async (email, contraseña) => {
 				try {
