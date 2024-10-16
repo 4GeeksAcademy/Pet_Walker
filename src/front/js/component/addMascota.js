@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
+import { FaDog} from "react-icons/fa";
 
 export const AddMascota = () => {
     const { store, actions } = useContext(Context); // Asegúrate de obtener el store y actions desde el contexto
@@ -42,8 +43,8 @@ export const AddMascota = () => {
 
     return (
         <div className="mt-4 text-center">
-            <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setShowModal(true)}>
-                Agrega tu mascota!
+            <button type="button" className="btn btnPrimary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => setShowModal(true)}>
+                <FaDog className="me-2" /> ¡Agrega tu mascota!
             </button>
 
             <div className={`modal fade ${showModal ? 'show' : ''}`} style={{ display: showModal ? 'block' : 'none' }} tabIndex="-1" role="dialog">
