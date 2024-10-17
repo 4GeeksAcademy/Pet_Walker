@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import { FaDog} from "react-icons/fa";
 
 export const AddMascota = () => {
-    const { store, actions } = useContext(Context); // Asegúrate de obtener el store y actions desde el contexto
+    const { store, actions } = useContext(Context); 
     const [formData, setFormData] = useState({
         nombre: '',
         raza: '',
@@ -11,7 +11,7 @@ export const AddMascota = () => {
         detalles: ''
     });
 
-    const [showModal, setShowModal] = useState(false); // Estado para controlar el modal
+    const [showModal, setShowModal] = useState(false); 
 
     const handleChange = (e) => {
         const { name, value, files } = e.target;
@@ -25,12 +25,12 @@ export const AddMascota = () => {
         e.preventDefault();
 
         try {
-            const email = store.user.email; // Asegúrate de que el email esté en el store
+            const email = store.user.email; 
             if (!email) {
                 throw new Error("No se encontró el correo electrónico del usuario");
             }
             await actions.createMascota(email, formData.nombre, formData.raza, formData.edad, formData.detalles); 
-            setShowModal(false); // Cierra el modal si todo va bien
+            setShowModal(false); 
         } catch (error) {
             console.error("Error al agregar la mascota:", error);
             alert("Ocurrió un error al agregar la mascota. Por favor, intenta de nuevo.");
@@ -38,7 +38,7 @@ export const AddMascota = () => {
     };
 
     const handleCloseModal = () => {
-        setShowModal(false); // Cierra el modal
+        setShowModal(false);
     };
 
     return (
