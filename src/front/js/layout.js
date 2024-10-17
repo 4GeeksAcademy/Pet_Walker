@@ -20,6 +20,7 @@ import { Carousel } from "./component/carousel";
 import { Jumbotron } from "./component/Jumbotron";
 import { CardOwners } from "./component/cardOwners";
 import { Comments } from "./component/comments";
+import { NewRide } from "./component/NewRide";
 
 //create your first component
 const Layout = () => {
@@ -41,7 +42,8 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<CreateProfileOwner />} path="/createProfileOwner" />
                         <Route element={<CreateProfileWalker />} path="/createProfileWalker" />
-{/* 
+                        <Route element={<NewRide />} path="/Newride" />
+                        {/* 
                         if store.profile == owner ---->   <Route element={<OwnerProfile />} path="/profile-owner" />
                         if store.profile == walker --->   <Route element={<ProfileWalker />} path="/profile-walker" />
 */}
@@ -49,8 +51,8 @@ const Layout = () => {
                         <Route element={<ProfileWalker />} path="/profile-walker" />
                         <Route element={<Registration />} path="/registration" />
                         <Route element={<Login />} path="/login" />
-                        {/* {/* <Route element={<Login />} path="/login" />PARA COLOCAR PARA PERFIL DE OWNER Y DE WALKER*/} 
-                        
+                        {/* {/* <Route element={<Login />} path="/login" />PARA COLOCAR PARA PERFIL DE OWNER Y DE WALKER*/}
+
                     </Routes>
                     <Footer />
                 </ScrollToTop>

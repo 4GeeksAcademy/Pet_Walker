@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NewRide from "./NewRide";
 
 
 export const CardWalkers = () => {
@@ -32,10 +33,10 @@ export const CardWalkers = () => {
                 <span className="number3">8.9</span>
               </div>
             </div>
-      
+
             <div className="button mt-2 d-flex flex-row align-items-center gap-2 ">
-            <Link to="/profileWalker">
-              <button className="btn btn-sm  w-100 btnSecondary textColor">Agendar paseo</button>
+              <Link to="/NewRide">
+                <button className="btn btn-sm  w-100 btnSecondary textColor">Agendar paseo</button>
               </Link>
               <button className="btnPrimary btn btn-sm w-100 ml-2 ">Follow</button>
             </div>
