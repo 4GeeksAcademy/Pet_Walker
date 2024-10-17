@@ -4,53 +4,62 @@ import { useContext } from "react";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
-    const { store, actions } = useContext(Context);
+    const { store } = useContext(Context);
 
     return (
-        <nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
-            <div className="container-fluid">
-                <Link to="/">
-                    <span className="navbar-brand textColorNavBar">Pet Walker</span>
-                </Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
-                
-                <div className="collapse navbar-collapse " id="navbarNav">
-                    <ul className="navbar-nav"></ul>
-                </div>
+        <>
+            <nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
+                <div className="container-fluid">
+                    <Link to="/">
+                        <img 
+                            src={"pet-walker-logo.jpg"}
+                            className="navbar-brand textColorNavBar"
+                            style={{
+                                width: "70px",
+                                height: "auto",
+                                padding: "5px",
+                                marginLeft: "10px",
+                                borderRadius: "50%", 
+                            }}
+                        />
+                    </Link>
+                    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav"></ul>
+                    </div>
 
-                
-                {store.token ? (
-                    <>
-                        <div className="login me-3">
-                            <Link to="/profile">
-                                <button className="btnSecondary textColor btn">Agendar paseo</button>
-                            </Link>
-                        </div>
-                        <div className="login">
-                            <Link to="/profile-owner">
-                                <button className="btnPrimary btn">Mi perfil</button>
-                            </Link>
-                        </div>
-                    </>
-                ) : (
-                    <>
-                        <div className="login me-3">
-                            <Link to="/registration">
-                                <button className="btnSecondary textColor btn">Registrarme</button>
-                            </Link>
-                        </div>
-                        <div className="login">
-                            <Link to="/login">
-                                <button className="btnPrimary btn">Log In</button>
-                            </Link>
-                        </div>
-                    </>
-                )}
-            </div>
-        </nav>
+                    {store.token ? (
+                        <>
+                            <div className="login me-3">
+                                <Link to="/profile">
+                                    <button className="btnSecondary textColor btn">Agendar paseo</button>
+                                </Link>
+                            </div>
+                            <div className="login">
+                                <Link to="/profile-owner">
+                                    <button className="btnPrimary btn">Mi perfil</button>
+                                </Link>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="login me-3">
+                                <Link to="/registration">
+                                    <button className="btnSecondary textColor btn">Registrarme</button>
+                                </Link>
+                            </div>
+                            <div className="login">
+                                <Link to="/login">
+                                    <button className="btnPrimary btn">Log In</button>
+                                </Link>
+                            </div>
+                        </>
+                    )}
+                </div>
+            </nav>
+        </>
     );
 };
-
-

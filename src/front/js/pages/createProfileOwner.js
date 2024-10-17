@@ -78,7 +78,7 @@ export const CreateProfileOwner = () => {
                     <h1 className="text-center mt-5 mb-5 text-info">
                     ¡Crea tu perfil de dueño! <br/>
                     </h1>
-                    <form onSubmit={handleSubmit}>
+                    <div>
                         <div className="mb-3">
                             <label className="form-label fw-bold">Nombre</label>
                             <input 
@@ -86,7 +86,7 @@ export const CreateProfileOwner = () => {
                                 placeholder="Juan"
                                 className="form-control"
                                 name="nombre"
-                                value={formData.nombre}
+                                value={formData?.nombre}
                                 onChange={handleChange}
                                 required
                             />
@@ -217,9 +217,9 @@ export const CreateProfileOwner = () => {
                         </div>
                         
                         <div className="d-flex justify-content-center mt-5">
-                            <button type="submit" className="btn btnPrimary">Guardar perfil</button>
+                            <button type="submit" className="btn btnPrimary" onClick={handleSubmit}>Guardar perfil</button>
                         </div>
-                    </form>
+                    </div>
                 </div>
             </div>
 
