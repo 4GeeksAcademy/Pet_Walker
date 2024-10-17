@@ -20,7 +20,7 @@ export const OwnerProfile = () => {
         <div className="container mt-5"> 
             <Navbar />
             <div className="text-center mb-4">
-                <h1 className="fw-bold" style={{ color: "#499587", paddingTop: "6rem" }} >Mi Perfil</h1> 
+                <h1 className="fw-bold" style={{ color: "#499587", paddingTop: "4rem" }} >Mi Perfil</h1> 
             </div>
 
             <div className="row">
@@ -44,7 +44,7 @@ export const OwnerProfile = () => {
                         <p><strong>Teléfono:</strong> {user.telefono || "Teléfono no disponible"}</p>
                     </div>
 
-                    <div className="card p-4" style={{ height: '48%', borderColor: "#F0E0D2" }}>
+                    <div className="card p-4" style={{ height: '48%', borderColor: "#F0E0D2", overflowY: "auto", maxHeight: "250px" }}>
                         <h5 className="fw-bold" style={{ color: "#499587", marginBottom: "1rem" }}>
                             <FaPaw className="me-2" style={{ color: "#499587" }} /> Mis Mascotas 
                         </h5>
