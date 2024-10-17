@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../component/navbar";
-
+import uploadImage from "../../../firebase";
 
 // Componente Modal
 const Modal = ({ show, onClose, message }) => {
@@ -53,8 +53,13 @@ export const CreateProfileWalker = () => {
         });
     };
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(formData.fotoPerfil)
+        const profileImageURL = await uploadImage(formData.fotoPerfil);
+        console.log(profileImageURL)
     
         try {
             await actions.createWalkerProfile(formData); 
