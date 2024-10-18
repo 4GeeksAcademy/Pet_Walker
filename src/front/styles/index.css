@@ -13,7 +13,7 @@
 
 
 body{
-    color:#499587 ;
+    color:#0f8c8c ;
     background-color: #ffffff;
 }
 
@@ -23,6 +23,10 @@ h4{
 
 h5{
     font-family: 'League Spartan'
+}
+
+h1{
+    color: #f77032;
 }
 
 p{
@@ -114,4 +118,46 @@ span{
       radial-gradient(var(--c2) 70%,var(--c1) 72%)
        0 0/var(--s) var(--s);
 }
+/* ESTILO Y CONFIGURACIÓN DE TABS */
+.tab {
+    border: 1px solid #0f8c8c;
+}
+
+.tab ul {
+    list-style-type: none;
+}
+
+.tab ul li {
+    display: inline;
+    color: #0f8c8c;
+
+}
+
+.tab ul li:hover {
+    color: #f8f8f8;
+    cursor: pointer;
+    background-color: #0f8c8c;
+}
+
+.content {
+    display: none;
+}
+
+.show-content {
+    display:block;
+}
+/* ESTILO DEL "ACERCA DE MI" EN PERFIL */
+.profile-info {
+    background-color: #f8f8f8;
+    background-image:  radial-gradient(#6bceaa 0.5px, transparent 0.5px), radial-gradient(#6bceaa 0.5px, #f8f8f8 0.5px);
+    background-size: 20px 20px;
+    background-position: 0 0,10px 10px;
+}
+/* ESTILO DE LA TABLA EN HORARIOS */
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    background-color: #e7f8f3;
+  }
 
