@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Link, useParams } from "react-router-dom";
@@ -9,9 +9,15 @@ export const ProfileWalker = () => {
     const { store, actions } = useContext(Context);
     const [toggle, setToggle] = useState(1);
 
+    const user = store.user ? store.user : {};
+
     function updateToggle(id) {
         setToggle(id);
     }
+
+    useEffect(()=>{
+
+    },[user.email]);
 
     return (
         <div className="my-5 regBackground">
@@ -21,12 +27,17 @@ export const ProfileWalker = () => {
             <div className="d-flex my-10">
                 <div className="card d-flex my-5 mx-3 p-2 justify-content flex-row container-sm">
                     <div className="mx-2">
-                        <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" className="rounded" width="155" />
+                         <img 
+                            className="img-fluid rounded-circle mb-3 profile-photo" 
+                            src={user.fotoPerfil || "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"}
+                            alt={`Foto de perfil de ${user.nombre || 'usuario'}`}
+                            style={{ width: "150px", height: "150px", objectFit: "cover", transition: "transform 0.3s ease" }} 
+                        />
                     </div>
                     <div className="text-left my-2 mx-2">
-                        <h5 className="card-title">Alex H. Morrison</h5>
+                        <h5 className="card-title">{user.nombre || "Nombre no disponible"}</h5>
                         <p className="card-text">En línea hace <strong>5 semanas</strong>.</p>
-                        <p className="card-text">Cuida en <strong>Bogotá, Colombia</strong>.</p>
+                        <p className="card-text">Cuida en <strong>{user.distrito || "Ubicación no disponible"}</strong>.</p>
                         <a href="#" className="btn btnPrimary"><strong>45</strong> Calificaciones</a> 
                     </div>
                 </div>
