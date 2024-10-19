@@ -140,7 +140,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},			
 			
-
 			login: async (email, contraseña) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
@@ -158,7 +157,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 						const data = await resp.json();
 						
 						localStorage.setItem("token", data.token); 
-						setStore({ token: data.token, user: data.user }); 
+						
+						setStore({ 
+							token: data.token, 
+							user: { ...data.user, tipo: data.tipo_usuario }  
+						});
 						
 						toast.success("¡Ingresaste con éxito!");
 					} else {

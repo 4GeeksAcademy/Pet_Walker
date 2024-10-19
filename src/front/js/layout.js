@@ -48,7 +48,7 @@ const Layout = () => {
                         if store.profile == walker --->   <Route element={<ProfileWalker />} path="/profile-walker" />
 */}
                         <Route element={<OwnerProfile />} path="/profile-owner" />
-                        <Route element={<ProfileWalker />} path="/profileWalker" />
+                        <Route element={<ProfileWalker />} path="/profile-walker" />
                         <Route element={<Registration />} path="/registration" />
                         <Route element={<Login />} path="/login" />
                         {/* {/* <Route element={<Login />} path="/login" />PARA COLOCAR PARA PERFIL DE OWNER Y DE WALKER*/}

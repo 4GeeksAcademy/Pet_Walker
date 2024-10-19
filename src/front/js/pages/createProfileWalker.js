@@ -26,7 +26,6 @@ const Modal = ({ show, onClose, message }) => {
     );
 };
 
-
 export const CreateProfileWalker = () => {
     const { store, actions } = useContext(Context);
     const [formData, setFormData] = useState({
@@ -43,6 +42,7 @@ export const CreateProfileWalker = () => {
     });
 
     const [showModal, setShowModal] = useState(false); 
+    const [error, setError] = useState(null);
     const navigate = useNavigate();
 
     const handleChange = (e) => {
@@ -53,23 +53,26 @@ export const CreateProfileWalker = () => {
         });
     };
 
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(formData.fotoPerfil)
-        const profileImageURL = await uploadImage(formData.fotoPerfil);
-        console.log(profileImageURL)
-    
+
+        if (formData.contraseña !== formData.confirmarContraseña) {
+            setError("Las contraseñas no coinciden");
+            return;
+        }
+
         try {
-            await actions.createWalkerProfile(formData); 
-            setShowModal(true);
+            const profileImageURL = formData.fotoPerfil ? await uploadImage(formData.fotoPerfil) : null;
+            await actions.createWalkerProfile({
+                ...formData,
+                fotoPerfil: profileImageURL
+            });
+            setShowModal(true); 
         } catch (error) {
             console.error("Error al crear el perfil:", error);
             alert("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
         }
     };
-    
 
     const handleCloseModal = () => {
         setShowModal(false);
@@ -84,6 +87,7 @@ export const CreateProfileWalker = () => {
                     <h1 className="text-center mt-5 mb-5 text-info">
                     ¡Crea tu perfil de paseador! <br/>
                     </h1>
+                    {error && <p className="text-danger">{error}</p>}
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
                             <label className="form-label fw-bold">Nombre</label>
@@ -229,25 +233,7 @@ export const CreateProfileWalker = () => {
                 </div>
             </div>
 
-            
-            <div className={`modal fade ${showModal ? 'show' : ''}`} style={{ display: showModal ? 'block' : 'none' }} tabIndex="-1" role="dialog" aria-hidden={!showModal}>
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title">Éxito</h5>
-                            <button type="button" className="close" onClick={handleCloseModal}>
-                                <span>&times;</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">
-                            <p>¡Perfil guardado con éxito!</p>
-                        </div>
-                        <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <Modal show={showModal} onClose={handleCloseModal} message="¡Perfil guardado con éxito!" />
         </div>
     );
 };

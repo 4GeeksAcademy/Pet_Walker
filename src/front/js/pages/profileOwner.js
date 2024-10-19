@@ -20,7 +20,7 @@ export const OwnerProfile = () => {
         <div className="container mt-5"> 
             <Navbar />
             <div className="text-center mb-4">
-                <h1 className="fw-bold" style={{ color: "#499587", paddingTop: "4rem" }} >Mi Perfil</h1> 
+                <h1 className="fw-bold" style={{ color: "#499587", paddingTop: "3rem" }} >Mi Perfil</h1> 
             </div>
 
             <div className="row">

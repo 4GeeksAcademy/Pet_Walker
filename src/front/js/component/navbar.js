@@ -6,6 +6,8 @@ import { Context } from "../store/appContext";
 export const Navbar = () => {
     const { store } = useContext(Context);
 
+    const profileLink = store.user && store.user.tipo === "owner" ? "/profile-owner" : "/profile-walker";
+
     return (
         <>
             <nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
@@ -14,6 +16,7 @@ export const Navbar = () => {
                         <img 
                             src={"pet-walker-logo.jpg"}
                             className="navbar-brand textColorNavBar"
+                            alt="Pet Walker"
                             style={{
                                 width: "70px",
                                 height: "auto",
@@ -39,7 +42,7 @@ export const Navbar = () => {
                                 </Link>
                             </div>
                             <div className="login">
-                                <Link to="/profile-owner">
+                                <Link to={profileLink}>
                                     <button className="btnPrimary btn">Mi perfil</button>
                                 </Link>
                             </div>

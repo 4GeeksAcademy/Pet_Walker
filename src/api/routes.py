@@ -150,9 +150,11 @@ def login():
         return jsonify({"msg": "Espacios faltantes, revisar."}), 401
 
     user = Owner.query.filter_by(email=email).first()
+    tipo_usuario = "owner" if user else "walker"
 
     if user == None:
         user = Walker.query.filter_by(email=email).first()
+        tipo_usuario = "walker" if user else None
     
     if user == None:
         return jsonify({"msg": "¡El usuario no fue encontrado!"}), 404
@@ -164,7 +166,8 @@ def login():
 
     return jsonify({
         "token": access_token,
-        "user": user.serialize() 
+        "user": user.serialize(),
+        "tipo_usuario": tipo_usuario 
     }), 200
 
 
