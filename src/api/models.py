@@ -35,6 +35,7 @@ class Owner(db.Model):
     direccion = db.Column(db.String(120), unique = False, nullable = False)
     distrito = db.Column(db.String(120), unique = False, nullable = False)
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
+    salt = db.Column(db.String(80), unique=False, nullable=False)
 
     def __repr__(self):
         return f'<Owner {self.email}>'
@@ -63,6 +64,7 @@ class Walker(db.Model):
     distrito = db.Column(db.String(120), unique = False, nullable = False)
     # fotoPerfil: null,  PREGUNTAR COMO SE PONE
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
+    salt = db.Column(db.String(80), unique=False, nullable=False)
 
     def __repr__(self):
         return f'<Walker {self.email}>'

@@ -6,6 +6,7 @@ from api.models import db, User, Owner, Walker, Mascota
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+import bcrypt
 
 api = Blueprint('api', __name__)
 
@@ -49,9 +50,17 @@ def register_owner():
 
     if owner != None:
         return jsonify({"msg": "Owner already exists!"}), 401
+    
+    bpassword = bytes(contraseña,'utf-8')
+
+    salt = bcrypt.gensalt(14)
+
+    hashed_contraseña = bcrypt.hashpw(password=bpassword, salt=salt)
+
+    print(hashed_contraseña.decode('utf-8'))
 
     new_owner = Owner(nombre = nombre, apellido = apellido, edad = edad, telefono = telefono, 
-                      email = email, direccion = direccion, distrito = distrito, contraseña = contraseña)
+                      email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
     db.session.add(new_owner)
     db.session.commit()
 
@@ -94,9 +103,17 @@ def register_walker():
 
     if walker != None:
         return jsonify({"msg": "Walker already exists!"}), 401
+    
+    bpassword = bytes(contraseña,'utf-8')
+
+    salt = bcrypt.gensalt(14)
+
+    hashed_contraseña = bcrypt.hashpw(password=bpassword, salt=salt)
+
+    print(hashed_contraseña.decode('utf-8'))
 
     new_walker = Walker(nombre = nombre, apellido = apellido, edad = edad, telefono = telefono, 
-                      email = email, direccion = direccion, distrito = distrito, contraseña = contraseña)
+                      email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
     db.session.add(new_walker)
     db.session.commit()
 
