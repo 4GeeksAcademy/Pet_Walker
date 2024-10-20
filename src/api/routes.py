@@ -176,16 +176,20 @@ def login():
     if user == None:
         return jsonify({"msg": "¡El usuario no fue encontrado!"}), 404
 
-    if user.contraseña != contraseña:
-        return jsonify({"msg": "¡Contraseña errónea!"}), 401
+    bpassword = bytes(contraseña,'utf-8')
 
-    access_token = create_access_token(identity=email)
+    if bcrypt.checkpw(bpassword, user.contraseña.encode('utf-8')):
 
-    return jsonify({
-        "token": access_token,
-        "user": user.serialize(),
-        "tipo_usuario": tipo_usuario 
-    }), 200
+
+        access_token = create_access_token(identity=email)
+
+        return jsonify({
+            "token": access_token,
+            "user": user.serialize(),
+            "tipo_usuario": tipo_usuario 
+        }), 200
+
+    return jsonify({"msg": "¡Contraseña errónea!"}), 401
 
 
 @api.route("/user", methods=["GET"])
