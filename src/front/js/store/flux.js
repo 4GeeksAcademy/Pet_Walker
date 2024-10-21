@@ -173,7 +173,17 @@ const getState = ({ getStore, getActions, setStore }) => {
 					toast.error("Error de conexión con el servidor");
 				}
 			},
+
 			
+			logout: () => {
+				localStorage.removeItem("token"); 
+				setStore({
+					token: null,
+					user: null
+				});
+				toast.success("¡Sesión cerrada exitosamente!"); 
+			},
+
 
 			getUserLogged: async () => {
 				if (!getStore().token) return
