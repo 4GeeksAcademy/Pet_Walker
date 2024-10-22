@@ -8,10 +8,63 @@ from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 import bcrypt
 
+import os
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+sender_email = os.getenv("SMTP_USERNAME")
+sender_password = os.getenv("SMTP_PASSWORD")
+smtp_host = os.getenv("SMTP_HOST")
+smtp_port = os.getenv("SMTP_PORT")
+reciever_email = os.getenv("RECIEVERS_EMAIL")
+
 api = Blueprint('api', __name__)
 
 # Allow CORS requests to this API
 CORS(api)
+
+@api.route('/send-email', methods=['POST'])
+def send_email():
+
+    message = MIMEMultipart("alternative")
+    message["Subject"] = "PetWalker - Confirmacion de paseo"
+    message["From"] = sender_email
+    recipients = ["joseantonioalvarez821@gmail.com"]
+    
+    message["To"] = ", ".join(recipients)
+
+    text = "Tu paseo ha sido confirmado!"
+
+    html_content = """
+        <html>
+            <body>
+                <h1 style="color:green;">Tu Paseador esta en camino! 🐕 </h1>
+                <p>This email is sent using <b>PetWalker Backend</b> and Gmail's SMTP server.</p>
+            </body>
+        </html>
+    """
+
+    part1 = MIMEText(text, "plain")
+
+    part2 = MIMEText(html_content, "html")
+
+    message.attach(part1)
+
+    message.attach(part2)
+
+    smtp_connection = smtplib.SMTP(smtp_host, smtp_port)
+
+    smtp_connection.starttls() # Secure the connection
+
+    smtp_connection.login(sender_email, sender_password)
+
+    smtp_connection.sendmail(sender_email, recipients, message.as_string())
+
+    smtp_connection.quit()
+
+    return jsonify({"msg": "Email sent"}), 200
 
                 #REGISTRAR Y GET
 
@@ -57,7 +110,6 @@ def register_owner():
 
     hashed_contraseña = bcrypt.hashpw(password=bpassword, salt=salt)
 
-    print(hashed_contraseña.decode('utf-8'))
 
     new_owner = Owner(nombre = nombre, apellido = apellido, edad = edad, telefono = telefono, 
                       email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
@@ -110,7 +162,6 @@ def register_walker():
 
     hashed_contraseña = bcrypt.hashpw(password=bpassword, salt=salt)
 
-    print(hashed_contraseña.decode('utf-8'))
 
     new_walker = Walker(nombre = nombre, apellido = apellido, edad = edad, telefono = telefono, 
                       email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
