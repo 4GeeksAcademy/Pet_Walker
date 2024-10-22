@@ -1,11 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 
 export const NewRide = () => {
 
+  const{walkerid} = useParams();
+  
   return (
     <div className="row gy-5 gx-5 p-5 align-items-center border" >
       <div className="container-fluid d-flex justify-content-center ">

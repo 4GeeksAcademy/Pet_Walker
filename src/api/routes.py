@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Owner, Walker, Mascota
+from api.models import db, User, Owner, Walker, Mascota, Paseo
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
@@ -264,6 +264,39 @@ def get_mascotas_by_owner(email):
     mascotas_list = [mascota.serialize() for mascota in mascotas]
 
     return jsonify(mascotas_list), 200
+
+
+##@api.route("/agendar-paseo", methods=["POST"])
+
+##@jwt_required()
+
+##def agendar_paseo():
+
+    
+##    owner = get_jwt_identity()
+ ##   domicilio = request.json.get("domicilio", None)
+ ##   horario = request.json.get("horario", None)
+ ##   tipo_de_paseo = request.json.get("tipo_de_paseo", None)
+    
+    
+
+##    if any(field is None for field in [domicilio, horario, tipo_de_paseo]):
+  ##      return jsonify({"msg": "Missing required fields."}), 401  
+
+    
+ ##   if owner is None:
+ ##       return jsonify({"msg": "¡El dueño no existe! ¡Revisar el correo por favor!"}), 401
+
+ ##   new_ride = Paseo(owner_id=owner,  horario=horario, domicilio=domicilio,
+ ##       tipo_de_paseo=tipo_de_paseo, ##walker_id=walkerid)
+    
+ ##   db.session.add(new_ride)
+  ##  db.session.commit()
+
+  ##  return jsonify({
+  ##      "new_ride": new_ride.serialize(),
+ ##       "token": create_access_token(identity=email)
+  ##  }), 200
 
 
 #MASCOTAS GET CON FOR 
