@@ -22,6 +22,7 @@ reciever_email = os.getenv("RECIEVERS_EMAIL")
 
 api = Blueprint('api', __name__)
 
+
 # Allow CORS requests to this API
 CORS(api)
 
@@ -284,37 +285,37 @@ def update_habilidades(id):
     return jsonify(walker.serialize()), 200
 
 
-##@api.route("/agendar-paseo", methods=["POST"])
+@api.route("/agendar-paseo", methods=["POST"])
 
-##@jwt_required()
+@jwt_required()
 
-##def agendar_paseo():
-
-    
-##    owner = get_jwt_identity()
- ##   domicilio = request.json.get("domicilio", None)
- ##   horario = request.json.get("horario", None)
- ##   tipo_de_paseo = request.json.get("tipo_de_paseo", None)
-    
-    
-
-##    if any(field is None for field in [domicilio, horario, tipo_de_paseo]):
-  ##      return jsonify({"msg": "Missing required fields."}), 401  
+def agendar_paseo():
 
     
- ##   if owner is None:
- ##       return jsonify({"msg": "¡El dueño no existe! ¡Revisar el correo por favor!"}), 401
-
- ##   new_ride = Paseo(owner_id=owner,  horario=horario, domicilio=domicilio,
- ##       tipo_de_paseo=tipo_de_paseo, ##walker_id=walkerid)
+    owner = get_jwt_identity()
+    domicilio = request.json.get("domicilio", None)
+    horario = request.json.get("horario", None)
+    tipo_de_paseo = request.json.get("tipo_de_paseo", None)
     
- ##   db.session.add(new_ride)
-  ##  db.session.commit()
+    
 
-  ##  return jsonify({
-  ##      "new_ride": new_ride.serialize(),
- ##       "token": create_access_token(identity=email)
-  ##  }), 200
+    if any(field is None for field in [domicilio, horario, tipo_de_paseo]):
+        return jsonify({"msg": "Missing required fields."}), 401  
+
+    
+    if owner is None:
+        return jsonify({"msg": "¡El dueño no existe! ¡Revisar el correo por favor!"}), 401
+
+    new_ride = Paseo(owner_id=owner,  horario=horario, domicilio=domicilio,
+        tipo_de_paseo=tipo_de_paseo)
+    
+    db.session.add(new_ride)
+    db.session.commit()
+
+    return jsonify({
+        "new_ride": new_ride.serialize(),
+        "token": create_access_token(identity=email)
+    }), 200
 
 
 #MASCOTAS GET CON FOR 
