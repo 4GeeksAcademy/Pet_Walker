@@ -266,6 +266,7 @@ def get_mascotas_by_owner(email):
     return jsonify(mascotas_list), 200
 
 
+
 #MASCOTAS GET CON FOR 
 
 #HACER MIGRATE
