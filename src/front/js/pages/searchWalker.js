@@ -5,7 +5,8 @@ import { Navbar } from "../component/navbar";
 export const SearchWalker = () => {
     const { store, actions } = useContext(Context);
     const [selectedHabilidades, setSelectedHabilidades] = useState([]);
-    const [selectedTiempo, setSelectedTiempo] = useState("");
+    const [selectedExperiencia, setSelectedExperiencia] = useState("");
+    const [selectedDistrito, setSelectedDistrito] = useState("");
 
     const handleHabilidadesChange = (event) => {
         const { value, checked } = event.target;
@@ -16,13 +17,16 @@ export const SearchWalker = () => {
         }
     };
 
-    const handleTiempoChange = (event) => {
-        setSelectedTiempo(event.target.value);
+    const handleExperienciaChange = (event) => {
+        setSelectedExperiencia(event.target.value);
+    };
+
+    const handleDistritoChange = (event) => {
+        setSelectedDistrito(event.target.value);
     };
 
     const handleSearch = () => {
-        // Aquí puedes realizar la lógica para buscar paseadores filtrados con los valores seleccionados
-        actions.filterWalkers(selectedHabilidades, selectedTiempo);
+        actions.filterWalkers(selectedHabilidades, selectedExperiencia, selectedDistrito);
     };
 
     return (
@@ -39,44 +43,72 @@ export const SearchWalker = () => {
                         <input 
                             className="form-check-input" 
                             type="checkbox" 
-                            value="ejercita" 
+                            value="altaIntensidad" 
                             onChange={handleHabilidadesChange} 
                         />
-                        <label className="form-check-label">Ejercita</label>
+                        <label className="form-check-label">Ejercicio de alta intensidad</label>
                     </div>
                     <div className="form-check">
                         <input 
                             className="form-check-input" 
                             type="checkbox" 
-                            value="paseaLento" 
+                            value="socializacion" 
                             onChange={handleHabilidadesChange} 
                         />
-                        <label className="form-check-label">Pasea lento</label>
+                        <label className="form-check-label">Socialización canina</label>
                     </div>
                     <div className="form-check">
                         <input 
                             className="form-check-input" 
                             type="checkbox" 
-                            value="paseaRapido" 
+                            value="entrenamientoBasico" 
                             onChange={handleHabilidadesChange} 
                         />
-                        <label className="form-check-label">Pasea rápido</label>
+                        <label className="form-check-label">Entrenamiento básico</label>
                     </div>
                     <div className="form-check">
                         <input 
                             className="form-check-input" 
                             type="checkbox" 
-                            value="socializa" 
+                            value="perritosMayores" 
                             onChange={handleHabilidadesChange} 
                         />
-                        <label className="form-check-label">Socializa</label>
+                        <label className="form-check-label">Cuidado especial para perritos mayores</label>
+                    </div>
+                    <div className="form-check">
+                        <input 
+                            className="form-check-input" 
+                            type="checkbox" 
+                            value="necesidadesEspeciales" 
+                            onChange={handleHabilidadesChange} 
+                        />
+                        <label className="form-check-label">Atención a necesidades especiales</label>
+                    </div>
+                    <div className="form-check">
+                        <input 
+                            className="form-check-input" 
+                            type="checkbox" 
+                            value="gruposPequenos" 
+                            onChange={handleHabilidadesChange} 
+                        />
+                        <label className="form-check-label">Paseo en grupos pequeños</label>
                     </div>
                 </div>
 
-                {/* Filtro de Tiempo */}
+                
                 <div className="filter-group mt-3">
-                    <h5>Tiempo como paseador</h5>
-                    <select className="form-select" onChange={handleTiempoChange}>
+                    <h5>Experiencia como paseador</h5>
+                    <select className="form-select" onChange={handleExperienciaChange}>
+                        <option value="">Selecciona</option>
+                        <option value="menos1">Menos de 1 año</option>
+                        <option value="mas1">Más de 1 año</option>
+                        <option value="mas3">Más de 3 años</option>
+                    </select>
+                </div>
+
+                 <div className="filter-group mt-3">
+                    <h5>Distrito</h5>
+                    <select className="form-select" onChange={handleDistritoChange}>
                         <option value="">Selecciona tiempo</option>
                         <option value="menos1">Menos de 1 año</option>
                         <option value="mas1">Más de 1 año</option>
@@ -84,7 +116,7 @@ export const SearchWalker = () => {
                     </select>
                 </div>
 
-                {/* Botón para buscar */}
+                
                 <div className="mt-4">
                     <button className="btn btn-primary" onClick={handleSearch}>
                         Buscar paseador
@@ -95,7 +127,7 @@ export const SearchWalker = () => {
             {/* Resultados */}
             <div className="results-section mt-5">
                 <h3>Resultados de búsqueda</h3>
-                {/* Aquí mostrarías las tarjetas de los paseadores filtrados */}
+                
                 <div className="row">
                     {store.filteredWalkers && store.filteredWalkers.map((walker, index) => (
                         <div key={index} className="col-md-4">
@@ -104,7 +136,7 @@ export const SearchWalker = () => {
                                 <div className="card-body">
                                     <h5 className="card-title">{walker.nombre} {walker.apellido}</h5>
                                     <p className="card-text">Habilidades: {walker.habilidades.join(", ")}</p>
-                                    <p className="card-text">Tiempo como paseador: {walker.tiempo}</p>
+                                    <p className="card-text">Experiencia como paseador: {walker.experiencia}</p>
                                     <Link to={`/walker/${walker.id}`} className="btn btn-primary">Ver perfil</Link>
                                 </div>
                             </div>

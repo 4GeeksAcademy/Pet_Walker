@@ -1,13 +1,13 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react"; 
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import { Link, useParams } from "react-router-dom";
-import { useState } from 'react';
 import { Navbar } from "../component/navbar";
+import { AddHabilidad } from "../component/addHabilidad";
 
 export const ProfileWalker = () => {
     const { store, actions } = useContext(Context);
     const [toggle, setToggle] = useState(1);
+    const [selectedHabilidades, setSelectedHabilidades] = useState([]); 
 
     const user = store.user ? store.user : {};
 
@@ -15,9 +15,11 @@ export const ProfileWalker = () => {
         setToggle(id);
     }
 
-    useEffect(()=>{
-
-    },[user.email]);
+    useEffect(() => {
+        if (user.habilidades) {
+            setSelectedHabilidades(user.habilidades);
+        }
+    }, [user.email]);
 
     return (
         <div className="my-5 regBackground">
@@ -40,8 +42,31 @@ export const ProfileWalker = () => {
                         <p className="card-text">Cuida en <strong>{user.distrito || "Ubicación no disponible"}</strong>.</p>
                         <a href="#" className="btn btnPrimary"><strong>45</strong> Calificaciones</a> 
                     </div>
+
+                    <div className="mx-2">
+                        <AddHabilidad 
+                            selectedHabilidades={selectedHabilidades} 
+                            setSelectedHabilidades={setSelectedHabilidades} 
+                        />
+                    </div>
+                    <div className="my-4">
+                        <h6>Habilidades del paseador:</h6>
+                        {selectedHabilidades.length > 0 ? (
+                            <div className="d-flex flex-wrap">
+                                {selectedHabilidades.map((hab, index) => (
+                                    <button key={index} className="btn btn-outline-primary m-1">
+                                        {hab}
+                                    </button>
+                                ))}
+                            </div>
+                        ) : (
+                            <p className="text-muted">Aún no se han agregado habilidades.</p>
+                        )}
+                    </div>
                 </div>
             </div>
+
+            
 
             <div className="card profile-info d-flex align-items-center justify-content-center">
                 <div className="col-12 tab p-5">

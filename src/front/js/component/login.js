@@ -23,7 +23,7 @@ export const Login = () => {
             <Navbar/>
                 <div className="d-flex align-items-center justify-content-center vh-100">
                     <div className="card px-1 py-4 mx-auto" style={{ width: "60%", border: "2px solid #EF7029", borderRadius: "0.25rem" }}>
-                        <div class="card-body">
+                        <div className="card-body">
                             <div className="mx-auto my-auto">
                                 <h1 className="text-center">Login</h1> 
                                 <div className="mb-3">
