@@ -36,8 +36,8 @@ export const Navbar = () => {
                 {store.token ? (
                     <>
                         <div className="login me-3">
-                            <Link to="/profile">
-                                <button className="btnSecondary textColor btn">Agendar paseo</button>
+                            <Link to="/search-walker">
+                                <button className="btnSecondary textColor btn">Buscar a un paseador</button>
                             </Link>
                         </div>
                         <div className="login me-3">
@@ -56,6 +56,11 @@ export const Navbar = () => {
                     </>
                 ) : (
                     <>
+                        <div className="login me-3">
+                            <Link to="/search-walker">
+                                <button className="btnSecondary textColor btn">Buscar a un paseador</button>
+                            </Link>
+                        </div>
                         <div className="login me-3">
                             <Link to="/registration">
                                 <button className="btnSecondary textColor btn">Registrarme</button>

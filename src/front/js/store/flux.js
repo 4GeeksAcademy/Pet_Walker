@@ -202,6 +202,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ user: data });
 			},
 
+			updateWalkerHabilidades: async (walkerId, habilidades) => {
+                try {
+                    const resp = await fetch(process.env.BACKEND_URL + `/api/walker/${walkerId}/habilidades`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            habilidades: habilidades
+                        })
+                    });
+
+                    if (resp.ok) {
+                        const updatedWalker = await resp.json();
+                        setStore({ user: updatedWalker });  // Actualizamos el usuario con las nuevas habilidades
+                        toast.success("Habilidades actualizadas con éxito!");
+                    } else {
+                        const errorData = await resp.json();
+                        toast.error(errorData.msg || "Error al actualizar habilidades");
+                    }
+                } catch (error) {
+                    console.error("Error al actualizar habilidades:", error);
+                    toast.error("Error de conexión al actualizar habilidades");
+                }
+            },
+
 
 			getMessage: async () => {
 				try{
