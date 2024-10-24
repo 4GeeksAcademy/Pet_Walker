@@ -1,7 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 import os
 import sys
-from sqlalchemy import Column, ForeignKey, Integer, String, Date, Float
+from sqlalchemy import Column, ForeignKey, Integer, String, Date, Float, Text
 from sqlalchemy.orm import relationship, declarative_base
 from sqlalchemy import create_engine
 # from eralchemy2 import render_er
@@ -54,17 +54,16 @@ class Owner(db.Model):
 
 class Walker(db.Model):
     __tablename__ = 'walker'
-    id = db.Column(db.Integer, primary_key = True)
-    nombre = db.Column(db.String(120), unique = False,  nullable = False)
-    apellido = db.Column(db.String(120), unique = False, nullable = False)
-    edad = db.Column(db.Integer, unique = False, nullable = False)
-    telefono = db.Column(db.Integer, unique=True, nullable = False)
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(120), nullable=False)
+    apellido = db.Column(db.String(120), nullable=False)
+    edad = db.Column(db.Integer, nullable=False)
+    telefono = db.Column(db.Integer, unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    direccion = db.Column(db.String(120), unique = False, nullable = False)
-    distrito = db.Column(db.String(120), unique = False, nullable = False)
-    # fotoPerfil: null,  PREGUNTAR COMO SE PONE
-    contraseña = db.Column(db.String(80), unique=False, nullable=False)
-    salt = db.Column(db.String(80), unique=False, nullable=False)
+    direccion = db.Column(db.String(120), nullable=False)
+    distrito = db.Column(db.String(120), nullable=False)
+    contraseña = db.Column(db.String(80), nullable=False)
+    habilidades = db.Column(db.Text, nullable=True)  
 
     def __repr__(self):
         return f'<Walker {self.email}>'
@@ -72,9 +71,14 @@ class Walker(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
+            "nombre": self.nombre,
+            "apellido": self.apellido,
+            "edad": self.edad,
             "telefono": self.telefono,
-            "distrito": self.distrito
+            "email": self.email,
+            "direccion": self.direccion,
+            "distrito": self.distrito,
+            "habilidades": self.habilidades.split(",") if self.habilidades else []  
         }
     
 class Mascota(db.Model):

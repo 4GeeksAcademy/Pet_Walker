@@ -265,6 +265,24 @@ def get_mascotas_by_owner(email):
 
     return jsonify(mascotas_list), 200
 
+##habilidades para walkers
+
+@api.route("/walker/<int:id>/habilidades", methods=["PUT"])
+def update_habilidades(id):
+    habilidades = request.json.get("habilidades", None)
+
+    if habilidades is None:
+        return jsonify({"msg": "Faltan habilidades para actualizar"}), 400
+
+    walker = Walker.query.get(id)
+    if walker is None:
+        return jsonify({"msg": "Paseador no encontrado"}), 404
+
+    walker.habilidades = ",".join(habilidades)  # Guardar como cadena de texto separada por comas
+    db.session.commit()
+
+    return jsonify(walker.serialize()), 200
+
 
 ##@api.route("/agendar-paseo", methods=["POST"])
 
