@@ -9,7 +9,7 @@ export const CardWalkers = () => {
       <div className="card p-3" style={{ border: "2px solid #499587" }}>
         <div className="d-flex align-items-center">
           <div className="image">
-          <Link to="/profileWalker">
+          <Link to="/profile-walker">
             <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" className="rounded" width="155" />
           </Link>
           </div>
