@@ -43,15 +43,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<CreateProfileOwner />} path="/createProfileOwner" />
                         <Route element={<CreateProfileWalker />} path="/createProfileWalker" />
-<<<<<<< HEAD
-                        <Route element={<NewRide />} path="/Newride/:walkerid" />
-                        {/* 
-                        if store.profile == owner ---->   <Route element={<OwnerProfile />} path="/profile-owner" />
-                        if store.profile == walker --->   <Route element={<ProfileWalker />} path="/profile-walker" />
-*/}
-=======
                         <Route element={<NewRide />} path="/Newride" />
->>>>>>> 0fb1c2e5ec1e351b33f840d492a32d59f264ca8b
                         <Route element={<OwnerProfile />} path="/profile-owner" />
                         <Route element={<ProfileWalker />} path="/profile-walker" />
                         <Route element={<Registration />} path="/registration" />
