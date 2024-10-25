@@ -1,12 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+<<<<<<< HEAD
 import { Link } from "react-router-dom";
 import { ModalPay } from './ModalPay.js';
+=======
+import { Link, useParams } from "react-router-dom";
+>>>>>>> f8153d4c422380f9b641723d651929ff5495cb07
 
 
 
 export const NewRide = () => {
 
+  const{walkerid} = useParams();
+  
   return (
     <div className="row gy-5 gx-5 p-5 align-items-center border" >
       <div className="container-fluid d-flex justify-content-center ">

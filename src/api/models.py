@@ -63,7 +63,7 @@ class Walker(db.Model):
     direccion = db.Column(db.String(120), nullable=False)
     distrito = db.Column(db.String(120), nullable=False)
     contraseña = db.Column(db.String(80), nullable=False)
-    habilidades = db.Column(db.Text, nullable=True)  
+    habilidades = db.Column(db.Text, nullable=True)
 
     def __repr__(self):
         return f'<Walker {self.email}>'
@@ -78,7 +78,7 @@ class Walker(db.Model):
             "email": self.email,
             "direccion": self.direccion,
             "distrito": self.distrito,
-            "habilidades": self.habilidades.split(",") if self.habilidades else []  
+            "habilidades": self.habilidades.split(",") if self.habilidades else []
         }
     
 class Mascota(db.Model):
@@ -104,4 +104,23 @@ class Mascota(db.Model):
             "owner": self.owner_id
         }
 
+class Paseo(db.Model):
+    __tablename__ = 'paseos'
 
+    id = db.Column(db.Integer, primary_key=True)
+    owner_id = db.Column(db.Integer, db.ForeignKey('owner.id'), nullable=False)
+    walker_id = db.Column(db.Integer, db.ForeignKey('walker.id'), nullable=False)
+    domicilio = db.Column(db.String(120), unique=False, nullable=False)
+    horario = db.Column(db.String(120), unique=False, nullable=False)
+    ##fecha = db.Column(db.String(120), unique=False, nullable=False)
+    tipo_de_paseo = db.Column(db.String(120), unique=False, nullable=False)
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "owner_id": self.owner_id,
+            "walker_id": self.walker_id,
+            "domicilio": self.domicilio,
+            "horario": self.horario,
+            "tipo_de_paseo": self.tipo_de_paseo
+        }
