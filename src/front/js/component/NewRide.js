@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
+import { ModalPay } from './ModalPay.js';
 
 
 
@@ -31,7 +32,7 @@ export const NewRide = () => {
             Paseo largo (60 minutos)
           </label>
         </div>
-        </div>
+      </div>
       <form>
         <div className="mb-3">
           <label for="exampleInputEmail1" class="form-label fw-bold col-sm">Domicilio</label>
@@ -47,15 +48,15 @@ export const NewRide = () => {
           <label className="form-check-label" for="exampleCheck1">Acepto los términos y condiciones de PetWalker</label>
         </div>
         <div className="button">
-        <button type="button" className="btn btn-info fw-bold">Agendar paseo</button>
+          <ModalPay />
         </div>
-        
+
       </form>
 
-      
-      
+
+
     </div>
-        
+
 
   )
 }
