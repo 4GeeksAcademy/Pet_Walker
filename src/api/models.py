@@ -63,7 +63,7 @@ class Walker(db.Model):
     direccion = db.Column(db.String(120), nullable=False)
     distrito = db.Column(db.String(120), nullable=False)
     contraseña = db.Column(db.String(80), nullable=False)
-    habilidades = db.Column(db.Text, nullable=True)  
+    habilidades = db.Column(db.Text, nullable=True)
 
     def __repr__(self):
         return f'<Walker {self.email}>'
@@ -78,7 +78,7 @@ class Walker(db.Model):
             "email": self.email,
             "direccion": self.direccion,
             "distrito": self.distrito,
-            "habilidades": self.habilidades.split(",") if self.habilidades else []  
+            "habilidades": self.habilidades.split(",") if self.habilidades else []
         }
     
 class Mascota(db.Model):

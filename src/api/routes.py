@@ -125,7 +125,7 @@ def register_owner():
 def get_walkers():
     walkers = Walker.query.all()  
     walkers_list = [walker.serialize() for walker in walkers] 
-    return jsonify(walkers_list), 200 
+    return jsonify(walkers_list), 200
 
 @api.route("/walker/<int:id>", methods=["GET"])
 def get_walker(id):
@@ -266,7 +266,6 @@ def get_mascotas_by_owner(email):
     return jsonify(mascotas_list), 200
 
 ##habilidades para walkers
-
 @api.route("/walker/<int:id>/habilidades", methods=["PUT"])
 def update_habilidades(id):
     habilidades = request.json.get("habilidades", None)
