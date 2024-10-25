@@ -66,8 +66,6 @@ export const ProfileWalker = () => {
                 </div>
             </div>
 
-            
-
             <div className="card profile-info d-flex align-items-center justify-content-center">
                 <div className="col-12 tab p-5">
                     <ul className="d-flex nav nav-tabs">

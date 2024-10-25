@@ -203,30 +203,77 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			updateWalkerHabilidades: async (walkerId, habilidades) => {
-                try {
-                    const resp = await fetch(process.env.BACKEND_URL + `/api/walker/${walkerId}/habilidades`, {
-                        method: "PUT",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify({
-                            habilidades: habilidades
-                        })
-                    });
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + `/api/walker/${walkerId}/habilidades`, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify({
+							habilidades: habilidades
+						})
+					});
+			
+					if (resp.ok) {
+						const updatedWalker = await resp.json();
+						setStore({ user: updatedWalker });  // Actualizamos el usuario con las nuevas habilidades
+						toast.success("Habilidades actualizadas con éxito!");
+					} else {
+						const errorData = await resp.json();
+						toast.error(errorData.msg || "Error al actualizar habilidades");
+					}
+				} catch (error) {
+					console.error("Error al actualizar habilidades:", error);
+					toast.error("Error de conexión al actualizar habilidades");
+				}
+			},
+			
 
-                    if (resp.ok) {
-                        const updatedWalker = await resp.json();
-                        setStore({ user: updatedWalker });  // Actualizamos el usuario con las nuevas habilidades
-                        toast.success("Habilidades actualizadas con éxito!");
-                    } else {
-                        const errorData = await resp.json();
-                        toast.error(errorData.msg || "Error al actualizar habilidades");
-                    }
-                } catch (error) {
-                    console.error("Error al actualizar habilidades:", error);
-                    toast.error("Error de conexión al actualizar habilidades");
-                }
-            },
+			//filtrado para busqueda de walkers:
+
+			loadAllWalkers: async () => {
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "/api/walkers");
+					if (resp.ok) {
+						const data = await resp.json();
+						setStore({ allWalkers: data });
+					} else {
+						console.error("Error al cargar los paseadores");
+					}
+				} catch (error) {
+					console.error("Error en la conexión con el servidor", error);
+				}
+			},
+
+			// Filtrar los walkers basados en los filtros seleccionados
+			filterWalkers: (habilidades, experiencia, distrito) => {
+				const store = getStore();
+				let filtered = store.allWalkers;
+
+				// Filtrar por habilidades
+				if (habilidades.length > 0) {
+					filtered = filtered.filter(walker =>
+						habilidades.every(hab => walker.habilidades.includes(hab))
+					);
+				}
+
+				// Filtrar por experiencia
+				if (experiencia) {
+					filtered = filtered.filter(walker => {
+						if (experiencia === "menos1") return walker.experiencia < 1;
+						if (experiencia === "mas1") return walker.experiencia >= 1 && walker.experiencia < 3;
+						if (experiencia === "mas3") return walker.experiencia >= 3;
+						return true;
+					});
+				}
+
+				// Filtrar por distrito
+				if (distrito) {
+					filtered = filtered.filter(walker => walker.distrito === distrito);
+				}
+
+				setStore({ filteredWalkers: filtered });
+			},
 
 
 			getMessage: async () => {

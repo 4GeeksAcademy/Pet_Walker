@@ -1,35 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";  // Importamos el contexto para acceder a las acciones
 
 export const AddHabilidad = ({ selectedHabilidades, setSelectedHabilidades }) => {
     const [habilidad, setHabilidad] = useState(""); 
     const [showModal, setShowModal] = useState(false); 
+    const { store, actions } = useContext(Context); // Accedemos al contexto de acciones
 
- 
     const habilidadesDisponibles = [
         "Ejercicio de Alta Intensidad",
         "Socialización Canina",
         "Entrenamiento Básico",
         "Cuidado Especial para Perros Mayores",
-        "Primeros Auxilios Caninos",
         "Atención a Necesidades Especiales",
-        "Paseo en Grupos Pequeños",
-        "Recolección de Desechos",
-        "Fotografía de Paseo",
-        "Paseo en Parques"
+        "Paseo en Grupos Pequeños"
     ];
 
     const handleAddHabilidad = () => {
         if (habilidad && !selectedHabilidades.includes(habilidad)) {
             setSelectedHabilidades([...selectedHabilidades, habilidad]);
         }
-        setHabilidad("");
+        setHabilidad(""); 
     };
 
     const handleDeleteHabilidad = (index) => {
         setSelectedHabilidades(selectedHabilidades.filter((_, i) => i !== index));
     };
 
+    // Guardamos las habilidades y hacemos la llamada al backend
     const handleSaveHabilidades = () => {
+        actions.updateWalkerHabilidades(store.user.id, selectedHabilidades); // Actualizamos las habilidades en el backend
         setShowModal(false); 
     };
 

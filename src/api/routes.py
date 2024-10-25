@@ -6,19 +6,9 @@ from api.models import db, User, Owner, Walker, Mascota, Paseo
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+import api.sendEmail as  sendEmail
 import bcrypt
 
-import os
-
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
-sender_email = os.getenv("SMTP_USERNAME")
-sender_password = os.getenv("SMTP_PASSWORD")
-smtp_host = os.getenv("SMTP_HOST")
-smtp_port = os.getenv("SMTP_PORT")
-reciever_email = os.getenv("RECIEVERS_EMAIL")
 
 api = Blueprint('api', __name__)
 
@@ -27,46 +17,15 @@ api = Blueprint('api', __name__)
 CORS(api)
 
 @api.route('/send-email', methods=['POST'])
-def send_email():
 
-    message = MIMEMultipart("alternative")
-    message["Subject"] = "PetWalker - Confirmacion de paseo"
-    message["From"] = sender_email
+def activador():
+    content =  """ soy el content"""
+    text = """ soy el text """
+    subject = """ soy el subject"""
     recipients = ["joseantonioalvarez821@gmail.com"]
+    sendEmail.send_email(content, text, subject, recipients )
     
-    message["To"] = ", ".join(recipients)
-
-    text = "Tu paseo ha sido confirmado!"
-
-    html_content = """
-        <html>
-            <body>
-                <h1 style="color:green;">Tu Paseador esta en camino! 🐕 </h1>
-                <p>This email is sent using <b>PetWalker Backend</b> and Gmail's SMTP server.</p>
-            </body>
-        </html>
-    """
-
-    part1 = MIMEText(text, "plain")
-
-    part2 = MIMEText(html_content, "html")
-
-    message.attach(part1)
-
-    message.attach(part2)
-
-    smtp_connection = smtplib.SMTP(smtp_host, smtp_port)
-
-    smtp_connection.starttls() # Secure the connection
-
-    smtp_connection.login(sender_email, sender_password)
-
-    smtp_connection.sendmail(sender_email, recipients, message.as_string())
-
-    smtp_connection.quit()
-
-    return jsonify({"msg": "Email sent"}), 200
-
+    return  jsonify({"message": "Email sent"}), 200
                 #REGISTRAR Y GET
 
 
@@ -126,7 +85,7 @@ def register_owner():
 def get_walkers():
     walkers = Walker.query.all()  
     walkers_list = [walker.serialize() for walker in walkers] 
-    return jsonify(walkers_list), 200 
+    return jsonify(walkers_list), 200
 
 @api.route("/walker/<int:id>", methods=["GET"])
 def get_walker(id):
@@ -267,7 +226,6 @@ def get_mascotas_by_owner(email):
     return jsonify(mascotas_list), 200
 
 ##habilidades para walkers
-
 @api.route("/walker/<int:id>/habilidades", methods=["PUT"])
 def update_habilidades(id):
     habilidades = request.json.get("habilidades", None)
