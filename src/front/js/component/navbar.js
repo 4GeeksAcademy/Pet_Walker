@@ -13,7 +13,7 @@ export const Navbar = () => {
             <div className="container-fluid">
                 <Link to="/">
                     <img 
-                        src={"pet-walker-logo.jpg"}
+                        src={"Perro.png"}
                         className="navbar-brand textColorNavBar"
                         alt="Pet Walker"
                         style={{
