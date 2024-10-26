@@ -1,18 +1,5 @@
-<<<<<<< HEAD
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-=======
-import React from "react";
-import ReactDOM from "react-dom";
-<<<<<<< HEAD
-import { Link } from "react-router-dom";
-import { ModalPay } from './ModalPay.js';
-=======
-import { Link, useParams } from "react-router-dom";
->>>>>>> f8153d4c422380f9b641723d651929ff5495cb07
-
-
->>>>>>> 50bd0985bd5706bb169d18a1efb93e7e4fd30655
 
 export const NewRide = () => {
   const { walkerid } = useParams();
@@ -37,7 +24,7 @@ export const NewRide = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,  // Asegúrate de que el token esté aquí
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(data),
       });
@@ -61,7 +48,6 @@ export const NewRide = () => {
       <div className="container-fluid d-flex justify-content-center ">
         <h1> Agendar nuevo paseo </h1>
       </div>
-<<<<<<< HEAD
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       <form onSubmit={handleSubmit}>
         <div className="mb-3 p-5 border">
@@ -81,34 +67,6 @@ export const NewRide = () => {
               </label>
             </div>
           ))}
-=======
-      <div className="mb-3 p-5 border">
-        <label for="exampleInputEmail1" className="form-label fw-bold">Tipo de paseo</label>
-        <div className="form-check">
-          <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
-          <label className="form-check-label" for="flexRadioDefault1">
-            Paseo básico (30 minutos)
-          </label>
-        </div>
-        <div className="form-check">
-          <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-          <label className="form-check-label" for="flexRadioDefault2">
-            Paseo intermedio (45 minutos)
-          </label>
-        </div>
-        <div className="form-check">
-          <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked />
-          <label className="form-check-label" for="flexRadioDefault2">
-            Paseo largo (60 minutos)
-          </label>
-        </div>
-      </div>
-      <form>
-        <div className="mb-3">
-          <label for="exampleInputEmail1" class="form-label fw-bold col-sm">Domicilio</label>
-          <input type="address" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-          <div id="emailHelp" className="form-text">We'll never share your information with anyone else.</div>
->>>>>>> 50bd0985bd5706bb169d18a1efb93e7e4fd30655
         </div>
         <div className="mb-3">
           <label className="form-label fw-bold">Domicilio</label>
@@ -139,24 +97,9 @@ export const NewRide = () => {
           <label className="form-check-label">Acepto los términos y condiciones de PetWalker</label>
         </div>
         <div className="button">
-<<<<<<< HEAD
           <button type="submit" className="btn btn-info fw-bold">Agendar paseo</button>
         </div>
       </form>
     </div>
   );
 };
-=======
-          <ModalPay />
-        </div>
-
-      </form>
-
-
-
-    </div>
-
-
-  )
-}
->>>>>>> 50bd0985bd5706bb169d18a1efb93e7e4fd30655
