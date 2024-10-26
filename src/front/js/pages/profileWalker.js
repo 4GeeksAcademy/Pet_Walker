@@ -43,12 +43,7 @@ export const ProfileWalker = () => {
                         <a href="#" className="btn btnPrimary"><strong>45</strong> Calificaciones</a> 
                     </div>
 
-                    <div className="mx-2">
-                        <AddHabilidad 
-                            selectedHabilidades={selectedHabilidades} 
-                            setSelectedHabilidades={setSelectedHabilidades} 
-                        />
-                    </div>
+                
                     <div className="my-4">
                         <h6>Habilidades del paseador:</h6>
                         {selectedHabilidades.length > 0 ? (
@@ -62,6 +57,12 @@ export const ProfileWalker = () => {
                         ) : (
                             <p className="text-muted">Aún no se han agregado habilidades.</p>
                         )}
+                            <div className="mx-2 d-flex">
+                        <AddHabilidad 
+                            selectedHabilidades={selectedHabilidades} 
+                            setSelectedHabilidades={setSelectedHabilidades} 
+                        />
+                    </div>
                     </div>
                 </div>
             </div>
@@ -93,6 +94,15 @@ export const ProfileWalker = () => {
                             </div>
                             <div className="card border-0 bg-transparent">
                                 <img src="https://images.unsplash.com/photo-1601758063890-1167f394febb?q=80&w=2002&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="rounded" width="200" />
+                            </div>
+                            <div className="d-flex flex-column border-0">
+                            <label className="form-label fw-bold">Subir fotos</label> 
+                            <input 
+                                type="file" 
+                                className="form-control"
+                                name="fotosWalker"
+                                accept=".jpg, .jpeg, .png"
+                            />
                             </div>
                         </div>
                     </div>
