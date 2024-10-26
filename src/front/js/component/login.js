@@ -25,9 +25,11 @@ export const Login = () => {
                     <div className="card px-1 py-4 mx-auto" style={{ width: "60%", border: "2px solid #EF7029", borderRadius: "0.25rem" }}>
                         <div className="card-body">
                             <div className="mx-auto my-auto">
-                                <h1 className="text-center">Login</h1> 
+                                <h1 className="text-center">Log In</h1> 
                                 <div className="mb-3">
-                                    <label className="form-label">Email</label>
+                                    <label className="form-label" style={{fontFamily: "League Spartan", fontSize: "22px"}}>
+                                        Email
+                                    </label>
                                     <input type="email" className="form-control" onChange={(event) => setUser({
                                         ...user,
                                         email: event.target.value
@@ -35,7 +37,9 @@ export const Login = () => {
                                     <div className="form-text">Nunca compartiremos tus datos personales.</div>
                                 </div> 
                                 <div className="mb-3">
-                                    <label className="form-label">Contraseña</label>
+                                    <label className="form-label" style={{fontFamily: "League Spartan", fontSize: "22px"}}>
+                                        Contraseña
+                                    </label>
                                     <div className="d-flex">
                                         <input type={showPassword ? "text" : "password"} className="form-control" onChange={(event) => setUser({
                                             ...user,
@@ -45,13 +49,13 @@ export const Login = () => {
                                             onClick={() => setShowPassword(!showPassword)}
                                         >{showPassword ? "🔒" : "👀"}</button>
                                     </div>
-                                    <button className="btn btn-link">Te olvidaste tu contraseña?</button>
+                                    <button className="btn btn-link">¿Te olvidaste tu contraseña?</button>
                                 </div>
                                 <button onClick={() => actions.login(user.email, user.contraseña)} 
                                     className="btn btn-success w-100 mt-2"
                                     style={{ width: "60%"}}
-                                    >Login</button>
-                                <Link to="/registration" className="btn btn-link">No tienes una cuenta? Registrate!</Link>
+                                    >Log In</button>
+                                <Link to="/registration" className="btn btn-link">¿No tienes una cuenta? ¡Registrate!</Link>
                             </div>
                         </div>
                     </div>

@@ -26,7 +26,7 @@ export const ProfileWalker = () => {
             <div className="my-5">
                 <Navbar />
             </div>
-            <div className="d-flex my-10">
+            <div className="my-10 d-flex">
                 <div className="card d-flex my-5 mx-3 p-2 justify-content flex-row container-sm">
                     <div className="mx-2">
                          <img 

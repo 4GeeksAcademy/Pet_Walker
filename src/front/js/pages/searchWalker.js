@@ -43,11 +43,11 @@ export const SearchWalker = () => {
             <Navbar />
 
             <div className="filter-section mt-4 mb-4 pt-5">
-                <h2>Buscar paseador</h2>
+                <h2 style={{color: "#f77032"}}>Buscar paseador</h2>
 
-                <div className="filter-group">
-                    <h5>Habilidades</h5>
-
+                <div className="filter-group pt-3 mt-3">
+                    <h3>Habilidades</h3>
+                    <h4>Selecciona las habilidades que prefieras en tu paseador</h4>
                     <div className="form-check">
                         <input 
                             className="form-check-input" 
@@ -114,10 +114,10 @@ export const SearchWalker = () => {
                     </select>
                 </div> */}
 
-                <div className="filter-group mt-3">
-                    <h5>Distrito</h5>
+                <div className="filter-group mt-3 pt-3">
+                    <h3>Distrito</h3>
                     <select className="form-select" onChange={handleDistritoChange}>
-                            <option value="">Selecciona distrito</option>
+                            <option value="">Selecciona tu distrito</option>
                             <option value="Peru">Perú</option>
                             <option value="Mexico">México</option>
                             <option value="Colombia">Colombia</option>
@@ -129,7 +129,7 @@ export const SearchWalker = () => {
                 </div>
 
                 <div className="mt-4">
-                    <button className="btn btn-primary" onClick={handleSearch}>
+                    <button className="btn btnPrimary" onClick={handleSearch}>
                         Buscar paseador
                     </button>
                 </div>

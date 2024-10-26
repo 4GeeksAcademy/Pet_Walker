@@ -82,9 +82,10 @@ export const CreateProfileWalker = () => {
     return (
         <div className="container mt-5 mb-5 d-flex justify-content-center">
             <Navbar />
-            <div className="card px-1 py-4">
+            <div className="card px-1 py-4  mt-5 pt-5" 
+                style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
                 <div class="card-body">
-                    <h1 className="text-center mt-5 mb-5 text-info">
+                    <h1 className="text-center mt-5 mb-5 primaryText">
                     ¡Crea tu perfil de paseador! <br/>
                     </h1>
                     {error && <p className="text-danger">{error}</p>}
