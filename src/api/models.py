@@ -124,3 +124,5 @@ class Paseo(db.Model):
             "horario": self.horario,
             "tipo_de_paseo": self.tipo_de_paseo
         }
+    
+    
