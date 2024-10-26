@@ -63,6 +63,7 @@ class Walker(db.Model):
     direccion = db.Column(db.String(120), nullable=False)
     distrito = db.Column(db.String(120), nullable=False)
     contraseña = db.Column(db.String(80), nullable=False)
+    salt = db.Column(db.String(80), unique=False, nullable=False)
     habilidades = db.Column(db.Text, nullable=True)
 
     def __repr__(self):
