@@ -58,7 +58,6 @@ export const CreateProfileOwner = () => {
     
         try {
             await actions.createOwnerProfile(formData);
-            actions.sendemail();
             setShowModal(true);
         } catch (error) {
             console.error("Error al crear el perfil:", error);

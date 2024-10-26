@@ -3,8 +3,8 @@ import toast from "react-hot-toast";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			owner: null,
-			walker: null,
+			owner : null,
+			walker : null,
 			token: localStorage.getItem("token") || null,
 			message: null,
 			demo: [
@@ -25,18 +25,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-
-			sendemail: async (formData) => {
-				const resp = await fetch(process.env.BACKEND_URL + "/api/send_email", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					}
-				})
-			},
-
+			
 			//FALTA COLOCAR LA FOTO DE PERFIL
-			createOwnerProfile: async (formData) => {
+			createOwnerProfile: async (formData) => { 
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-owner", {
 					method: "POST",
 					headers: {
@@ -53,9 +44,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						contraseña: formData.contraseña
 					})
 				});
-
+			
 				const data = await resp.json();
-
+			
 				if (resp.ok) {
 					localStorage.setItem("token", data.token);
 					setStore({ owner: data.owner });
@@ -66,10 +57,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error:", data.msg);
 				}
 			},
-
+			
 
 			//FALTA COLOCAR LA FOTO DE PERFIL
-			createWalkerProfile: async (formData) => {
+			createWalkerProfile: async (formData) => { 
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-walker", {
 					method: "POST",
 					headers: {
@@ -86,9 +77,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						contraseña: formData.contraseña
 					})
 				});
-
+			
 				const data = await resp.json();
-
+			
 				if (resp.ok) {
 					localStorage.setItem("token", data.token);
 					setStore({ walker: data.walker });
@@ -99,7 +90,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error:", data.msg);
 				}
 			},
-
+			
 			createMascota: async (email, nombre, raza, edad, detalles) => {
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-mascota", {
 					method: "POST",
@@ -114,9 +105,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						detalles: detalles
 					})
 				});
-
+			
 				const data = await resp.json();
-
+			
 				if (resp.ok) {
 					console.log("Mascota creada:", data);
 					toast.success("Tu mascota ha sido registrada! 🎉");
@@ -134,9 +125,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 							"Content-Type": "application/json"
 						}
 					});
-
+					
 					const data = await resp.json();
-
+					
 					if (resp.ok) {
 						setStore({ mascotas: data });
 						console.log("Mascotas del owner:", data);
@@ -147,8 +138,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error al obtener las mascotas:", error);
 					toast.error("Error de conexión al obtener las mascotas.");
 				}
-			},
-
+			},			
+			
 			login: async (email, contraseña) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
@@ -161,21 +152,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 							contraseña: contraseña
 						})
 					});
-
+			
 					if (resp.ok) {
 						const data = await resp.json();
-
-						localStorage.setItem("token", data.token);
-
-						setStore({
-							token: data.token,
-							user: { ...data.user, tipo: data.tipo_usuario }
+						
+						localStorage.setItem("token", data.token); 
+						
+						setStore({ 
+							token: data.token, 
+							user: { ...data.user, tipo: data.tipo_usuario }  
 						});
-
+						
 						toast.success("¡Ingresaste con éxito!");
 					} else {
 						const errorData = await resp.json();
-						toast.error(errorData.msg || "¡Revisa tu correo o contraseña!");
+						toast.error(errorData.msg || "¡Revisa tu correo o contraseña!"); 
 					}
 				} catch (error) {
 					console.error("Error en el login:", error);
@@ -183,14 +174,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-
+			
 			logout: () => {
-				localStorage.removeItem("token");
+				localStorage.removeItem("token"); 
 				setStore({
 					token: null,
 					user: null
 				});
-				toast.success("¡Sesión cerrada exitosamente!");
+				toast.success("¡Sesión cerrada exitosamente!"); 
 			},
 
 
@@ -222,7 +213,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							habilidades: habilidades
 						})
 					});
-
+			
 					if (resp.ok) {
 						const updatedWalker = await resp.json();
 						setStore({ user: updatedWalker });  // Actualizamos el usuario con las nuevas habilidades
@@ -236,7 +227,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					toast.error("Error de conexión al actualizar habilidades");
 				}
 			},
-
+			
 
 			//filtrado para busqueda de walkers:
 
@@ -255,7 +246,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// Filtrar los walkers basados en los filtros seleccionados
-			filterWalkers: (habilidades, distrito) => {
+			filterWalkers: (habilidades, experiencia, distrito) => {
 				const store = getStore();
 				let filtered = store.allWalkers;
 
@@ -264,6 +255,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					filtered = filtered.filter(walker =>
 						habilidades.every(hab => walker.habilidades.includes(hab))
 					);
+				}
+
+				// Filtrar por experiencia
+				if (experiencia) {
+					filtered = filtered.filter(walker => {
+						if (experiencia === "menos1") return walker.experiencia < 1;
+						if (experiencia === "mas1") return walker.experiencia >= 1 && walker.experiencia < 3;
+						if (experiencia === "mas3") return walker.experiencia >= 3;
+						return true;
+					});
 				}
 
 				// Filtrar por distrito
@@ -276,14 +277,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			getMessage: async () => {
-				try {
+				try{
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				} catch (error) {
+				}catch(error){
 					console.log("Error loading message from backend", error)
 				}
 			},
