@@ -3,11 +3,25 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { Navbar } from "../component/navbar";
 import { AddHabilidad } from "../component/addHabilidad";
+import uploadImage from "../../../firebase";
+
 
 export const ProfileWalker = () => {
     const { store, actions } = useContext(Context);
     const [toggle, setToggle] = useState(1);
     const [selectedHabilidades, setSelectedHabilidades] = useState([]); 
+    const [walkerImgData, setwalkerImgData] = useState({
+    fotosWalker: null,
+});
+    const updateWImgs = async () => {
+        let imageWalkerURL = await uploadImage(walkerImgData)
+        console.log(imageWalkerURL)
+    }
+    // const walkerImageURL = walkerImgData.fotosWalker ? await uploadImage(walkerImgData.fotosWalker) : null;
+    // await actions.createWalkerProfile({
+    //     ...walkerImgData,
+    //     fotosWalker: walkerImageURL
+    // });
 
     const user = store.user ? store.user : {};
 
@@ -26,8 +40,8 @@ export const ProfileWalker = () => {
             <div className="my-5">
                 <Navbar />
             </div>
-            <div className="my-10 d-flex">
-                <div className="card d-flex my-5 mx-3 p-2 justify-content flex-row container-sm">
+            <div className="my-10 d-flex mx-auto">
+                <div className="card d-flex my-5 mx-auto p-2 justify-content flex-row">
                     <div className="mx-2">
                          <img 
                             className="img-fluid rounded-circle mb-3 profile-photo" 
@@ -43,18 +57,13 @@ export const ProfileWalker = () => {
                         <a href="#" className="btn btnPrimary"><strong>45</strong> Calificaciones</a> 
                     </div>
 
-                    <div className="mx-2">
-                        <AddHabilidad 
-                            selectedHabilidades={selectedHabilidades} 
-                            setSelectedHabilidades={setSelectedHabilidades} 
-                        />
-                    </div>
-                    <div className="my-4">
+                
+                    <div className="my-4 mx-2">
                         <h6>Habilidades del paseador:</h6>
                         {selectedHabilidades.length > 0 ? (
                             <div className="d-flex flex-wrap">
                                 {selectedHabilidades.map((hab, index) => (
-                                    <button key={index} className="btn btn-outline-primary m-1">
+                                    <button key={index} className="btn btnSecondary m-1">
                                         {hab}
                                     </button>
                                 ))}
@@ -62,6 +71,12 @@ export const ProfileWalker = () => {
                         ) : (
                             <p className="text-muted">Aún no se han agregado habilidades.</p>
                         )}
+                            <div className="mx-2 d-flex">
+                        <AddHabilidad 
+                            selectedHabilidades={selectedHabilidades} 
+                            setSelectedHabilidades={setSelectedHabilidades} 
+                        />
+                    </div>
                     </div>
                 </div>
             </div>
@@ -84,7 +99,8 @@ export const ProfileWalker = () => {
 
                     <div className={toggle === 2 ? "show-content" : "content"}>
                         <h1>Galería de fotos</h1>
-                        <div className="card-group border-0">
+                        
+                        <div className="card-group border-0 mx-auto">
                             <div className="card border-0 bg-transparent">
                                 <img src="https://images.unsplash.com/photo-1601758124277-f0086d5ab050?q=80&w=1820&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="rounded" width="200" />
                             </div>
@@ -93,8 +109,19 @@ export const ProfileWalker = () => {
                             </div>
                             <div className="card border-0 bg-transparent">
                                 <img src="https://images.unsplash.com/photo-1601758063890-1167f394febb?q=80&w=2002&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="rounded" width="200" />
-                            </div>
+                            </div> 
                         </div>
+                        <div className="border-0 d-flex my-2 flex-column">
+                            <label className="form-label fw-bold">Subir fotos</label> 
+                            <input 
+                                type="file" 
+                                name="fotosWalker"
+                                accept=".jpg, .jpeg, .png"
+                                className="btn btnPrimary"
+                                onChange={(event)=>setwalkerImgData(event.target.files[0])}
+                            />
+                            <button className="btn btnPrimary" onClick={()=>updateWImgs()}>Actualizar fotos</button>
+                            </div>
                     </div>
 
                     <div className={toggle === 3 ? "show-content" : "content"}>

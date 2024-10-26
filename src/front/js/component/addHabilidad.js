@@ -34,7 +34,7 @@ export const AddHabilidad = ({ selectedHabilidades, setSelectedHabilidades }) =>
 
     return (
         <div>
-            <button className="btn btn-success mt-2" onClick={() => setShowModal(true)}>
+            <button className="btn btnPrimary mt-2" onClick={() => setShowModal(true)}>
                 Agregar Habilidad
             </button>
 
@@ -61,7 +61,7 @@ export const AddHabilidad = ({ selectedHabilidades, setSelectedHabilidades }) =>
                                         <option key={index} value={h}>{h}</option>
                                     ))}
                                 </select>
-                                <button className="btn btn-success mt-2" onClick={handleAddHabilidad}>
+                                <button className="btn btnSecondary mt-2" onClick={handleAddHabilidad}>
                                     Añadir Habilidad
                                 </button>
 

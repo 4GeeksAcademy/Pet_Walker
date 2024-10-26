@@ -27,8 +27,8 @@ export const CardWalkers = () => {
                 <span className="number1">569</span>
               </div>
               <div className="d-flex flex-column p-2">
-                <span className="followers">Followers</span>
-                <span className="number2">980</span>
+                <span className="followers">Distrito</span>
+                <span className="number2">Colombia</span>
               </div>
               <div className="d-flex flex-column p-2">
                 <span className="rating ">Rating</span>
@@ -37,10 +37,11 @@ export const CardWalkers = () => {
             </div>
 
             <div className="button mt-2 d-flex flex-row align-items-center gap-2 ">
+              <button className="btn btn-sm  w-100 btnSecondary textColor">Ver perfil</button>
               <Link to="/NewRide">
-                <button className="btn btn-sm  w-100 btnSecondary textColor">Agendar paseo</button>
+                <button className="btnPrimary btn btn-sm w-100 ml-2 ">Agendar paseo</button>
               </Link>
-              <button className="btnPrimary btn btn-sm w-100 ml-2 ">Follow</button>
+              
             </div>
 
           </div>

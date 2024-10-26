@@ -25,7 +25,7 @@ reciever_email = os.getenv("RECIEVERS_EMAIL")
 api = Blueprint('api', __name__)
 
 
-# Allow CORS requests to this API
+
 CORS(api)
 
 @api.route('/send-email', methods=['POST'])
@@ -107,7 +107,7 @@ def register_owner():
 
 
     new_owner = Owner(nombre = nombre, apellido = apellido, edad = edad, telefono = telefono, 
-                      email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
+    email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
     db.session.add(new_owner)
     db.session.commit()
 
@@ -159,7 +159,7 @@ def register_walker():
 
 
     new_walker = Walker(nombre = nombre, apellido = apellido, edad = edad, telefono = telefono, 
-                      email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
+    email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
     db.session.add(new_walker)
     db.session.commit()
 
@@ -272,43 +272,37 @@ def update_habilidades(id):
     if walker is None:
         return jsonify({"msg": "Paseador no encontrado"}), 404
 
-    walker.habilidades = ",".join(habilidades)  # Guardar como cadena de texto separada por comas
+    walker.habilidades = ",".join(habilidades) 
     db.session.commit()
 
     return jsonify(walker.serialize()), 200
 
 
-@api.route("/agendar-paseo", methods=["POST"])
-
+@api.route('/agendar-paseo', methods=['POST'])
 @jwt_required()
-
 def agendar_paseo():
+    owner_id = get_jwt_identity()  
+    domicilio = request.json.get('domicilio')
+    walker_id = request.json.get('walker_id')  
+    horario = request.json.get('horario')
+    tipo_de_paseo = request.json.get('tipo_de_paseo')
 
-    
-    owner = get_jwt_identity()
-    domicilio = request.json.get("domicilio", None)
-    horario = request.json.get("horario", None)
-    tipo_de_paseo = request.json.get("tipo_de_paseo", None)
-    
-    
+    nuevo_paseo = Paseo(
+        owner_id=owner_id,  
+        walker_id=walker_id,
+        domicilio=domicilio,
+        horario=horario,
+        tipo_de_paseo=tipo_de_paseo
+    )
 
-    if any(field is None for field in [domicilio, horario, tipo_de_paseo]):
-        return jsonify({"msg": "Missing required fields."}), 401  
-
+    try:
+        db.session.add(nuevo_paseo)
+        db.session.commit()
+        return jsonify({'message': 'Paseo agendado exitosamente!'}), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': str(e)}), 500
     
-    if owner is None:
-        return jsonify({"msg": "¡El dueño no existe! ¡Revisar el correo por favor!"}), 401
-
-    new_ride = Paseo(owner_id=owner,  horario=horario, domicilio=domicilio,
-        tipo_de_paseo=tipo_de_paseo)
-    
-    db.session.add(new_ride)
-    db.session.commit()
-
-    return jsonify({
-        "new_ride": new_ride.serialize(),
-        "token": create_access_token(identity=email)
-    }), 200
 
 
 #MASCOTAS GET CON FOR 
