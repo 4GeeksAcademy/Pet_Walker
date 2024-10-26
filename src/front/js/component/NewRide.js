@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
-import { ModalPay } from './ModalPay.js';
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export const NewRide = () => {
   const { walkerid } = useParams();
@@ -26,7 +24,7 @@ export const NewRide = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`,  // Asegúrate de que el token esté aquí
+          "Authorization": `Bearer ${token}`
         },
         body: JSON.stringify(data),
       });
