@@ -7,6 +7,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			walker : null,
 			token: localStorage.getItem("token") || null,
 			message: null,
+			filteredWalkers: [],
+			allWalkers: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -236,7 +238,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					const resp = await fetch(process.env.BACKEND_URL + "/api/walkers");
 					if (resp.ok) {
 						const data = await resp.json();
-						setStore({ allWalkers: data });
+						setStore({ allWalkers: data, filteredWalkers: data });
 					} else {
 						console.error("Error al cargar los paseadores");
 					}
@@ -245,26 +247,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 
-			// Filtrar los walkers basados en los filtros seleccionados
 			filterWalkers: (habilidades, distrito) => {
 				const store = getStore();
-				let filtered = store.allWalkers;
+				let filtered = [];
 
 				// Filtrar por habilidades
 				if (habilidades.length > 0) {
-					filtered = filtered.filter(walker =>
+					filtered = store.allWalkers.filter(walker =>
 						habilidades.every(hab => walker.habilidades.includes(hab))
 					);
 				}
 
 				// Filtrar por distrito
 				if (distrito) {
-					filtered = filtered.filter(walker => walker.distrito === distrito);
+					filtered = store.allWalkers.filter(walker => walker.distrito === distrito);
 				}
-
+				console.log(filtered)
 				setStore({ filteredWalkers: filtered });
 			},
-
 
 			getMessage: async () => {
 				try{
