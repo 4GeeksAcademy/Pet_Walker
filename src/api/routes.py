@@ -6,8 +6,10 @@ from api.models import db, User, Owner, Walker, Mascota, Paseo
 from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
-import api.sendEmail as  sendEmail
 import bcrypt
+from api.sendEmail import *
+import api.emailContent  as emailContent
+
 
 
 api = Blueprint('api', __name__)
@@ -15,18 +17,6 @@ api = Blueprint('api', __name__)
 
 
 CORS(api)
-
-@api.route('/send-email', methods=['POST'])
-
-def activador():
-    content =  """ soy el content"""
-    text = """ soy el text """
-    subject = """ soy el subject"""
-    recipients = ["joseantonioalvarez821@gmail.com"]
-    sendEmail.send_email(content, text, subject, recipients )
-    
-    return  jsonify({"message": "Email sent"}), 200
-                #REGISTRAR Y GET
 
 
 @api.route("/owners", methods=["GET"])
@@ -75,6 +65,10 @@ def register_owner():
     email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
     db.session.add(new_owner)
     db.session.commit()
+
+    recipients = [email]
+    send_email(emailContent.contentRegisterOwner,emailContent.textRegisterOwner, emailContent.subjectRegisterOwner, recipients)
+
 
     return jsonify({ "owner": new_owner.serialize(),
             "token": create_access_token(identity=email)            

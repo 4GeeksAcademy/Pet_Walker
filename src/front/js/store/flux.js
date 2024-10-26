@@ -258,6 +258,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					);
 				}
 
+				// Filtrar por experiencia
+				if (experiencia) {
+					filtered = filtered.filter(walker => {
+						if (experiencia === "menos1") return walker.experiencia < 1;
+						if (experiencia === "mas1") return walker.experiencia >= 1 && walker.experiencia < 3;
+						if (experiencia === "mas3") return walker.experiencia >= 3;
+						return true;
+					});
+				}
+
 				// Filtrar por distrito
 				if (distrito) {
 					filtered = store.allWalkers.filter(walker => walker.distrito === distrito);

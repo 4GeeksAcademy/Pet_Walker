@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 3b10df15926e
+Revision ID: 53da5e5317b1
 Revises: 
-Create Date: 2024-10-22 03:40:40.130331
+Create Date: 2024-10-26 04:16:11.974063
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3b10df15926e'
+revision = '53da5e5317b1'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -52,6 +52,7 @@ def upgrade():
     sa.Column('distrito', sa.String(length=120), nullable=False),
     sa.Column('contraseña', sa.String(length=80), nullable=False),
     sa.Column('salt', sa.String(length=80), nullable=False),
+    sa.Column('habilidades', sa.Text(), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('telefono')
@@ -69,10 +70,10 @@ def upgrade():
     op.create_table('paseos',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
-    sa.Column('walker_id', sa.Integer(), nullable=False),
-    sa.Column('domicilio', sa.String(length=120), nullable=False),
-    sa.Column('horario', sa.String(length=120), nullable=False),
-    sa.Column('tipo_de_paseo', sa.String(length=120), nullable=False),
+    sa.Column('walker_id', sa.Integer(), nullable=True),
+    sa.Column('domicilio', sa.String(), nullable=True),
+    sa.Column('horario', sa.String(), nullable=True),
+    sa.Column('tipo_de_paseo', sa.String(), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['owner.id'], ),
     sa.ForeignKeyConstraint(['walker_id'], ['walker.id'], ),
     sa.PrimaryKeyConstraint('id')

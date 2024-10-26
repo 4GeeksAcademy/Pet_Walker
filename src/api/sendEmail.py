@@ -1,5 +1,3 @@
-
-
 import os
 from flask import jsonify
 import smtplib
@@ -12,10 +10,6 @@ sender_password = os.getenv("SMTP_PASSWORD")
 smtp_host = os.getenv("SMTP_HOST")
 smtp_port = os.getenv("SMTP_PORT")
 reciever_email = os.getenv("RECIEVERS_EMAIL")
-
-content =  """ soy el content"""
-text = """ soy el text """
-subject = """ soy el subject"""
 
 
 def send_email(email_content, email_text, email_subject, email_recipients):
