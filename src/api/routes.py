@@ -7,7 +7,7 @@ from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 import bcrypt
-import api.sendEmail  as send_email
+from api.sendEmail import *
 import api.emailContent  as emailContent
 
 
@@ -67,12 +67,7 @@ def register_owner():
     db.session.commit()
 
     recipients = [email]
-    print(recipients)
-    print(emailContent.contentRegisterOwner)
-    print(emailContent.textRegisterOwner)
-    print(emailContent.subjectRegisterOwner)
-
-    #send_email(emailContent.contentRegisterOwner,emailContent.textRegisterOwner, emailContent.subjectRegisterOwner, recipients)
+    send_email(emailContent.contentRegisterOwner,emailContent.textRegisterOwner, emailContent.subjectRegisterOwner, recipients)
 
 
     return jsonify({ "owner": new_owner.serialize(),
