@@ -86,12 +86,10 @@ def get_walker(id):
     walker = Walker.query.get(id) 
     if walker is None:
         return jsonify({"msg": "Walker not found"}), 404  
-    return jsonify(walker.serialize()), 200  
-
-
+    return jsonify(walker.serialize()), 200
+  
 @api.route("/register-walker", methods=["POST"])
 def register_walker():
-
     nombre = request.json.get("nombre", None)
     apellido = request.json.get("apellido", None)
     edad = request.json.get("edad", None)
@@ -99,7 +97,7 @@ def register_walker():
     email = request.json.get("email", None)
     direccion = request.json.get("direccion", None)
     distrito = request.json.get("distrito", None)
-    #FOTO DE PERFIL
+    fotoPerfil = request.json.get("fotoPerfil", None)  # Recibir URL de la imagen
     contraseña = request.json.get("contraseña", None)
 
     if any(field is None for field in [nombre, apellido, edad, telefono, email, direccion, distrito, contraseña]):
@@ -111,20 +109,30 @@ def register_walker():
         return jsonify({"msg": "Walker already exists!"}), 401
     
     bpassword = bytes(contraseña,'utf-8')
-
     salt = bcrypt.gensalt(14)
-
     hashed_contraseña = bcrypt.hashpw(password=bpassword, salt=salt)
 
-
-    new_walker = Walker(nombre = nombre, apellido = apellido, edad = edad, telefono = telefono, 
-    email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
+    # Crear nuevo walker incluyendo fotoPerfil
+    new_walker = Walker(
+        nombre=nombre,
+        apellido=apellido,
+        edad=edad,
+        telefono=telefono,
+        email=email,
+        direccion=direccion,
+        distrito=distrito,
+        fotoPerfil=fotoPerfil,  # Guardar URL de imagen en la BD
+        contraseña=hashed_contraseña.decode('utf-8'),
+        salt=salt
+    )
     db.session.add(new_walker)
     db.session.commit()
 
-    return jsonify({ "walker": new_walker.serialize(),
-            "token": create_access_token(identity=email)            
-        }), 200
+    return jsonify({
+        "walker": new_walker.serialize(),
+        "token": create_access_token(identity=email)            
+    }), 200
+
 
 @api.route("/register-mascota", methods=["POST"])
 def register_mascota():

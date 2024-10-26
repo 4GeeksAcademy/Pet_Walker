@@ -62,7 +62,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 
 			//FALTA COLOCAR LA FOTO DE PERFIL
-			createWalkerProfile: async (formData) => { 
+			createWalkerProfile: async (formData) => {
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-walker", {
 					method: "POST",
 					headers: {
@@ -76,6 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						email: formData.email,
 						direccion: formData.direccion,
 						distrito: formData.distrito,
+						fotoPerfil: formData.fotoPerfil,  // Asegúrate de incluir fotoPerfil
 						contraseña: formData.contraseña
 					})
 				});
@@ -258,15 +259,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					);
 				}
 
-				// Filtrar por experiencia
-				if (experiencia) {
-					filtered = filtered.filter(walker => {
-						if (experiencia === "menos1") return walker.experiencia < 1;
-						if (experiencia === "mas1") return walker.experiencia >= 1 && walker.experiencia < 3;
-						if (experiencia === "mas3") return walker.experiencia >= 3;
-						return true;
-					});
-				}
+				// // Filtrar por experiencia
+				// if (experiencia) {
+				// 	filtered = filtered.filter(walker => {
+				// 		if (experiencia === "menos1") return walker.experiencia < 1;
+				// 		if (experiencia === "mas1") return walker.experiencia >= 1 && walker.experiencia < 3;
+				// 		if (experiencia === "mas3") return walker.experiencia >= 3;
+				// 		return true;
+				// 	});
+				// }
 
 				// Filtrar por distrito
 				if (distrito) {

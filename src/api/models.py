@@ -65,9 +65,7 @@ class Walker(db.Model):
     contraseña = db.Column(db.String(80), nullable=False)
     salt = db.Column(db.String(80), unique=False, nullable=False)
     habilidades = db.Column(db.Text, nullable=True)
-
-    def __repr__(self):
-        return f'<Walker {self.email}>'
+    fotoPerfil = db.Column(db.String(255), nullable=True)  # URL de la foto de perfil
 
     def serialize(self):
         return {
@@ -79,7 +77,8 @@ class Walker(db.Model):
             "email": self.email,
             "direccion": self.direccion,
             "distrito": self.distrito,
-            "habilidades": self.habilidades.split(",") if self.habilidades else []
+            "habilidades": self.habilidades.split(",") if self.habilidades else [],
+            "fotoPerfil": self.fotoPerfil  # Incluye la URL de la foto en la serialización
         }
     
 class Mascota(db.Model):
@@ -125,5 +124,4 @@ class Paseo(db.Model):
             "horario": self.horario,
             "tipo_de_paseo": self.tipo_de_paseo
         }
-    
     
