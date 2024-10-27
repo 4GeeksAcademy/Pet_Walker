@@ -26,17 +26,17 @@ class User(db.Model):
         }
 class Owner(db.Model):
     __tablename__ = 'owner'
-    id = db.Column(db.Integer, primary_key = True)
-    nombre = db.Column(db.String(120), unique = False,  nullable = False)
-    apellido = db.Column(db.String(120), unique = False, nullable = False)
-    edad = db.Column(db.Integer, unique = False, nullable = False)
-    telefono = db.Column(db.Integer, unique=True, nullable = False)
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(120), unique=False, nullable=False)
+    apellido = db.Column(db.String(120), unique=False, nullable=False)
+    edad = db.Column(db.Integer, unique=False, nullable=False)
+    telefono = db.Column(db.String(15), unique=True, nullable=False)  # Cambiado a String
     email = db.Column(db.String(120), unique=True, nullable=False)
-    direccion = db.Column(db.String(120), unique = False, nullable = False)
-    distrito = db.Column(db.String(120), unique = False, nullable = False)
+    direccion = db.Column(db.String(120), unique=False, nullable=False)
+    distrito = db.Column(db.String(120), unique=False, nullable=False)
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
     salt = db.Column(db.String(80), unique=False, nullable=False)
-
+    
     def __repr__(self):
         return f'<Owner {self.email}>'
 

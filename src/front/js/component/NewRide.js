@@ -7,6 +7,7 @@ export const NewRide = () => {
   const [horario, setHorario] = useState("");
   const [tipoDePaseo, setTipoDePaseo] = useState("");
   const [walkers, setWalkers] = useState([]);
+  const [walkerId, setWalkerId] = useState(walkerid || "");
   const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
@@ -15,7 +16,8 @@ export const NewRide = () => {
         const response = await fetch("https://friendly-chainsaw-4jrp6w575xq2q5px-3001.app.github.dev/api/walkers");
         if (response.ok) {
           const data = await response.json();
-          setWalkers(data); // Asumiendo que la respuesta es un array de walkers
+          setWalkers(data);
+          console.log("Walkers cargados:", data); 
         } else {
           const error = await response.json();
           setErrorMessage(error.msg);
@@ -37,7 +39,7 @@ export const NewRide = () => {
       domicilio,
       horario,
       tipo_de_paseo: tipoDePaseo,
-      walker_id: walkerid || null,
+      walker_id: walkerId || null,
     };
 
     try {
@@ -113,16 +115,20 @@ export const NewRide = () => {
           <label className="form-label fw-bold">Selecciona Walker</label>
           <select
             className="form-select"
-            value={walkerid || ""}
+            value={walkerId}
             onChange={(e) => setWalkerId(e.target.value)}
             required
           >
             <option value="" disabled>Selecciona un walker</option>
-            {walkers.map((walker) => (
-              <option key={walker.id} value={walker.id}>
-                {walker.name} {/* Asumiendo que cada walker tiene un 'id' y 'name' */}
-              </option>
-            ))}
+            {walkers.length > 0 ? (
+              walkers.map((walker) => (
+                <option key={walker.id} value={walker.id}>
+                  {walker.nombre} {walker.apellido}
+                </option>
+              ))
+            ) : (
+              <option value="" disabled>No hay walkers disponibles</option>
+            )}
           </select>
         </div>
         <div className="mb-3 form-check">
