@@ -62,10 +62,14 @@ export const CreateProfileWalker = () => {
         }
 
         try {
+            // Subir imagen a Firebase y obtener URL
             const profileImageURL = formData.fotoPerfil ? await uploadImage(formData.fotoPerfil) : null;
+            console.log("URL de imagen subida:", profileImageURL); // Comprobar URL en consola
+
+            // Enviar datos al backend, incluyendo URL de imagen
             await actions.createWalkerProfile({
                 ...formData,
-                fotoPerfil: profileImageURL
+                fotoPerfil: profileImageURL  // Incluir URL en el backend
             });
             setShowModal(true); 
         } catch (error) {
@@ -82,11 +86,10 @@ export const CreateProfileWalker = () => {
     return (
         <div className="container mt-5 mb-5 d-flex justify-content-center">
             <Navbar />
-            <div className="card px-1 py-4  mt-5 pt-5" 
-                style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
-                <div class="card-body">
+            <div className="card px-1 py-4 mt-5 pt-5" style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
+                <div className="card-body">
                     <h1 className="text-center mt-5 mb-5 primaryText">
-                    ¡Crea tu perfil de paseador! <br/>
+                        ¡Crea tu perfil de paseador! <br />
                     </h1>
                     {error && <p className="text-danger">{error}</p>}
                     <form onSubmit={handleSubmit}>
