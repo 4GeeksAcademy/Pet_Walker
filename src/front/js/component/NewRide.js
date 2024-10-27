@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 export const NewRide = () => {
@@ -6,7 +6,28 @@ export const NewRide = () => {
   const [domicilio, setDomicilio] = useState("");
   const [horario, setHorario] = useState("");
   const [tipoDePaseo, setTipoDePaseo] = useState("");
+  const [walkers, setWalkers] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
+
+  useEffect(() => {
+    const fetchWalkers = async () => {
+      try {
+        const response = await fetch("https://friendly-chainsaw-4jrp6w575xq2q5px-3001.app.github.dev/api/walkers");
+        if (response.ok) {
+          const data = await response.json();
+          setWalkers(data); // Asumiendo que la respuesta es un array de walkers
+        } else {
+          const error = await response.json();
+          setErrorMessage(error.msg);
+        }
+      } catch (error) {
+        console.error("Error al cargar los walkers:", error);
+        setErrorMessage("Error al cargar los walkers. Inténtalo de nuevo.");
+      }
+    };
+
+    fetchWalkers();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,7 +66,7 @@ export const NewRide = () => {
 
   return (
     <div className="row gy-5 gx-5 p-5 align-items-center border">
-      <div className="container-fluid d-flex justify-content-center ">
+      <div className="container-fluid d-flex justify-content-center">
         <h1> Agendar nuevo paseo </h1>
       </div>
       {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
@@ -87,6 +108,22 @@ export const NewRide = () => {
             onChange={(e) => setHorario(e.target.value)}
             required
           />
+        </div>
+        <div className="mb-3">
+          <label className="form-label fw-bold">Selecciona Walker</label>
+          <select
+            className="form-select"
+            value={walkerid || ""}
+            onChange={(e) => setWalkerId(e.target.value)}
+            required
+          >
+            <option value="" disabled>Selecciona un walker</option>
+            {walkers.map((walker) => (
+              <option key={walker.id} value={walker.id}>
+                {walker.name} {/* Asumiendo que cada walker tiene un 'id' y 'name' */}
+              </option>
+            ))}
+          </select>
         </div>
         <div className="mb-3 form-check">
           <input
