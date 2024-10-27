@@ -248,18 +248,45 @@ def update_habilidades(id):
 @api.route('/agendar-paseo', methods=['POST'])
 @jwt_required()
 def agendar_paseo():
-    owner_id = get_jwt_identity()  
+    email = get_jwt_identity() 
+    propietario = Owner.query.filter_by(email=email).first()  
+    
+    if not propietario:
+        return jsonify({'error': 'Propietario no encontrado.'}), 404
+    
+    owner_id = propietario.id  
     domicilio = request.json.get('domicilio')
     walker_id = request.json.get('walker_id')  
     horario = request.json.get('horario')
     tipo_de_paseo = request.json.get('tipo_de_paseo')
 
+    
+    tipos_permitidos = ['basico', 'intermedio', 'largo', 'básico']
+    if tipo_de_paseo not in tipos_permitidos:
+        return jsonify({'error': 'Tipo de paseo no válido'}), 400
+
+    
+    if not all([domicilio, walker_id, horario]):
+        return jsonify({'error': 'Faltan campos requeridos'}), 400
+
+    
+    try:
+        walker_id = int(walker_id)
+    except (ValueError, TypeError):
+        return jsonify({'error': 'El "walker_id" debe ser un entero válido.'}), 400
+
+    
+    walker = Walker.query.get(walker_id)
+    if not walker:
+        return jsonify({'error': 'El walker no existe.'}), 404
+
+    
     nuevo_paseo = Paseo(
         owner_id=owner_id,  
         walker_id=walker_id,
         domicilio=domicilio,
         horario=horario,
-        tipo_de_paseo=tipo_de_paseo
+        tipo_de_paseo=tipo_de_paseo  
     )
 
     try:
@@ -269,7 +296,7 @@ def agendar_paseo():
     except Exception as e:
         db.session.rollback()
         return jsonify({'error': str(e)}), 500
-    
+
 
 
 #MASCOTAS GET CON FOR 

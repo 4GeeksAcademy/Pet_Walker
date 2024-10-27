@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { ModalPay } from "./ModalPay"; 
 
 export const NewRide = () => {
   const { walkerid } = useParams();
@@ -9,6 +10,7 @@ export const NewRide = () => {
   const [walkers, setWalkers] = useState([]);
   const [walkerId, setWalkerId] = useState(walkerid || "");
   const [errorMessage, setErrorMessage] = useState("");
+  const [showModal, setShowModal] = useState(false); 
 
   useEffect(() => {
     const fetchWalkers = async () => {
@@ -17,7 +19,6 @@ export const NewRide = () => {
         if (response.ok) {
           const data = await response.json();
           setWalkers(data);
-          console.log("Walkers cargados:", data); 
         } else {
           const error = await response.json();
           setErrorMessage(error.msg);
@@ -39,10 +40,16 @@ export const NewRide = () => {
       domicilio,
       horario,
       tipo_de_paseo: tipoDePaseo,
-      walker_id: walkerId || null,
+      walker_id: Number(walkerId) || null,
     };
 
     try {
+
+      console.log(typeof domicilio, domicilio);
+      console.log(typeof horario, horario);
+      console.log(typeof tipoDePaseo, tipoDePaseo);
+      console.log(typeof walkerId, walkerId);
+
       const response = await fetch("https://friendly-chainsaw-4jrp6w575xq2q5px-3001.app.github.dev/api/agendar-paseo", {
         method: "POST",
         headers: {
@@ -55,10 +62,10 @@ export const NewRide = () => {
       if (response.ok) {
         const result = await response.json();
         alert("Paseo agendado con éxito!");
-        console.log(result);
+        setShowModal(true); 
       } else {
         const error = await response.json();
-        alert(error.msg);
+        alert(error.error || "Error al agendar el paseo.");
       }
     } catch (error) {
       console.error("Error al agendar el paseo:", error);
@@ -86,7 +93,7 @@ export const NewRide = () => {
                 required
               />
               <label className="form-check-label">
-                Paseo {tipo} ({tipo === "básico" ? "30 minutos" : tipo === "intermedio" ? "45 minutos" : "60 minutos"})
+                Paseo {tipo} ({tipo === "basico" ? "30 minutos" : tipo === "intermedio" ? "45 minutos" : "60 minutos"})
               </label>
             </div>
           ))}
@@ -127,7 +134,7 @@ export const NewRide = () => {
                 </option>
               ))
             ) : (
-              <option value="" disabled>No hay walkers disponibles</option>
+              <option>No hay walkers disponibles</option>
             )}
           </select>
         </div>
@@ -143,6 +150,7 @@ export const NewRide = () => {
           <button type="submit" className="btn btn-info fw-bold">Agendar paseo</button>
         </div>
       </form>
+      {showModal && <ModalPay setShowModal={setShowModal} />} {/* Renderiza el modal de pago */}
     </div>
   );
 };

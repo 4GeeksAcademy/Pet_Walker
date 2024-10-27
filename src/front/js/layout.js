@@ -22,6 +22,7 @@ import { CardOwners } from "./component/cardOwners";
 import { Comments } from "./component/comments";
 import { NewRide } from "./component/NewRide";
 import { SearchWalker } from "./pages/searchWalker";
+import { ModalPay } from "./component/ModalPay";
 
 //create your first component
 const Layout = () => {
@@ -47,9 +48,10 @@ const Layout = () => {
                         <Route element={<OwnerProfile />} path="/profile-owner" />
                         <Route element={<ProfileWalker />} path="/profile-walker" />
                         <Route element={<Registration />} path="/registration" />
-                       
+                       /// crear ruta dinamica para mapear los walker walker_id , usar use params
                         <Route element={<Login />} path="/login" />
                         <Route element={<SearchWalker />} path="/search-walker" />
+                        <Route element={<SearchWalker />} path="/ModalPay" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

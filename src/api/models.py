@@ -1,13 +1,9 @@
 from flask_sqlalchemy import SQLAlchemy
-import os
-import sys
-from sqlalchemy import Column, ForeignKey, Integer, String, Date, Float, Text
-from sqlalchemy.orm import relationship, declarative_base
-from sqlalchemy import create_engine
-# from eralchemy2 import render_er
+from sqlalchemy import Column, ForeignKey, Integer, String, Text, Enum as SQLAlchemyEnum
+from sqlalchemy.orm import relationship
+import enum
 
 db = SQLAlchemy()
-Base = declarative_base()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,6 +20,7 @@ class User(db.Model):
             "email": self.email,
             # do not serialize the password, its a security breach
         }
+
 class Owner(db.Model):
     __tablename__ = 'owner'
     id = db.Column(db.Integer, primary_key=True)
@@ -36,7 +33,7 @@ class Owner(db.Model):
     distrito = db.Column(db.String(120), unique=False, nullable=False)
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
     salt = db.Column(db.String(80), unique=False, nullable=False)
-    
+
     def __repr__(self):
         return f'<Owner {self.email}>'
 
@@ -58,7 +55,7 @@ class Walker(db.Model):
     nombre = db.Column(db.String(120), nullable=False)
     apellido = db.Column(db.String(120), nullable=False)
     edad = db.Column(db.Integer, nullable=False)
-    telefono = db.Column(db.Integer, unique=True, nullable=False)
+    telefono = db.Column(db.String(15), unique=True, nullable=False)  # Cambiado a String
     email = db.Column(db.String(120), unique=True, nullable=False)
     direccion = db.Column(db.String(120), nullable=False)
     distrito = db.Column(db.String(120), nullable=False)
@@ -83,16 +80,16 @@ class Walker(db.Model):
     
 class Mascota(db.Model):
     __tablename__ = 'mascota'
-    id = Column(Integer, primary_key = True)
-    owner_id = Column(db.Integer, ForeignKey('owner.id'))
+    id = Column(Integer, primary_key=True)
+    owner_id = Column(Integer, ForeignKey('owner.id'))
     owner = relationship(Owner)
-    nombre = db.Column(db.String(120), unique = False,  nullable = False)
-    raza = db.Column(db.String(120), unique = False,  nullable = False)
-    edad = db.Column(db.Integer, unique = False, nullable = False)
-    detalles = db.Column(db.String(800), unique = False,  nullable = False)
+    nombre = db.Column(String(120), unique=False, nullable=False)
+    raza = db.Column(String(120), unique=False, nullable=False)
+    edad = db.Column(Integer, unique=False, nullable=False)
+    detalles = db.Column(String(800), unique=False, nullable=False)
 
     def __repr__(self):
-            return f'<Mascota {self.id}>'
+        return f'<Mascota {self.id}>'
 
     def serialize(self):
         return {
@@ -104,6 +101,10 @@ class Mascota(db.Model):
             "owner": self.owner_id
         }
 
+class TipoDePaseo(enum.Enum):
+    basico = "basico"
+    intermedio = "intermedio"
+    largo = "largo"
 
 class Paseo(db.Model):
     __tablename__ = 'paseos'
@@ -113,7 +114,7 @@ class Paseo(db.Model):
     walker_id = Column(Integer, ForeignKey('walker.id')) 
     domicilio = Column(String)
     horario = Column(String)
-    tipo_de_paseo = Column(String)
+    tipo_de_paseo = Column(SQLAlchemyEnum(TipoDePaseo), nullable=False)  
 
     def serialize(self):
         return {
@@ -122,6 +123,5 @@ class Paseo(db.Model):
             "walker_id": self.walker_id,
             "domicilio": self.domicilio,
             "horario": self.horario,
-            "tipo_de_paseo": self.tipo_de_paseo
+            "tipo_de_paseo": self.tipo_de_paseo.value  
         }
-    
