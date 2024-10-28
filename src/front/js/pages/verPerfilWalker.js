@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import { Navbar } from "../component/navbar";
+import {Nav}
 import { FaPaw } from "react-icons/fa";
 
 export const VerPerfilWalker = () => {
@@ -36,7 +36,7 @@ export const VerPerfilWalker = () => {
     return (
         <div className="my-5 regBackground">
             <Navbar />
-            <div className="profile-section my-5">
+            <div className="profile-section my-5 pt-5 mt-5">
                 <div className="card d-flex my-5 mx-auto p-3 flex-row align-items-center" style={{ maxWidth: "700px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", borderRadius: "8px", border: "2px solid #E7F8F3" }}>
                     <div className="col-4">
                         <img
@@ -55,7 +55,7 @@ export const VerPerfilWalker = () => {
                         {walker.habilidades && walker.habilidades.length > 0 ? (
                             <div className="d-flex flex-wrap">
                                 {walker.habilidades.map((hab, index) => (
-                                    <span key={index} className="badge bg-primary m-1" style={{ fontSize: "14px" }}>
+                                    <span key={index} className="btn btnSecondary m-1" style={{ fontSize: "14px" }}>
                                         {hab}
                                     </span>
                                 ))}

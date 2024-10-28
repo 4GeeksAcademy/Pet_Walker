@@ -24,6 +24,7 @@ import { NewRide } from "./component/NewRide";
 import { SearchWalker } from "./pages/searchWalker";
 import { ModalPay } from "./component/ModalPay";
 import { VerPerfilWalker } from "./pages/verPerfilWalker";
+import { VerPerfilOwner } from "./pages/verPerfilOwner";
 
 //create your first component
 const Layout = () => {
@@ -37,7 +38,6 @@ const Layout = () => {
         <div>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
-
                     <Routes>
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
@@ -50,6 +50,7 @@ const Layout = () => {
                         <Route element={<ProfileWalker />} path="/profile-walker" />
                         <Route element={<Registration />} path="/registration" />
                         <Route element={<VerPerfilWalker />} path="/perfil-walker/:id" />
+                        <Route element={<VerPerfilOwner />} path="/perfil-owner/:id" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<SearchWalker />} path="/search-walker" />
                         <Route element={<SearchWalker />} path="/ModalPay" />
