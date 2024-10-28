@@ -37,7 +37,7 @@ export const CardWalkers = () => {
             <div className="button mt-2 d-flex flex-row align-items-center gap-2">
               <button className="btn btnSecondary w-50 btn-sm textColor">Ver perfil</button>
               <Link to="/NewRide">
-              <button className="btnPrimary btn-sm w-100 btn">Agendar Paseo</button>
+              <button className="btnPrimary btn-sm w-100 btn">Agendar paseo</button>
               </Link>
             </div>
           </div>
