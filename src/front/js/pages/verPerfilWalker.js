@@ -33,6 +33,9 @@ export const VerPerfilWalker = () => {
         return <p>Cargando perfil...</p>; // Muestra un mensaje de carga hasta que los datos estén disponibles
     }
 
+    const daysOfWeek = ["lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo"];
+    const periods = ["mañana", "tarde", "noche"];
+
     return (
         <div className="my-5 regBackground">
             <Navbar />
@@ -70,57 +73,37 @@ export const VerPerfilWalker = () => {
             <div className="card profile-info d-flex align-items-center justify-content-center">
                 <div className="col-12 tab p-5">
                     <h2>Acerca de mí</h2>
-                    <p>
-                        Hola! Soy {walker.nombre} y estaré muy agradecido de que me elijas como tu paseador. 
-                        Tengo amplia experiencia en el cuidado de mascotas así como en un diplomado en primeros 
-                        auxilios. Estoy seguro de que si me escoges, no te arrepentirás.
-                    </p>
+                    <p>{walker.bio || "No se ha proporcionado una descripción."}</p>
+
                     <h2>Horarios</h2>
-                    <table>
+                    <table className="table table-bordered">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Lu</th>
-                                <th>Ma</th>
-                                <th>Mi</th>
-                                <th>Ju</th>
-                                <th>Vi</th>
-                                <th>Sa</th>
+                                <th>Día</th>
+                                {periods.map((period) => (
+                                    <th key={period}>{period.charAt(0).toUpperCase() + period.slice(1)}</th>
+                                ))}
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mañana</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                            </tr>
-                            <tr>
-                                <td>Tarde</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                                <td>☑</td>
-                            </tr>
-                            <tr>
-                                <td>Noche</td>
-                                <td>☒</td>
-                                <td>☑</td>
-                                <td>☒</td>
-                                <td>☑</td>
-                                <td>☒</td>
-                                <td>☒</td>
-                            </tr>
+                            {daysOfWeek.map((day) => (
+                                <tr key={day}>
+                                    <td>{day.charAt(0).toUpperCase() + day.slice(1)}</td>
+                                    {periods.map((period) => (
+                                        <td key={period}>
+                                            {walker.schedule?.[day]?.[period] ? "☑" : "☒"}
+                                        </td>
+                                    ))}
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
+
                 <div className="gallery-section mt-5">
-                    <h2 className="text-center" style={{ color: "#499587" }}><FaPaw className="me-2" />Galería de Fotos</h2>
+                    <h2 className="text-center" style={{ color: "#499587" }}>
+                        <FaPaw className="me-2" />Galería de Fotos
+                    </h2>
                     <div className="d-flex flex-wrap justify-content-center mt-4">
                         {walker.galeria && walker.galeria.length > 0 ? (
                             walker.galeria.map((foto, index) => (

@@ -80,7 +80,7 @@ class Walker(db.Model):
             "fotoPerfil": self.fotoPerfil,
             "bio": self.bio,
             "galeria": self.galeria.split(",") if self.galeria else [],
-            "horarios": self.horarios,
+            "schedule": self.schedule,
         }
 
     

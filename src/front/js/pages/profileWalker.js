@@ -23,6 +23,7 @@ export const ProfileWalker = () => {
     const [newGalleryImages, setNewGalleryImages] = useState([]);
     const [galleryURLs, setGalleryURLs] = useState(store.user?.galeria || []);
     const [showEditBioModal, setShowEditBioModal] = useState(false);
+    const [isEditingSchedule, setIsEditingSchedule] = useState(false);
 
     const user = store.user ? store.user : {};
 
@@ -43,16 +44,19 @@ export const ProfileWalker = () => {
 
     const handleScheduleSave = () => {
         actions.updateWalkerSchedule(user.id, schedule);
+        setIsEditingSchedule(false); // Desactiva el modo de edición después de guardar
     };
 
     const handleCheckboxChange = (day, period) => {
-        setSchedule({
-            ...schedule,
-            [day]: {
-                ...schedule[day],
-                [period]: !schedule[day][period],
-            },
-        });
+        if (isEditingSchedule) {
+            setSchedule({
+                ...schedule,
+                [day]: {
+                    ...schedule[day],
+                    [period]: !schedule[day][period],
+                },
+            });
+        }
     };
 
     const handleUploadImages = async () => {
@@ -153,6 +157,12 @@ export const ProfileWalker = () => {
 
                     <div className={toggle === 3 ? "show-content" : "content"}>
                         <h1>Horarios</h1>
+                        <button 
+                            className="btn btnSecondary mb-3" 
+                            onClick={() => setIsEditingSchedule(!isEditingSchedule)}
+                        >
+                            {isEditingSchedule ? "Guardar horarios" : "Editar horarios"}
+                        </button>
                         <table className="table table-bordered">
                             <thead>
                                 <tr>
@@ -172,6 +182,7 @@ export const ProfileWalker = () => {
                                                     type="checkbox"
                                                     checked={schedule[day][period]}
                                                     onChange={() => handleCheckboxChange(day, period)}
+                                                    disabled={!isEditingSchedule} // Deshabilitar si no está en modo edición
                                                 />
                                             </td>
                                         ))}
@@ -179,7 +190,9 @@ export const ProfileWalker = () => {
                                 ))}
                             </tbody>
                         </table>
-                        <button className="btn btnPrimary mt-2" onClick={handleScheduleSave}>Guardar horarios</button>
+                        {isEditingSchedule && (
+                            <button className="btn btnPrimary mt-2" onClick={handleScheduleSave}>Guardar cambios</button>
+                        )}
                     </div>
                 </div>
             </div>
@@ -212,4 +225,3 @@ export const ProfileWalker = () => {
         </div>
     );
 };
-
