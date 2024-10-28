@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ModalPay } from "./ModalPay"; 
+import { ModalPay } from "./ModalPay";
+import { Navbar } from "./navbar";
 
 export const NewRide = () => {
   const { walkerid } = useParams();
@@ -10,7 +11,7 @@ export const NewRide = () => {
   const [walkers, setWalkers] = useState([]);
   const [walkerId, setWalkerId] = useState(walkerid || "");
   const [errorMessage, setErrorMessage] = useState("");
-  const [showModal, setShowModal] = useState(false); 
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     const fetchWalkers = async () => {
@@ -62,7 +63,7 @@ export const NewRide = () => {
       if (response.ok) {
         const result = await response.json();
         alert("Paseo agendado con éxito!");
-        setShowModal(true); 
+        setShowModal(true);
       } else {
         const error = await response.json();
         alert(error.error || "Error al agendar el paseo.");
@@ -74,7 +75,8 @@ export const NewRide = () => {
   };
 
   return (
-    <div className="row gy-5 gx-5 p-5 align-items-center border">
+    <div className="row  gx-5 mt-5 p-5 align-items-center border">
+      <Navbar />
       <div className="container-fluid d-flex justify-content-center">
         <h1> Agendar nuevo paseo </h1>
       </div>

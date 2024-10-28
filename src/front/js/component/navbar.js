@@ -12,8 +12,8 @@ export const Navbar = () => {
         <nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
             <div className="container-fluid">
                 <Link to="/">
-                    <img 
-                        src={"Perro.png"}
+                    <img
+                        src="./rigo-baby.jpg"
                         className="navbar-brand textColorNavBar"
                         alt="Pet Walker"
                         style={{
@@ -21,14 +21,15 @@ export const Navbar = () => {
                             height: "auto",
                             padding: "5px",
                             marginLeft: "10px",
-                            borderRadius: "50%", 
+                            borderRadius: "50%",
                         }}
                     />
                 </Link>
+                <h1 className="pt-3 text-light"> Pet Walker </h1>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                
+
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav"></ul>
                 </div>
@@ -46,9 +47,9 @@ export const Navbar = () => {
                             </Link>
                         </div>
                         <div className="login">
-                            <button 
+                            <button
                                 className="btn btn-danger"
-                                onClick={() => actions.logout()} 
+                                onClick={() => actions.logout()}
                             >
                                 Cerrar sesión
                             </button>

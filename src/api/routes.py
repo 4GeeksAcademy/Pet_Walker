@@ -157,7 +157,6 @@ def register_mascota():
         edad=edad, detalles=detalles)
     
     recipients = [email]
-    print(recipients)
     send_email(emailContent.contentRegisterOwner,emailContent.textRegisterOwner, emailContent.subjectRegisterOwner, recipients)
     
     db.session.add(new_mascota)

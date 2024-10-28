@@ -9,7 +9,7 @@ export const ModalPay = ({ setShowModal }) => {
             toast.success("¡Pago realizado con éxito! 🎉");
             setShowModal(false);
         } else {
-            toast.error("Error al registrar el pago 🛑");
+            toast.error("Error al realizar el pago 🛑");
         }
     };
 

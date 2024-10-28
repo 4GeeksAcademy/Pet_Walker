@@ -39,6 +39,10 @@ span{
     font-family: 'Avenir', sans-serif
 }
 
+.navbarBrand{
+    text-decoration: none;
+}
+
 .primaryText {
     font-family: 'League Spartan';
     font-size: 40px;
