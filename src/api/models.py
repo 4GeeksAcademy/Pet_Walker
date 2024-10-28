@@ -54,14 +54,17 @@ class Walker(db.Model):
     nombre = db.Column(db.String(120), nullable=False)
     apellido = db.Column(db.String(120), nullable=False)
     edad = db.Column(db.Integer, nullable=False)
-    telefono = db.Column(db.String(15), unique=True, nullable=False)  # Cambiado a String
+    telefono = db.Column(db.String(15), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     direccion = db.Column(db.String(120), nullable=False)
     distrito = db.Column(db.String(120), nullable=False)
     contraseña = db.Column(db.String(80), nullable=False)
     salt = db.Column(db.String(80), unique=False, nullable=False)
     habilidades = db.Column(db.Text, nullable=True)
-    fotoPerfil = db.Column(db.String(255), nullable=True)  # URL de la foto de perfil
+    fotoPerfil = db.Column(db.String(255), nullable=True)
+    bio = db.Column(db.Text, nullable=True)  # Acerca de mí
+    galeria = db.Column(db.Text, nullable=True)  # Galería de fotos (almacenar URLs separadas por comas)
+    schedule = db.Column(db.JSON, nullable=True)  # Campo para horarios en formato JSON
 
     def serialize(self):
         return {
@@ -74,8 +77,12 @@ class Walker(db.Model):
             "direccion": self.direccion,
             "distrito": self.distrito,
             "habilidades": self.habilidades.split(",") if self.habilidades else [],
-            "fotoPerfil": self.fotoPerfil  # Incluye la URL de la foto en la serialización
+            "fotoPerfil": self.fotoPerfil,
+            "bio": self.bio,
+            "galeria": self.galeria.split(",") if self.galeria else [],
+            "horarios": self.horarios,
         }
+
     
 class Mascota(db.Model):
     __tablename__ = 'mascota'

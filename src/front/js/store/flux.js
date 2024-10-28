@@ -230,6 +230,87 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},
 			
+			saveWalkerImages: async (walkerId, imagesURLs) => {
+                try {
+                    const resp = await fetch(`${process.env.BACKEND_URL}/api/walker/${walkerId}/gallery`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify({
+                            images: imagesURLs
+                        }),
+                    });
+
+                    if (resp.ok) {
+                        const updatedWalker = await resp.json();
+                        setStore({ user: updatedWalker });  // Update walker profile in the store
+                        toast.success("Galería actualizada con éxito!");
+                    } else {
+                        const errorData = await resp.json();
+                        toast.error(errorData.msg || "Error al actualizar galería");
+                    }
+                } catch (error) {
+                    console.error("Error al actualizar galería:", error);
+                    toast.error("Error de conexión al actualizar galería");
+                }
+            },
+
+            // Existing action to update 'Acerca de mí' text
+            updateWalkerBio: async (walkerId, newBio) => {
+                try {
+                    const resp = await fetch(`${process.env.BACKEND_URL}/api/walker/${walkerId}/bio`, {
+                        method: "PUT",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            bio: newBio
+                        })
+                    });
+
+                    if (resp.ok) {
+                        const updatedWalker = await resp.json();
+                        setStore({ user: updatedWalker });  // Update walker profile in the store
+                        toast.success("Acerca de mí actualizado con éxito!");
+                    } else {
+                        const errorData = await resp.json();
+                        toast.error(errorData.msg || "Error al actualizar 'Acerca de mí'");
+                    }
+                } catch (error) {
+                    console.error("Error al actualizar 'Acerca de mí':", error);
+                    toast.error("Error de conexión al actualizar 'Acerca de mí'");
+                }
+            },
+
+            // Action to update the schedule of the walker
+            updateWalkerSchedule: async (walkerId, schedule) => {
+				try {
+					const resp = await fetch(`${process.env.BACKEND_URL}/api/walker/${walkerId}/schedule`, {
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + getStore().token, // Token si es necesario
+						},
+						body: JSON.stringify({
+							schedule: schedule, // Asegúrate de enviar los datos correctos
+						}),
+					});
+			
+					if (resp.ok) {
+						const updatedWalker = await resp.json();
+						setStore({ user: updatedWalker });
+						toast.success("¡Horario actualizado con éxito!");
+					} else {
+						toast.error("Error al actualizar horario");
+						console.error("Error en el servidor:", await resp.json());
+					}
+				} catch (error) {
+					console.error("Error al actualizar horarios:", error);
+					toast.error("Error al actualizar horarios: " + error.message);
+				}
+			},
+			
 
 			//filtrado para busqueda de walkers:
 

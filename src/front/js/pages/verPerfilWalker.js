@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import {Nav}
+import { Navbar } from "../component/navbar";
 import { FaPaw } from "react-icons/fa";
 
 export const VerPerfilWalker = () => {

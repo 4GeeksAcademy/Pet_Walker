@@ -312,6 +312,55 @@ def agendar_paseo():
         return jsonify({'error': str(e)}), 500
 
 
+@api.route("/walker/<int:id>/bio", methods=["PUT"])
+def update_bio(id):
+    bio = request.json.get("bio", None)
+
+    if bio is None:
+        return jsonify({"msg": "Falta el texto de 'Acerca de mí'"}), 400
+
+    walker = Walker.query.get(id)
+    if walker is None:
+        return jsonify({"msg": "Paseador no encontrado"}), 404
+
+    walker.bio = bio
+    db.session.commit()
+
+    return jsonify(walker.serialize()), 200
+
+
+@api.route("/walker/<int:id>/gallery", methods=["PUT"])
+def update_gallery(id):
+    images = request.json.get("images", None)
+
+    if images is None:
+        return jsonify({"msg": "Faltan las URLs de las imágenes"}), 400
+
+    walker = Walker.query.get(id)
+    if walker is None:
+        return jsonify({"msg": "Paseador no encontrado"}), 404
+
+    walker.galeria = ",".join(images)
+    db.session.commit()
+
+    return jsonify(walker.serialize()), 200
+
+
+@api.route("/walker/<int:id>/schedule", methods=["PUT"])
+def update_walker_schedule(id):
+    walker = Walker.query.get(id)
+    if not walker:
+        return jsonify({"msg": "Walker not found"}), 404
+    
+    schedule = request.json.get("schedule", None)
+    if schedule is None:
+        return jsonify({"msg": "No schedule data provided"}), 400
+
+    # Guardamos el nuevo horario del paseador
+    walker.schedule = schedule
+    db.session.commit()
+    return jsonify(walker.serialize()), 200
+
 
 #MASCOTAS GET CON FOR 
 
