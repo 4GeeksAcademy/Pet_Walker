@@ -39,6 +39,10 @@ span{
     font-family: 'Avenir', sans-serif
 }
 
+footer{
+    background-color: #3F4551;
+}
+
 .navbarBrand{
     text-decoration: none;
 }
