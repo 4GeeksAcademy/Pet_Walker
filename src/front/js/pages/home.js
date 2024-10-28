@@ -14,7 +14,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center my-5">		
+		<div className="text-center my-5 profile-info">		
 			<Navbar />
 			<Jumbotron />
 			<Carousel />

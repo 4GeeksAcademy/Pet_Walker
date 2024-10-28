@@ -133,7 +133,7 @@ export const SearchWalker = () => {
                                             style={{ width: "100%", height: "auto", objectFit: "cover", borderRadius: "8px" }}
                                         />
                                     </div>
-                                    <div className="col-8 ps-3">
+                                    <div className="col-8 ps-3 ">
                                         <div className="card-body pt-3">
                                             <h5 className="card-title primaryText" style={{ color: "#0f8c8c", fontSize: "25px" }}>{walker.nombre} {walker.apellido}</h5>
                                             <p className="card-text" style={{ color: "#0f8c8c", fontSize: "18px" }}>Distrito: <span style={{ color: "#499587" }}>{walker.distrito || "Sin especificar"}</span></p>
