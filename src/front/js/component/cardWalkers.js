@@ -9,16 +9,14 @@ export const CardWalkers = () => {
       <div className="card p-3" style={{ border: "2px solid #499587" }}>
         <div className="d-flex align-items-center">
           <div className="image">
-          <Link to="/profile-walker">
             <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" className="rounded" width="155" />
-          </Link>
           </div>
           <div className="ml-3 w-100 p-3 ">
-            <div className="textColor">
+            <div className="textColor ">
               <h4 className="mb-0 mt-0">Alex HMorrision</h4>
               <span>Paseador</span>
             </div>
-            <div className="p-2 mt-2 d-flex justify-content-between rounded text-white stats"
+            <div className="p-2 mt-2  d-flex justify-content-between rounded text-white stats"
               style={{
                 backgroundColor: "#76c9b2"
               }}>
@@ -35,15 +33,12 @@ export const CardWalkers = () => {
                 <span className="number3">8.9</span>
               </div>
             </div>
-
-            <div className="button mt-2 d-flex flex-row align-items-center gap-2 ">
-              <button className="btn btn-sm  w-100 btnSecondary textColor">Ver perfil</button>
+            <div className="button mt-2 d-flex flex-row align-items-center gap-3 ">
+              <button className="btn btn-sm  w-auto btnSecondary textColor">Ver perfil</button>
               <Link to="/NewRide">
                 <button className="btnPrimary btn btn-sm w-100 ml-2 ">Agendar paseo</button>
               </Link>
-              
             </div>
-
           </div>
         </div>
       </div>
