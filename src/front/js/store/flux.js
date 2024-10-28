@@ -28,7 +28,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			
-			//FALTA COLOCAR LA FOTO DE PERFIL
 			createOwnerProfile: async (formData) => { 
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-owner", {
 					method: "POST",
@@ -43,6 +42,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						email: formData.email,
 						direccion: formData.direccion,
 						distrito: formData.distrito,
+						fotoPerfil: formData.fotoPerfil,  // Incluir fotoPerfil en el request
 						contraseña: formData.contraseña
 					})
 				});
@@ -59,9 +59,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.error("Error:", data.msg);
 				}
 			},
-			
+		
 
-			//FALTA COLOCAR LA FOTO DE PERFIL
 			createWalkerProfile: async (formData) => {
 				const resp = await fetch(process.env.BACKEND_URL + "/api/register-walker", {
 					method: "POST",
@@ -106,7 +105,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						raza: raza,
 						edad: edad,
 						detalles: detalles
-					})
+					}),
 				});
 			
 				const data = await resp.json();

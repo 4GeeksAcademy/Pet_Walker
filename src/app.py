@@ -18,8 +18,11 @@ static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
-# Configuración de CORS
-CORS(app, resources={r"/api/*": {"origins": "https://friendly-chainsaw-4jrp6w575xq2q5px-3000.app.github.dev"}})
+# JUAN CARLOS Y PABLO AGREGUEN SUS LINKS DEL FRONT ACA
+CORS(app, resources={r"/api/*": {"origins": [
+    "https://friendly-chainsaw-4jrp6w575xq2q5px-3000.app.github.dev",
+    "https://sturdy-waddle-7vvg9g75r7v5hrjv9-3000.app.github.dev",
+]}})
 
 # Configuración de JWT
 app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'  

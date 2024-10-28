@@ -32,10 +32,8 @@ def get_owner(id):
         return jsonify({"msg": "Owner not found"}), 404  
     return jsonify(owner.serialize()), 200  
 
-
 @api.route("/register-owner", methods=["POST"])
 def register_owner():
-
     nombre = request.json.get("nombre", None)
     apellido = request.json.get("apellido", None)
     edad = request.json.get("edad", None)
@@ -43,7 +41,7 @@ def register_owner():
     email = request.json.get("email", None)
     direccion = request.json.get("direccion", None)
     distrito = request.json.get("distrito", None)
-    #FOTO DE PERFIL
+    fotoPerfil = request.json.get("fotoPerfil", None)  # Recibir URL de fotoPerfil
     contraseña = request.json.get("contraseña", None)
 
     if any(field is None for field in [nombre, apellido, edad, telefono, email, direccion, distrito, contraseña]):
@@ -51,28 +49,38 @@ def register_owner():
 
     owner = Owner.query.filter_by(email=email).first()
 
-    if owner != None:
+    if owner is not None:
         return jsonify({"msg": "Owner already exists!"}), 401
-    
-    bpassword = bytes(contraseña,'utf-8')
 
+    bpassword = bytes(contraseña, 'utf-8')
     salt = bcrypt.gensalt(14)
-
     hashed_contraseña = bcrypt.hashpw(password=bpassword, salt=salt)
 
-
-    new_owner = Owner(nombre = nombre, apellido = apellido, edad = edad, telefono = telefono, 
-    email = email, direccion = direccion, distrito = distrito, contraseña = hashed_contraseña.decode('utf-8'), salt=salt)
+    # Crear nuevo owner incluyendo fotoPerfil
+    new_owner = Owner(
+        nombre=nombre,
+        apellido=apellido,
+        edad=edad,
+        telefono=telefono,
+        email=email,
+        direccion=direccion,
+        distrito=distrito,
+        fotoPerfil=fotoPerfil,  # Guardar URL de la foto en la BD
+        contraseña=hashed_contraseña.decode('utf-8'),
+        salt=salt
+    )
+    
     db.session.add(new_owner)
     db.session.commit()
 
     recipients = [email]
-    send_email(emailContent.contentRegisterOwner,emailContent.textRegisterOwner, emailContent.subjectRegisterOwner, recipients)
+    send_email(emailContent.contentRegisterOwner, emailContent.textRegisterOwner, emailContent.subjectRegisterOwner, recipients)
 
+    return jsonify({
+        "owner": new_owner.serialize(),
+        "token": create_access_token(identity=email)            
+    }), 200
 
-    return jsonify({ "owner": new_owner.serialize(),
-            "token": create_access_token(identity=email)            
-        }), 200
 
 
 @api.route("/walkers", methods=["GET"])

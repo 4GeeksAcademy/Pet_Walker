@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../component/navbar";
-
+import uploadImage from "../../../firebase"; // Importa la función de Firebase
 
 // Componente Modal
 const Modal = ({ show, onClose, message }) => {
@@ -25,7 +25,6 @@ const Modal = ({ show, onClose, message }) => {
         </div>
     );
 };
-
 
 export const CreateProfileOwner = () => {
     const { store, actions } = useContext(Context);
@@ -57,7 +56,15 @@ export const CreateProfileOwner = () => {
         e.preventDefault();
     
         try {
-            await actions.createOwnerProfile(formData);
+            // Subir imagen a Firebase y obtener la URL
+            const profileImageURL = formData.fotoPerfil ? await uploadImage(formData.fotoPerfil) : null;
+
+            // Guardar el perfil del dueño
+            await actions.createOwnerProfile({
+                ...formData,
+                fotoPerfil: profileImageURL  // Enviar URL de la imagen
+            });
+
             setShowModal(true);
         } catch (error) {
             console.error("Error al crear el perfil:", error);
