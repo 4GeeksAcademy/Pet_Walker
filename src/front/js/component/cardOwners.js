@@ -23,12 +23,12 @@ export const CardOwners = () => {
                 <span className="number1">3</span>
               </div>
               <div className="d-flex flex-column p-2">
-                <span className="followers">Followers</span>
-                <span className="number2">980</span>
+                <span className="followers">Distrito</span>
+                <span className="number2">Perú</span>
               </div>
               <div className="d-flex flex-column p-2">
-                <span className="rating">Rating</span>
-                <span className="number3">8.9</span>
+                <span className="rating">Comentarios</span>
+                <span className="number3">8</span>
               </div>
             </div>
             <div className="button mt-2 d-flex flex-row align-items-center gap-2 ">

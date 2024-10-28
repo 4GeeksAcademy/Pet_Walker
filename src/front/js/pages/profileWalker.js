@@ -124,6 +124,7 @@ export const ProfileWalker = () => {
                         <li className="flex-fill nav-item p-1" onClick={() => updateToggle(1)}><h5>Acerca de mí</h5></li>
                         <li className="flex-fill nav-item p-1" onClick={() => updateToggle(2)}><h5>Galería de fotos</h5></li>
                         <li className="flex-fill nav-item p-1" onClick={() => updateToggle(3)}><h5>Horarios</h5></li>
+                        
                     </ul>
 
                     <div className={toggle === 1 ? "show-content" : "content"}>
@@ -141,8 +142,8 @@ export const ProfileWalker = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="border-0 d-flex my-2 flex-column">
-                            <label className="form-label fw-bold">Subir fotos</label>
+                        <div className="border-0 d-flex my-2 flex-column w-25">
+                            <label className="form-label fw-bold d-flex justify-content-center">Subir fotos</label>
                             <input
                                 type="file"
                                 name="fotosWalker"
@@ -222,6 +223,7 @@ export const ProfileWalker = () => {
                     </div>
                 </div>
             )}
+            
         </div>
     );
 };

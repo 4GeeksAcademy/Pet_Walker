@@ -33,10 +33,11 @@ export const CardWalkers = () => {
                 <span className="number3">8.9</span>
               </div>
             </div>
-            <div className="button mt-2 d-flex flex-row align-items-center gap-3 ">
-              <button className="btn btn-sm  w-auto btnSecondary textColor">Ver perfil</button>
+            
+            <div className="button mt-2 d-flex flex-row align-items-center gap-2">
+              <button className="btn btnSecondary w-50 btn-sm textColor">Ver perfil</button>
               <Link to="/NewRide">
-                <button className="btnPrimary btn btn-sm w-100 ml-2 ">Agendar paseo</button>
+              <button className="btnPrimary btn-sm w-100 btn">Agendar Paseo</button>
               </Link>
             </div>
           </div>
