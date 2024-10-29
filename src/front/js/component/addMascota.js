@@ -1,6 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { FaDog } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+
 
 export const AddMascota = () => {
     const { store, actions } = useContext(Context);
@@ -46,7 +48,7 @@ export const AddMascota = () => {
             setShowModal(false);
         } catch (error) {
             console.error("Error al agregar la mascota:", error);
-            alert("Ocurrió un error al agregar la mascota. Por favor, intenta de nuevo.");
+            toast.error("Ocurrió un error al agregar la mascota. Por favor, intenta de nuevo.");
         }
     };
 
