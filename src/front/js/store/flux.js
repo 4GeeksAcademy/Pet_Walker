@@ -364,6 +364,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ filteredWalkers: filtered });
 			},
 
+
+			getWalkerById: async (walkerId) => {
+                try {
+                    const response = await fetch(`${process.env.BACKEND_URL}/api/walker/${walkerId}`);
+                    if (response.ok) {
+                        const walker = await response.json();
+                        setStore({ walker }); 
+                    } else {
+                        const error = await response.json();
+                        toast.error(error.msg || "Error al cargar el walker.");
+                    }
+                } catch (error) {
+                    console.error("Error al obtener el walker:", error);
+                    toast.error("Error de conexión al obtener el walker.");
+                }
+            },
+
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
