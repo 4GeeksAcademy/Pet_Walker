@@ -18,7 +18,7 @@ export const Home = () => {
 			<Navbar />
 			<Jumbotron />
 			<Carousel />
-			<div className="cards justify-content-around d-flex mb-5">
+			<div className="cards justify-content-around d-flex">
 				<div className="d-flex">
 					<CardWalkers />
 					<CardOwners />

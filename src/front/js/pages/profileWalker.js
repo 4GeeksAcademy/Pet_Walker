@@ -82,7 +82,7 @@ export const ProfileWalker = () => {
             </div>
             <div className="my-10 d-flex mx-auto">
                 <div className="card d-flex my-5 mx-auto p-2 justify-content flex-row">
-                    <div className="mx-2">
+                    <div className="mx-2 my-2">
                         <img
                             className="img-fluid rounded-circle mb-3 profile-photo"
                             src={user.fotoPerfil || "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"}
