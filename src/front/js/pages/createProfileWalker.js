@@ -84,7 +84,7 @@ export const CreateProfileWalker = () => {
     };
 
     return (
-        <div className="container mt-5 mb-5 d-flex justify-content-center profile-info">
+        <div className="mt-5 mb-5 d-flex justify-content-center profile-info">
             <Navbar />
             <div className="card px-1 py-4 mt-5 pt-5" style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
                 <div className="card-body">

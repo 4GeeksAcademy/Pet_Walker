@@ -23,9 +23,6 @@ export const Home = () => {
 					<CardWalkers />
 					<CardOwners />
 				</div>
-				<div className="d-flex">
-					
-				</div>
 			</div>
 			<Comments />
 		</div>
