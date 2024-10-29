@@ -22,7 +22,6 @@ import { CardOwners } from "./component/cardOwners";
 import { Comments } from "./component/comments";
 import { NewRide } from "./component/NewRide";
 import { SearchWalker } from "./pages/searchWalker";
-import { ModalPay } from "./component/ModalPay";
 import { VerPerfilWalker } from "./pages/verPerfilWalker";
 import { VerPerfilOwner } from "./pages/verPerfilOwner";
 
@@ -53,7 +52,6 @@ const Layout = () => {
                         <Route element={<VerPerfilOwner />} path="/perfil-owner/:id" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<SearchWalker />} path="/search-walker" />
-                        <Route element={<SearchWalker />} path="/ModalPay" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
