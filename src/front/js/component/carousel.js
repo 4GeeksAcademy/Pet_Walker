@@ -20,7 +20,7 @@ export const Carousel = () => {
                         <div className="col-md-5 d-flex align-items-start" style={{ backgroundColor: "#499587", color: "white" }}>
                             <div className="p-4 text-start w-100">
                                 <h5 className="primaryText">¡Únete a la comunidad que transforma los paseos de perros!</h5>
-                                <p className="secondaryText">En Pet Walker, no solo paseamos perros, creamos conexiones. Dueños y paseadores 
+                                <p className="secondaryText" style={{color:"#ffffff"}}>En Pet Walker, no solo paseamos perros, creamos conexiones. Dueños y paseadores 
                                     forman parte de una comunidad comprometida con el bienestar de las mascotas. Ya seas un paseador que quiere 
                                     crecer o un dueño que busca confianza y calidad, aquí encontrarás todo lo que necesitas. Comparte experiencias, recibe recomendaciones, y disfruta de una app donde el amor por los perros nos une. ¡Sé parte del cambio y crece junto a Pet Walker!</p>
                             </div>
@@ -44,7 +44,7 @@ export const Carousel = () => {
                         <div className="col-md-5 d-flex align-items-start" style={{ backgroundColor: "#499587", color: "white" }}>
                             <div className="p-4 text-start w-100">
                                 <h5 className="primaryText">El paseo ideal para tu perro, en manos de paseadores verificados</h5>
-                                <p className="secondaryText">Cada perro es único, y nuestros paseadores ajustan el paseo a las necesidades de tu mascota. Elige entre paseadores de confianza con reseñas verificadas por otros dueños. ¡Agenda con tranquilidad y dale a tu perro la mejor experiencia!</p>
+                                <p className="secondaryText" style={{color:"#ffffff"}}>Cada perro es único, y nuestros paseadores ajustan el paseo a las necesidades de tu mascota. Elige entre paseadores de confianza con reseñas verificadas por otros dueños. ¡Agenda con tranquilidad y dale a tu perro la mejor experiencia!</p>
                             </div>
                         </div>
                         <div className="col-md-7 position-relative">
@@ -66,7 +66,7 @@ export const Carousel = () => {
                         <div className="col-md-5 d-flex align-items-start" style={{ backgroundColor: "#499587", color: "white" }}>
                             <div className="p-4 text-start w-100">
                                 <h5 className="primaryText">Mucho más que un paseo: entrenamiento y bienestar</h5>
-                                <p className="secondaryText">Algunos paseadores ofrecen servicios adicionales, como entrenamiento básico o juegos de estimulación. Además, recibirás un informe detallado del paseo de tu perro, incluyendo la ruta y el comportamiento. ¡Siempre informado, siempre tranquilo!</p>
+                                <p className="secondaryText" style={{color:"#ffffff"}}>Algunos paseadores ofrecen servicios adicionales, como entrenamiento básico o juegos de estimulación. Además, recibirás un informe detallado del paseo de tu perro, incluyendo la ruta y el comportamiento. ¡Siempre informado, siempre tranquilo!</p>
                             </div>
                         </div>
                         <div className="col-md-7 position-relative">
@@ -88,7 +88,7 @@ export const Carousel = () => {
                         <div className="col-md-5 d-flex align-items-start" style={{ backgroundColor: "#499587", color: "white" }}>
                             <div className="p-4 text-start w-100">
                                 <h5 className="primaryText">¡Paseador, accede a más clientes y ofrece tus servicios únicos!</h5>
-                                <p className="secondaryText">Con Pet Walker, llegarás a más dueños de perros en tu área, ampliando tu red de clientes. Además, podrás personalizar tu perfil destacando tus habilidades: desde paseos básicos hasta entrenamiento y cuidados especiales. ¡Haz que tu experiencia te diferencie!</p>
+                                <p className="secondaryText" style={{color:"#ffffff"}}>Con Pet Walker, llegarás a más dueños de perros en tu área, ampliando tu red de clientes. Además, podrás personalizar tu perfil destacando tus habilidades: desde paseos básicos hasta entrenamiento y cuidados especiales. ¡Haz que tu experiencia te diferencie!</p>
                             </div>
                         </div>
                         <div className="col-md-7 position-relative">
@@ -110,7 +110,7 @@ export const Carousel = () => {
                         <div className="col-md-5 d-flex align-items-start" style={{ backgroundColor: "#499587", color: "white" }}>
                             <div className="p-4 text-start w-100">
                                 <h5 className="primaryText">Gana a tu ritmo y construye tu reputación</h5>
-                                <p className="secondaryText">Organiza tu semana con total flexibilidad y deja que los dueños elijan los horarios que mejor se adapten a tu agenda. Cuantas más reseñas positivas recibas, más clientes atraerás. ¡Gana más mientras creces como paseador profesional!</p>
+                                <p className="secondaryText" style={{color:"#ffffff"}}>Organiza tu semana con total flexibilidad y deja que los dueños elijan los horarios que mejor se adapten a tu agenda. Cuantas más reseñas positivas recibas, más clientes atraerás. ¡Gana más mientras creces como paseador profesional!</p>
                             </div>
                         </div>
                         <div className="col-md-7 position-relative">

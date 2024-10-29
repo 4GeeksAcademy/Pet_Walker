@@ -40,8 +40,10 @@ export const OwnerProfile = () => {
                 <div className="col-md-8">
                     <div className="card p-4 mb-4" style={{ height: '48%', borderColor: "#F0E0D2" }}>
                         <h5 className="fw-bold" style={{ color: "#499587" }}>Detalles del Usuario</h5>
-                        <p><strong>Edad:</strong> {user.edad || "Edad no disponible"}</p>
-                        <p><strong>Teléfono:</strong> {user.telefono || "Teléfono no disponible"}</p>
+                        <p style={{ color: "#76C9B2" }}><strong className="textColor">Edad:  </strong> 
+                            {user.edad || "Edad no disponible"}
+                        </p>
+                        <p style={{ color: "#76C9B2" }}><strong className="textColor">Teléfono:</strong> {user.telefono || "Teléfono no disponible"}</p>
                     </div>
 
                     <div className="card p-4" style={{ height: '48%', borderColor: "#F0E0D2", overflowY: "auto", maxHeight: "250px" }}>

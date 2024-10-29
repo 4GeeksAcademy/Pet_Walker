@@ -10,7 +10,7 @@ export const Navbar = () => {
 
     return (
         <nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
-            <div className="container-fluid">
+            <div className="container-fluid navbarPrueba">
                 <Link to="/">
                     <img
                         src="./rigo-baby.jpg"
@@ -25,7 +25,7 @@ export const Navbar = () => {
                         }}
                     />
                 </Link>
-                <h1 className="pt-3 text-light"> Pet Walker </h1>
+                <h1 className="pt-3 primaryText" style={{color: "#ffffff"}}> Pet Walker </h1>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

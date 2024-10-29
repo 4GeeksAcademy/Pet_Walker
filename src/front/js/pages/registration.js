@@ -18,8 +18,8 @@ export const Registration = () => {
                             className="rounded mb-3" width="250"
                             alt="Registrarse como paseador"
                         />
-                        <h5 className="card-title">Quiero registrarme como paseador</h5>
-                        <p className="card-text">¡Regístrate como paseador y comienza a ofertar tus servicios!</p>
+                        <h5 className="card-title"><strong>Quiero registrarme como paseador</strong></h5>
+                        <p className="card-text" style={{color:"#3F4551"}}>¡Regístrate como paseador y comienza a ofertar tus servicios!</p>
                         <Link to="/createProfileWalker" className="btn btnPrimary">Registrarme como paseador/a</Link>
                     </div>
                     <div className="vr mx-3"></div>
@@ -29,8 +29,8 @@ export const Registration = () => {
                             className="rounded mb-3" width="250"
                             alt="Registrarse como dueño"
                         />
-                        <h5 className="card-title my-2">Quiero registrarme como dueño</h5>
-                        <p className="card-text">¡Regístrate como dueñ@ y descubre paseadores cerca de tu localidad!</p>
+                        <h5 className="card-title my-2"><strong>Quiero registrarme como dueño</strong></h5>
+                        <p className="card-text" style={{color:"#3F4551"}}>¡Regístrate como dueñ@ y descubre paseadores cerca de tu localidad!</p>
                         <Link to="/createProfileOwner" className="btn btnPrimary">Registrarme como dueño/a</Link>
                     </div>
                 </div>
