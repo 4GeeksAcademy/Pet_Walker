@@ -14,18 +14,17 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center my-5 profile-info">		
+		<div className="text-center profile-info">		
 			<Navbar />
 			<Jumbotron />
 			<Carousel />
 			<div className="cards justify-content-around d-flex mb-5">
 				<div className="d-flex">
 					<CardWalkers />
-					<CardWalkers />
+					<CardOwners />
 				</div>
 				<div className="d-flex">
-					<CardOwners />
-					<CardOwners />
+					
 				</div>
 			</div>
 			<Comments />

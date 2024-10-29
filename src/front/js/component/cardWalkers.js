@@ -9,7 +9,7 @@ export const CardWalkers = () => {
       <div className="card p-3" style={{ border: "2px solid #499587" }}>
         <div className="d-flex align-items-center">
           <div className="image">
-            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" className="rounded" width="155" />
+            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" className="rounded border" width="155" />
           </div>
           <div className="ml-3 w-100 p-3 ">
             <div className="textColor ">
@@ -35,6 +35,7 @@ export const CardWalkers = () => {
             </div>
             
             <div className="button mt-2 d-flex flex-row align-items-center gap-2">
+
               <button className="btn btnSecondary w-50 btn-sm textColor">Ver perfil</button>
               <Link to="/NewRide">
               <button className="btnPrimary btn-sm w-100 btn">Agendar paseo</button>

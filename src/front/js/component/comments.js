@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Comments = () => {
     return (
 
-        <div className="container-fluid my-5  d-flex justify-content-center  ">
+        <div className="container-fluid  d-flex justify-content-center align-self-start ">
 
            <div className="card mx-2" style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
                 <div className="card-body">

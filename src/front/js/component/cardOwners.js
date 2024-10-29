@@ -7,7 +7,7 @@ export const CardOwners = () => {
       <div className="card p-3" style={{ border: "2px solid #499587" }}>
         <div className="d-flex align-items-center">
           <div className="image">
-            <img src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80" className="rounded" width="155" />
+            <img src="https://img.freepik.com/free-photo/worldface-spanish-guy-white-background_53876-137665.jpg?t=st=1730161298~exp=1730164898~hmac=5b0321e1bbedac1639804272dcf866b6fc65758962bab6547bef9cbc9318f8e2&w=1380" className="rounded border" width="155" />
           </div>
           <div className="ml-3 w-100 p-3 ">
             <div className="textColor ">
