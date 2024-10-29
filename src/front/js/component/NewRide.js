@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { ModalPay } from "./ModalPay";
-import { Navbar } from "./navbar";
+import { Navbar } from "../component/navbar";
 import { Context } from "../store/appContext";
 
 export const NewRide = () => {
@@ -68,7 +68,7 @@ export const NewRide = () => {
             <form onSubmit={handleSubmit}>
                 <div className="mb-3 p-5 border">
                     <label className="form-label fw-bold">Tipo de paseo</label>
-                    {["básico", "intermedio", "largo"].map((tipo) => (
+                    {["basico", "intermedio", "largo"].map((tipo) => (
                         <div className="form-check" key={tipo}>
                             <input
                                 className="form-check-input"
