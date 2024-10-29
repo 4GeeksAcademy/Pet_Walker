@@ -94,30 +94,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			
 			createMascota: async (email, nombre, raza, edad, detalles) => {
-				const resp = await fetch(process.env.BACKEND_URL + "/api/register-mascota", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json"
-					},
-					body: JSON.stringify({
-						email: email,
-						nombre: nombre,
-						raza: raza,
-						edad: edad,
-						detalles: detalles
-					}),
-				});
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + "/api/register-mascota", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + getStore().token  // Si es necesario autenticación
+						},
+						body: JSON.stringify({
+							email: email,
+							nombre: nombre,
+							raza: raza,
+							edad: edad,
+							detalles: detalles
+						}),
+					});
 			
-				const data = await resp.json();
+					const data = await resp.json();
 			
-				if (resp.ok) {
-					console.log("Mascota creada:", data);
-					toast.success("Tu mascota ha sido registrada! 🎉");
-				} else {
-					console.error("Error al crear mascota:", data);
-					toast.error("Error al registrar a tu mascota 🛑");
+					if (resp.ok) {
+						console.log("Mascota creada:", data);
+						toast.success("Tu mascota ha sido registrada! 🎉");
+					} else {
+						console.error("Error al crear mascota:", data);
+						toast.error("Error al registrar a tu mascota 🛑");
+					}
+				} catch (error) {
+					console.error("Error al crear mascota:", error);
+					toast.error("Error de conexión al registrar la mascota 🛑");
 				}
 			},
+			
 
 			getMascotasByOwner: async (email) => {
 				try {
