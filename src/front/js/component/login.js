@@ -25,10 +25,10 @@ export const Login = () => {
                     <div className="card px-1 py-4 mx-auto" style={{ width: "60%", border: "2px solid #EF7029", borderRadius: "0.25rem" }}>
                         <div className="card-body">
                             <div className="mx-auto my-auto">
-                                <h1 className="text-center">Log In</h1> 
+                                <h1 className="text-center " style={{color: "#ef7029"}}>Log In</h1> 
                                 <div className="mb-3">
-                                    <label className="form-label" style={{fontFamily: "League Spartan", fontSize: "22px"}}>
-                                        Email
+                                    <label className="form-label textColor" style={{fontFamily: "League Spartan", fontSize: "22px"}}>
+                                        <strong>Email</strong>
                                     </label>
                                     <input type="email" className="form-control" onChange={(event) => setUser({
                                         ...user,
@@ -37,8 +37,8 @@ export const Login = () => {
                                     <div className="form-text">Nunca compartiremos tus datos personales.</div>
                                 </div> 
                                 <div className="mb-3">
-                                    <label className="form-label" style={{fontFamily: "League Spartan", fontSize: "22px"}}>
-                                        Contraseña
+                                    <label className="form-label textColor" style={{fontFamily: "League Spartan", fontSize: "22px"}}>
+                                        <strong>Contraseña</strong>
                                     </label>
                                     <div className="d-flex">
                                         <input type={showPassword ? "text" : "password"} className="form-control" onChange={(event) => setUser({

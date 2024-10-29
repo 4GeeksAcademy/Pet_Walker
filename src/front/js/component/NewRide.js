@@ -110,10 +110,17 @@ export const NewRide = () => {
                     <label className="form-check-label">Acepto los términos y condiciones de PetWalker</label>
                 </div>
                 <div className="button">
-                    <ModalPay/> 
+                    <button type="submit" className="btn btn-info fw-bold" >Agendar paseo</button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <ModalPay />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </form>
-            
+            {showModal && <ModalPay setShowModal={setShowModal} />}
         </div>
     );
 };

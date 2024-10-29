@@ -82,7 +82,7 @@ export const ProfileWalker = () => {
             </div>
             <div className="my-10 d-flex mx-auto">
                 <div className="card d-flex my-5 mx-auto p-2 justify-content flex-row">
-                    <div className="mx-2">
+                    <div className="mx-2 my-2">
                         <img
                             className="img-fluid rounded-circle mb-3 profile-photo"
                             src={user.fotoPerfil || "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80"}
@@ -91,12 +91,12 @@ export const ProfileWalker = () => {
                         />
                     </div>
                     <div className="text-left my-2 mx-2">
-                        <h5 className="card-title">{user.nombre || "Nombre no disponible"}</h5>
+                        <h5 className="card-title"><strong>{user.nombre || "Nombre no disponible"}</strong></h5>
                         <p className="card-text">Cuida en <strong>{user.distrito || "Ubicación no disponible"}</strong>.</p>
-                        <a href="#" className="btn btnPrimary"><strong>45</strong> Calificaciones</a>
+                        <a href="#" className="btn btnPrimary">45 Calificaciones</a>
                     </div>
                     <div className="my-4 mx-2">
-                        <h6>Habilidades del paseador:</h6>
+                        <h6><strong>Habilidades del paseador:</strong></h6>
                         {selectedHabilidades.length > 0 ? (
                             <div className="d-flex flex-wrap">
                                 {selectedHabilidades.map((hab, index) => (
@@ -129,7 +129,7 @@ export const ProfileWalker = () => {
 
                     <div className={toggle === 1 ? "show-content" : "content"}>
                         <h1>Acerca de mí</h1>
-                        <h5>{bio}</h5>
+                        <h5 style={{color: "#499587"}}>{bio}</h5>
                         <button className="btn btnSecondary mt-2" onClick={() => setShowEditBioModal(true)}>Editar</button>
                     </div>
 

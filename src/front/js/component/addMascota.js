@@ -119,9 +119,9 @@ export const AddMascota = () => {
                                             required 
                                         />
                                     </div>
-                                    <div className="modal-footer">
-                                        <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Cerrar</button>
-                                        <button type="submit" className="btn btn-primary">Guardar cambios</button>
+                                    <div className="d-flex justify-content-center">
+                                        <button type="button" className="btn btnSecondary mx-2" onClick={handleCloseModal}>Cerrar</button>
+                                        <button type="submit" className="btn btnPrimary mx-2">Guardar cambios</button>
                                     </div>
                                 </form>
                             </div>

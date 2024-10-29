@@ -79,7 +79,7 @@ export const AddHabilidad = ({ selectedHabilidades, setSelectedHabilidades }) =>
                                     </ul>
                                 </div>
                             </div>
-                            <div className="modal-footer">
+                            <div className="modal-footer d-flex ">
                                 <button className="btn btn-secondary" onClick={() => setShowModal(false)}>Cerrar</button>
                                 <button className="btn btnPrimary" onClick={handleSaveHabilidades}>Guardar Habilidades</button>
                             </div>

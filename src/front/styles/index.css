@@ -32,7 +32,16 @@ h1{
 }
 
 p{
-    font-family: 'Avenir', sans-serif 
+    font-family: 'Avenir', sans-serif ;
+    color: #76c9b2
+
+}
+strong{
+    color: #499587
+}
+
+h2{
+    color:  #f77032
 }
 
 span{
@@ -41,6 +50,11 @@ span{
 
 footer{
     background-color: #3F4551;
+}
+
+label{
+    font-family: 'Avenir', sans-serif;
+    color: #499587
 }
 
 .navbarBrand{

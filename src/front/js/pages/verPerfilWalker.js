@@ -50,11 +50,11 @@ export const VerPerfilWalker = () => {
                         />
                     </div>
                     <div className="text-left col-8 ps-4">
-                        <h5 className="card-title" style={{ color: "#0f8c8c" }}>{walker.nombre || "Nombre no disponible"}</h5>
+                        <h5 className="card-title"><strong>{walker.nombre || "Nombre no disponible"}</strong></h5>
                         <p className="card-text">Cuida en <strong>{walker.distrito || "Ubicación no disponible"}</strong>.</p>
                         <p className="card-text"><strong>Edad:</strong> {walker.edad || "Edad no disponible"}</p>
                         <p className="card-text"><strong>Teléfono:</strong> {walker.telefono || "Teléfono no disponible"}</p>
-                        <h6>Habilidades:</h6>
+                        <p><strong>Habilidades:</strong></p>
                         {walker.habilidades && walker.habilidades.length > 0 ? (
                             <div className="d-flex flex-wrap">
                                 {walker.habilidades.map((hab, index) => (
@@ -73,10 +73,10 @@ export const VerPerfilWalker = () => {
             <div className="card profile-info d-flex align-items-center justify-content-center">
                 <div className="col-12 tab p-5">
                     <h2>Acerca de mí</h2>
-                    <p>{walker.bio || "No se ha proporcionado una descripción."}</p>
+                    <p style={{color: "#499587"}}>{walker.bio || "No se ha proporcionado una descripción."}</p>
 
                     <h2>Horarios</h2>
-                    <table className="table table-bordered">
+                    <table className="table table-bordered" style={{color: "#3F4551"}}>
                         <thead>
                             <tr>
                                 <th>Día</th>
@@ -101,7 +101,7 @@ export const VerPerfilWalker = () => {
                 </div>
 
                 <div className="gallery-section mt-5">
-                    <h2 className="text-center" style={{ color: "#499587" }}>
+                    <h2 className="text-center">
                         <FaPaw className="me-2" />Galería de Fotos
                     </h2>
                     <div className="d-flex flex-wrap justify-content-center mt-4">
