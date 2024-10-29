@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { ModalPay } from "././Modalpayment";
 import { Navbar } from "../component/navbar";
 import { Context } from "../store/appContext";
+import { ToastContainer, toast } from "react-toastify";
 
 export const NewRide = () => {
     const { walkerid } = useParams();
@@ -41,15 +42,15 @@ export const NewRide = () => {
             });
 
             if (response.ok) {
-                alert("Paseo agendado con éxito!");
+                toast.success("Paseo agendado con éxito!");
                 setShowModal(true);
             } else {
                 const error = await response.json();
-                alert(error.error || "Error al agendar el paseo.");
+                toast.error(error.error || "Error al agendar el paseo.");
             }
         } catch (error) {
             console.error("Error al agendar el paseo:", error);
-            alert("Error al agendar el paseo. Inténtalo de nuevo.");
+            toast.error("Error al agendar el paseo. Inténtalo de nuevo.");
         }
     };
 
