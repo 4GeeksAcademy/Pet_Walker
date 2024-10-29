@@ -27,7 +27,7 @@ export const ModalPay = ({ setShowModal }) => {
                                 <input type="text" placeholder="Número de tarjeta" className="form-control" />
                             </div>
                             <div className="input-group input-group-sm mb-3">
-                                <input type="text" placeholder="Fecha de expiración" className="form-control" />
+                                <input type="month" placeholder="Fecha de expiración" className="form-control" />
                             </div>
                             <div className="input-group input-group-sm mb-3">
                                 <input type="text" placeholder="CVV" className="form-control" />
