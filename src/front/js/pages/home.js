@@ -14,7 +14,7 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center profile-info">		
+		<div className="text-center profile-info">
 			<Navbar />
 			<Jumbotron />
 			<Carousel />
@@ -24,7 +24,6 @@ export const Home = () => {
 					<CardOwners />
 				</div>
 				<div className="d-flex">
-					
 				</div>
 			</div>
 			<Comments />

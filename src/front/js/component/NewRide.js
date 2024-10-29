@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { ModalPay } from "./ModalPay";
+import { ModalPay } from "././Modalpayment";
 import { Navbar } from "./navbar";
 
 export const NewRide = () => {
@@ -149,10 +149,9 @@ export const NewRide = () => {
           <label className="form-check-label">Acepto los términos y condiciones de PetWalker</label>
         </div>
         <div className="button">
-          <button type="submit" className="btn btn-info fw-bold">Agendar paseo</button>
+          <ModalPay />
         </div>
       </form>
-      {showModal && <ModalPay setShowModal={setShowModal} />} {/* Renderiza el modal de pago */}
     </div>
   );
 };
