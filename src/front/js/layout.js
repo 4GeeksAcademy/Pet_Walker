@@ -44,7 +44,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<CreateProfileOwner />} path="/createProfileOwner" />
                         <Route element={<CreateProfileWalker />} path="/createProfileWalker" />
-                        <Route element={<NewRide />} path="/Newride" />
+                        <Route element={<NewRide />} path="/newride/:walkerid" />
                         <Route element={<OwnerProfile />} path="/profile-owner" />
                         <Route element={<ProfileWalker />} path="/profile-walker" />
                         <Route element={<Registration />} path="/registration" />

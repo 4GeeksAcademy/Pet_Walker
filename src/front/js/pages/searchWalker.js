@@ -140,7 +140,7 @@ export const SearchWalker = () => {
                                             <p className="card-text" style={{ color: "#0f8c8c", fontSize: "18px" }}>Habilidades: <span style={{ color: "#499587" }}>{walker.habilidades && walker.habilidades.length > 0 ? walker.habilidades.join(", ") : "No especificadas"}</span></p>
                                             <div className="d-flex justify-content-between p-3">
                                                 <Link to={`/perfil-walker/${walker.id}`} className="btn btnSecondary mt-2">Ver perfil</Link>
-                                                <Link to={`/Newride`} className="btn btnPrimary mt-2">Agendar paseo</Link>
+                                                <Link to={`/newride/${walker.id}`} className="btn btnPrimary mt-2">Agendar paseo</Link>
                                             </div>
                                         </div>
                                     </div>
