@@ -110,4 +110,4 @@ export const ModalPay = ({ paseoId, setShowModal }) => {
       </div>
     </div>
   );
-}
+}}
