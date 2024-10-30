@@ -361,11 +361,35 @@ def update_walker_schedule(id):
     db.session.commit()
     return jsonify(walker.serialize()), 200
 
+##PASEO CONFIRMADO:
 
-#MASCOTAS GET CON FOR 
+##RUTA DE GET PARA PASEOS
+##MOSTRAR EL DETALLE DE LOS PASEOS Y SU ESTADO DE PENDIENTE Y TERMINADO
+
+
+@api.route("/paseo/<int:paseo_id>", methods=["GET"])
+def get_paseo_by_id(paseo_id):
+    paseo = Paseo.query.get(paseo_id)
+    if not paseo:
+        return jsonify({"error": "Paseo no encontrado"}), 404  # Siempre devolver JSON
+
+    walker = Walker.query.get(paseo.walker_id)
+    if not walker:
+        return jsonify({"error": "Walker no encontrado"}), 404  # Siempre devolver JSON
+
+    return jsonify({
+        "paseo_id": paseo.id,
+        "walker_nombre": walker.nombre,
+        "walker_apellido": walker.apellido,
+        "domicilio": paseo.domicilio,
+        "horario": paseo.horario,
+        "tipo_de_paseo": paseo.tipo_de_paseo.value,
+    }), 200
+
+
+
 
 #HACER MIGRATE
-
 
 #RUTA DE PASEOS: 
 #   LOS PASEADORES SON  LOS QUE OFRECEN EL PASEO

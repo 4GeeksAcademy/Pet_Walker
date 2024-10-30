@@ -381,6 +381,32 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
+			getPaseoById: async (paseoId) => {
+				console.log(paseoId)
+				try {
+					const url = `${process.env.BACKEND_URL}/api/paseo/${paseoId}`;
+					const response = await fetch(url, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+						},
+					});
+			
+					if (!response.ok) {
+						const errorData = await response.json();
+						console.error("Error al obtener el paseo:", errorData);
+						throw new Error(errorData.error || "Error en la solicitud al servidor");
+					}
+			
+					const data = await response.json();
+					return data;
+				} catch (error) {
+					console.error("Error al obtener detalles del paseo:", error);
+					throw error;
+				}
+			},
+			
+
 			getMessage: async () => {
 				try{
 					// fetching data from the backend

@@ -1,12 +1,38 @@
-import React, { useState } from 'react';
+// ModalPay.js
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate , useParams} from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navbar } from './navbar';
+import { Context } from "../store/appContext";
 
-
-export const ModalPay = () => {
+export const ModalPay = ({ paseoId, setShowModal }) => {
+  const { store, actions } = useContext(Context);
   const [cardNumber, setCardNumber] = useState('');
   const [expiryDate, setExpiryDate] = useState('');
   const [cvv, setCvv] = useState('');
   const [message, setMessage] = useState('');
+  const { walkerid } = useParams();
+  const navigate = useNavigate();
+
+  
+  useEffect(() => {
+    if (walkerid) {
+        actions.getWalkerById(walkerid);
+    }
+}, [walkerid]);
+
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  //   const token = localStorage.getItem("token");
+  //   const data = {
+  //     domicilio,
+  //     horario,
+  //     tipo_de_paseo: tipoDePaseo,
+  //     walker_id: Number(walkerid) || null,
+  // };
+    const successCard = '4141 4141 4141 4141'; // Tarjeta para simular éxito
+    const failureCard = '4242 4242 4242 4242'; // Tarjeta para simular fallo
 
   const handleSubmit = () => {
     // Números de tarjeta para simulación
@@ -15,11 +41,15 @@ export const ModalPay = () => {
 
     // Validación simple (puedes mejorarla)
     if (cardNumber === successCard) {
-      setMessage('"¡Pago realizado con éxito! 🎉"');
+      setMessage("¡Pago realizado con éxito! 🎉");
+      setTimeout(() => {
+        setShowModal(false); 
+        navigate(`/pago-exitoso/${paseoId}`); //LLEVARLO A PASE-EXITOSO, SIN EL ID. AHI PONER UN BOTON QUE HAGA UN GET MUESTRE TODOS LOS PASEOS, AHI QUE SE PUEDAN PONER LOS DETALLES
+      }, 1500); // Retraso para redirigir después de mostrar el mensaje
     } else if (cardNumber === failureCard) {
-      setMessage('Error al realizar el pago 🛑. Intente Nuevamente');
+      setMessage("Error al realizar el pago 🛑. Intente Nuevamente");
     } else {
-      setMessage('Número de tarjeta o datos inválidos.');
+      setMessage("Número de tarjeta o datos inválidos.");
     }
   };
 
@@ -80,7 +110,4 @@ export const ModalPay = () => {
       </div>
     </div>
   );
-};
-
-
-// Exportar el componente
+}}

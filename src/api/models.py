@@ -120,7 +120,11 @@ class Paseo(db.Model):
     walker_id = Column(Integer, ForeignKey('walker.id')) 
     domicilio = Column(String)
     horario = Column(String)
-    tipo_de_paseo = Column(SQLAlchemyEnum(TipoDePaseo), nullable=False)  
+    tipo_de_paseo = Column(SQLAlchemyEnum(TipoDePaseo), nullable=False) 
+    ##estado = Column(pendiente, terminado) COMPLETAR PARA PAGO EXITOSO
+
+    def __repr__(self):
+        return f'<Paseo {self.id}>' 
 
     def serialize(self):
         return {
