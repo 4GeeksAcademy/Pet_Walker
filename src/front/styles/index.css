@@ -73,8 +73,8 @@ label{
 
 .btnPrimary{
     /* background-color: hsl(47, 100%, 50%);
-    color: white;
-    border-style: none; */
+    color: white;*/
+    border-style: none; 
     font-family: 'League Spartan';
     background-color: #ef7029;
     color: #f0e0d2

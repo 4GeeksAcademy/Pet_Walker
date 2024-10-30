@@ -66,7 +66,7 @@ export const ModalPay = () => {
           </div>
           <button 
             type="button" // Cambiar a "button" para evitar el envío del formulario
-            className="btn btn-primary my-3" 
+            className="btn btn-primary my-3 btnPrimary" 
             onClick={handleSubmit} // Agregar onClick
           >
             Realizar Pago

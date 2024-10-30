@@ -42,7 +42,7 @@ export const NewRide = () => {
             });
 
             if (response.ok) {
-                toast.success("Paseo agendado con éxito!");
+                toast.success("Paseo agendado con éxito!, esperando por el pago");
                 setShowModal(true);
             } else {
                 const error = await response.json();
@@ -110,7 +110,7 @@ export const NewRide = () => {
                     <label className="form-check-label">Acepto los términos y condiciones de PetWalker</label>
                 </div>
                 <div className="button">
-                    <button type="submit" className="btn btn-info fw-bold" >Agendar paseo</button>
+                    <button type="submit" className="btn btn-info fw-bold btnPrimary"  >Agendar paseo</button>
                 </div>
             </form>
             {showModal && <ModalPay setShowModal={setShowModal} />}
