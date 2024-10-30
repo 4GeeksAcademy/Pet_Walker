@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../component/navbar";
 import uploadImage from "../../../firebase"; // Importa la función de Firebase
+import { ToastContainer, toast } from "react-toastify";
 
 // Componente Modal
 const Modal = ({ show, onClose, message }) => {
@@ -68,7 +69,7 @@ export const CreateProfileOwner = () => {
             setShowModal(true);
         } catch (error) {
             console.error("Error al crear el perfil:", error);
-            alert("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
+            toast.error("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
         }
     };    
 

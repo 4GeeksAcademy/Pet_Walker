@@ -24,6 +24,7 @@ import { NewRide } from "./component/NewRide";
 import { SearchWalker } from "./pages/searchWalker";
 import { VerPerfilWalker } from "./pages/verPerfilWalker";
 import { VerPerfilOwner } from "./pages/verPerfilOwner";
+import { ToastContainer, toast } from "react-toastify";
 
 //create your first component
 const Layout = () => {
@@ -52,6 +53,7 @@ const Layout = () => {
                         <Route element={<VerPerfilOwner />} path="/perfil-owner/:id" />
                         <Route element={<Login />} path="/login" />
                         <Route element={<SearchWalker />} path="/search-walker" />
+                        <Route element={<ToastContainer />} path="/ToastContainer" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>
