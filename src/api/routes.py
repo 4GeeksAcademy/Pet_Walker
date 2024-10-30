@@ -361,21 +361,6 @@ def update_walker_schedule(id):
     db.session.commit()
     return jsonify(walker.serialize()), 200
 
-##PASEO CONFIRMADO:
-
-##RUTA DE GET PARA PASEOS
-##MOSTRAR EL DETALLE DE LOS PASEOS Y SU ESTADO DE PENDIENTE Y TERMINADO
-
-##USAR ESTE EJ PARA GET DE TODOS LOS PASEOS
-# @api.route("/mascotas", methods=["GET"])
-# def get_mascotas():
-#     mascotas = Mascota.query.all()  
-#     mascotas_list = [mascota.serialize() for mascota in mascotas] 
-#     return jsonify(mascotas_list), 200 
-
-
-
-
 
 ##PASEOS:
 @api.route("/paseos", methods = ["GET"])
@@ -412,47 +397,6 @@ def get_paseos_by_walker(email):
     paseos_list = [paseo.serialize() for paseo in paseos]
 
     return jsonify(paseos_list), 200
-
-
-# @api.route("/paseos", methods=["GET"])
-# @jwt_required()
-# def get_paseos():
-#     user_email = get_jwt_identity()
-#     user = Owner.query.filter_by(email=user_email).first() or Walker.query.filter_by(email=user_email).first()
-
-#     if user is None:
-#         return jsonify({"error": "Usuario no encontrado"}), 404
-
-#     if isinstance(user, Owner):
-#         paseos = Paseo.query.filter_by(owner_id=user.id).all()
-#     else:
-#         paseos = Paseo.query.filter_by(walker_id=user.id).all()
-
-#     paseos_list = [
-#         {
-#             "id": paseo.id,
-#             "estado": paseo.estado,
-#             "walker_nombre": paseo.walker.nombre if paseo.walker else "",
-#             "walker_apellido": paseo.walker.apellido if paseo.walker else "",
-#             "owner_nombre": paseo.owner.nombre if paseo.owner else "",
-#             "owner_apellido": paseo.owner.apellido if paseo.owner else "",
-#         }
-#         for paseo in paseos
-#     ]
-
-#     return jsonify(paseos_list), 200
-
-# @api.route("/paseo/<int:paseo_id>/estado", methods=["PUT"])
-# @jwt_required()
-# def cambiar_estado_paseo(paseo_id):
-#     paseo = Paseo.query.get(paseo_id)
-#     if not paseo:
-#         return jsonify({"error": "Paseo no encontrado"}), 404
-
-#     paseo.estado = "Terminado"
-#     db.session.commit()
-#     return jsonify({"message": "Estado del paseo actualizado a Terminado"}), 200
-
 
 
 #HACER MIGRATE
