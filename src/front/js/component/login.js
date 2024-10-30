@@ -21,7 +21,7 @@ export const Login = () => {
     return (
         <div>
             <Navbar/>
-                <div className="d-flex align-items-center justify-content-center vh-100">
+                <div className="d-flex align-items-center justify-content-center vh-100 profile-info">
                     <div className="card px-1 py-4 mx-auto" style={{ width: "60%", border: "2px solid #EF7029", borderRadius: "0.25rem" }}>
                         <div className="card-body">
                             <div className="mx-auto my-auto">
@@ -45,14 +45,14 @@ export const Login = () => {
                                             ...user,
                                             contraseña: event.target.value
                                         })} />
-                                        <button className="btn btn-success"
+                                        <button className="btn btn-info"
                                             onClick={() => setShowPassword(!showPassword)}
                                         >{showPassword ? "🔒" : "👀"}</button>
                                     </div>
                                     <button className="btn btn-link">¿Te olvidaste tu contraseña?</button>
                                 </div>
                                 <button onClick={() => actions.login(user.email, user.contraseña)} 
-                                    className="btn btn-success w-100 mt-2"
+                                    className="btn btnPrimary w-100 mt-2"
                                     style={{ width: "60%"}}
                                     >Log In</button>
                                 <Link to="/registration" className="btn btn-link">¿No tienes una cuenta? ¡Registrate!</Link>
