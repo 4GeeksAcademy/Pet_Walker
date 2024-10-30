@@ -111,9 +111,9 @@ export const NewRide = () => {
                 </div>
                 <div className="button">
                     <button type="submit" className="btn btn-info fw-bold" >Agendar paseo</button>
-                    <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
                                 <ModalPay />
                             </div>
                         </div>
