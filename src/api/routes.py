@@ -366,26 +366,92 @@ def update_walker_schedule(id):
 ##RUTA DE GET PARA PASEOS
 ##MOSTRAR EL DETALLE DE LOS PASEOS Y SU ESTADO DE PENDIENTE Y TERMINADO
 
+##USAR ESTE EJ PARA GET DE TODOS LOS PASEOS
+# @api.route("/mascotas", methods=["GET"])
+# def get_mascotas():
+#     mascotas = Mascota.query.all()  
+#     mascotas_list = [mascota.serialize() for mascota in mascotas] 
+#     return jsonify(mascotas_list), 200 
 
-@api.route("/paseo/<int:paseo_id>", methods=["GET"])
-def get_paseo_by_id(paseo_id):
-    paseo = Paseo.query.get(paseo_id)
-    if not paseo:
-        return jsonify({"error": "Paseo no encontrado"}), 404  # Siempre devolver JSON
 
-    walker = Walker.query.get(paseo.walker_id)
-    if not walker:
-        return jsonify({"error": "Walker no encontrado"}), 404  # Siempre devolver JSON
 
-    return jsonify({
-        "paseo_id": paseo.id,
-        "walker_nombre": walker.nombre,
-        "walker_apellido": walker.apellido,
-        "domicilio": paseo.domicilio,
-        "horario": paseo.horario,
-        "tipo_de_paseo": paseo.tipo_de_paseo.value,
-    }), 200
 
+
+##PASEOS:
+@api.route("/paseos", methods = ["GET"])
+def get_paseos():
+    paseos = Paseo.query.all()
+    paseos_list = [paseo.serialize() for paseo in paseos]
+    return jsonify(paseos_list), 200
+
+##PASEOS PARA OWNER:
+@api.route("/owner/<email>/paseos", methods = ["GET"])
+def get_paseos_by_owner(email):
+    owner = Owner.query.filter_by(email = email).first()
+
+    if owner is None:
+        return jsonify({"msg": "Owner not found"}), 404
+    
+    paseos = Paseo.query.filter_by(owner_id = owner.id).all()
+
+    paseos_list = [paseo.serialize() for paseo in paseos]
+
+    return jsonify(paseos_list), 200
+
+
+##PASEOS PARA WALKER:
+@api.route("/walker/<email>/paseos", methods = ["GET"])
+def get_paseos_by_walker(email):
+    walker= Walker.query.filter_by(email = email).first()
+
+    if walker is None:
+        return jsonify({"msg": "Walker not found"}), 404
+    
+    paseos = Paseo.query.filter_by(walker_id = walker.id).all()
+
+    paseos_list = [paseo.serialize() for paseo in paseos]
+
+    return jsonify(paseos_list), 200
+
+
+# @api.route("/paseos", methods=["GET"])
+# @jwt_required()
+# def get_paseos():
+#     user_email = get_jwt_identity()
+#     user = Owner.query.filter_by(email=user_email).first() or Walker.query.filter_by(email=user_email).first()
+
+#     if user is None:
+#         return jsonify({"error": "Usuario no encontrado"}), 404
+
+#     if isinstance(user, Owner):
+#         paseos = Paseo.query.filter_by(owner_id=user.id).all()
+#     else:
+#         paseos = Paseo.query.filter_by(walker_id=user.id).all()
+
+#     paseos_list = [
+#         {
+#             "id": paseo.id,
+#             "estado": paseo.estado,
+#             "walker_nombre": paseo.walker.nombre if paseo.walker else "",
+#             "walker_apellido": paseo.walker.apellido if paseo.walker else "",
+#             "owner_nombre": paseo.owner.nombre if paseo.owner else "",
+#             "owner_apellido": paseo.owner.apellido if paseo.owner else "",
+#         }
+#         for paseo in paseos
+#     ]
+
+#     return jsonify(paseos_list), 200
+
+# @api.route("/paseo/<int:paseo_id>/estado", methods=["PUT"])
+# @jwt_required()
+# def cambiar_estado_paseo(paseo_id):
+#     paseo = Paseo.query.get(paseo_id)
+#     if not paseo:
+#         return jsonify({"error": "Paseo no encontrado"}), 404
+
+#     paseo.estado = "Terminado"
+#     db.session.commit()
+#     return jsonify({"message": "Estado del paseo actualizado a Terminado"}), 200
 
 
 

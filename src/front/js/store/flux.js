@@ -9,6 +9,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			message: null,
 			filteredWalkers: [],
 			allWalkers: [],
+			paseos: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -381,30 +382,73 @@ const getState = ({ getStore, getActions, setStore }) => {
                 }
             },
 
-			getPaseoById: async (paseoId) => {
-				console.log(paseoId)
+			getPaseosByOwner: async (email) => {
 				try {
-					const url = `${process.env.BACKEND_URL}/api/paseo/${paseoId}`;
-					const response = await fetch(url, {
+					const resp = await fetch(process.env.BACKEND_URL + `/api/owner/${email}/paseos`, {
 						method: "GET",
 						headers: {
-							"Content-Type": "application/json",
-						},
+							"Content-Type": "application/json"
+						}
 					});
-			
-					if (!response.ok) {
-						const errorData = await response.json();
-						console.error("Error al obtener el paseo:", errorData);
-						throw new Error(errorData.error || "Error en la solicitud al servidor");
+					
+					const data = await resp.json();
+					
+					if (resp.ok) {
+						setStore({ paseos: data });
+						console.log("Paseos del owner:", data);
+					} else {
+						toast.error("Error al obtener los paseos.");
 					}
-			
-					const data = await response.json();
-					return data;
 				} catch (error) {
-					console.error("Error al obtener detalles del paseo:", error);
-					throw error;
+					console.error("Error al obtener las paseos:", error);
+					toast.error("Error de conexión al obtener las paseos.");
 				}
-			},
+			},	
+
+			getPaseosByWalker: async (email) => {
+				try {
+					const resp = await fetch(process.env.BACKEND_URL + `/api/walker/${email}/paseos`, {
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json"
+						}
+					});
+					
+					const data = await resp.json();
+					
+					if (resp.ok) {
+						setStore({ paseos: data });
+						console.log("Paseos del walker:", data);
+					} else {
+						toast.error("Error al obtener los paseos.");
+					}
+				} catch (error) {
+					console.error("Error al obtener las paseos:", error);
+					toast.error("Error de conexión al obtener las paseos.");
+				}
+			},	
+			
+
+            // cambiarEstadoPaseo: async (paseoId) => {
+            //     const token = localStorage.getItem("token");
+            //     try {
+            //         const resp = await fetch(`${process.env.BACKEND_URL}/paseo/${paseoId}/estado`, {
+            //             method: "PUT",
+            //             headers: {
+            //                 "Content-Type": "application/json",
+            //                 "Authorization": `Bearer ${token}`
+            //             }
+            //         });
+            //         if (resp.ok) {
+            //             getActions().verPaseos();  // Recargar paseos después de actualizar el estado
+            //             toast.success("Estado del paseo cambiado a Terminado");
+            //         } else {
+            //             console.error("Error al cambiar estado del paseo");
+            //         }
+            //     } catch (error) {
+            //         console.error("Error al cambiar estado del paseo:", error);
+            //     }
+            // },
 			
 
 			getMessage: async () => {

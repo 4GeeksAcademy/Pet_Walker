@@ -1,8 +1,8 @@
 // NewRide.js
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-import { ModalPay } from "././Modalpayment";
-import { Navbar } from "../component/navbar";
+import { ModalPay } from "./Modalpayment";
+import { Navbar } from "./navbar";
 import { Context } from "../store/appContext";
 import { ToastContainer, toast } from "react-toastify";
 

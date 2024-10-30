@@ -117,14 +117,18 @@ class Paseo(db.Model):
 
     id = Column(Integer, primary_key=True)
     owner_id = Column(Integer, ForeignKey('owner.id'), nullable=False)
-    walker_id = Column(Integer, ForeignKey('walker.id')) 
+    walker_id = Column(Integer, ForeignKey('walker.id'))
     domicilio = Column(String)
     horario = Column(String)
-    tipo_de_paseo = Column(SQLAlchemyEnum(TipoDePaseo), nullable=False) 
-    ##estado = Column(pendiente, terminado) COMPLETAR PARA PAGO EXITOSO
+    tipo_de_paseo = Column(SQLAlchemyEnum(TipoDePaseo), nullable=False)
+    estado = Column(String, default="Pendiente", nullable=False)
+    
+    # Relación para acceder a los detalles del owner y walker
+    owner = relationship("Owner", backref="paseos_owned", foreign_keys=[owner_id])
+    walker = relationship("Walker", backref="paseos_walked", foreign_keys=[walker_id])
 
     def __repr__(self):
-        return f'<Paseo {self.id}>' 
+        return f'<Paseo {self.id}>'
 
     def serialize(self):
         return {
@@ -133,5 +137,11 @@ class Paseo(db.Model):
             "walker_id": self.walker_id,
             "domicilio": self.domicilio,
             "horario": self.horario,
-            "tipo_de_paseo": self.tipo_de_paseo.value  
+            "tipo_de_paseo": self.tipo_de_paseo.value,
+            "estado": self.estado,
+            # Agregamos los detalles de owner y walker
+            "owner_nombre": self.owner.nombre if self.owner else None,
+            "owner_apellido": self.owner.apellido if self.owner else None,
+            "walker_nombre": self.walker.nombre if self.walker else None,
+            "walker_apellido": self.walker.apellido if self.walker else None,
         }
