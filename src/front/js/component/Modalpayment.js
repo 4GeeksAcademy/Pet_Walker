@@ -7,8 +7,7 @@ export const ModalPay = () => {
   const [cvv, setCvv] = useState('');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     // Números de tarjeta para simulación
     const successCard = '4141 4141 4141 4141'; // Tarjeta exitosa
     const failureCard = '4242 4242 4242 4242'; // Tarjeta fallida
@@ -24,12 +23,10 @@ export const ModalPay = () => {
   };
 
   return (
-
     <div>
-
       <div className="container mt-5">
         <h1>Simulador de Pagos</h1>
-        <form onSubmit={handleSubmit}>
+        <div>
           <div className="mb-3">
             <label htmlFor="cardNumber" className="form-label">Número de tarjeta</label>
             <input
@@ -66,18 +63,21 @@ export const ModalPay = () => {
               required
             />
           </div>
-          <button type="submit" className="btn btn-primary my-3">Realizar Pago</button>
-        </form>
+          <button 
+            type="button" // Cambiar a "button" para evitar el envío del formulario
+            className="btn btn-primary my-3" 
+            onClick={handleSubmit} // Agregar onClick
+          >
+            Realizar Pago
+          </button>
+        </div>
         {message && (
           <div className="mt-3 alert alert-info" role="alert">
             {message}
           </div>
         )}
       </div>
-
-
     </div>
-
   );
 };
 
