@@ -10,7 +10,7 @@ export const Registration = () => {
     return (
         <div className="d-flex flex-column justify-content-center align-items-center vh-100 regBackground">
             <Navbar />
-            <div className="card card-registration shadow-lg">
+            <div className="card card-registration shadow-lg pt-0 mt-0">
                 <div className="d-flex flex-row justify-content-center align-items-center">
                     <div className="card-body text-center">
                         <img

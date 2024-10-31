@@ -31,6 +31,7 @@ class Owner(db.Model):
     direccion = db.Column(db.String(120), unique=False, nullable=False)
     distrito = db.Column(db.String(120), unique=False, nullable=False)
     contraseña = db.Column(db.String(80), unique=False, nullable=False)
+    tipo = Column(String, default="owner", nullable=False)
     salt = db.Column(db.String(80), unique=False, nullable=False)
     fotoPerfil = db.Column(db.String(255), nullable=True)  # Campo para la URL de la foto de perfil
 
@@ -44,6 +45,7 @@ class Owner(db.Model):
             "email": self.email,
             "direccion": self.direccion,
             "distrito": self.distrito,
+            "tipo": self.tipo,
             "fotoPerfil": self.fotoPerfil  # Incluir fotoPerfil en la serialización
         }
 
@@ -62,6 +64,7 @@ class Walker(db.Model):
     salt = db.Column(db.String(80), unique=False, nullable=False)
     habilidades = db.Column(db.Text, nullable=True)
     fotoPerfil = db.Column(db.String(255), nullable=True)
+    tipo = Column(String, default="walker", nullable=False)
     bio = db.Column(db.Text, nullable=True)  # Acerca de mí
     galeria = db.Column(db.Text, nullable=True)  # Galería de fotos (almacenar URLs separadas por comas)
     schedule = db.Column(db.JSON, nullable=True)  # Campo para horarios en formato JSON
@@ -77,6 +80,7 @@ class Walker(db.Model):
             "direccion": self.direccion,
             "distrito": self.distrito,
             "habilidades": self.habilidades.split(",") if self.habilidades else [],
+            "tipo": self.tipo,
             "fotoPerfil": self.fotoPerfil,
             "bio": self.bio,
             "galeria": self.galeria.split(",") if self.galeria else [],

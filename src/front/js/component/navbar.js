@@ -10,7 +10,7 @@ export const Navbar = () => {
     const profileLink = store.user?.tipo === "owner" ? "/profile-owner" : "/profile-walker";
 
     return (
-        <nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2">
+        <nav className="navbarPrueba navbar navbar-expand-lg bg-body-tertiary fixed-top border-bottom border-2 pt-0 pb-0" >
             <div className="container-fluid navbarPrueba">
                 <Link to="/">
                     <img

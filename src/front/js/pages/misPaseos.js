@@ -17,6 +17,7 @@ export const MisPaseos = () => {
 
     useEffect(() => {
         if (user.email) {
+            console.log(user)
             if (user.tipo === "owner") {
                 actions.getPaseosByOwner(user.email)
                     .then(() => setUserType("owner"))

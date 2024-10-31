@@ -412,7 +412,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 					
 					const data = await resp.json();
-					
+					console.log(data)
 					if (resp.ok) {
 						setStore({ paseos: data });
 						console.log("Paseos del owner:", data);
