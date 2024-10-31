@@ -157,32 +157,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 						headers: {
 							"Content-Type": "application/json"
 						},
-						body: JSON.stringify({
-							email: email,
-							contraseña: contraseña
-						})
+						body: JSON.stringify({ email, contraseña })
 					});
 			
 					if (resp.ok) {
 						const data = await resp.json();
-						
-						localStorage.setItem("token", data.token); 
-						
-						setStore({ 
-							token: data.token, 
-							user: { ...data.user, tipo: data.tipo_usuario }  
-						});
-						
+						localStorage.setItem("token", data.token);
+						setStore({ token: data.token, user: { ...data.user, tipo: data.tipo_usuario } });
+			
+						// Llama a `getUserLogged` después de iniciar sesión para asegurarte de tener los datos actualizados
+						await getActions().getUserLogged();
+			
 						toast.success("¡Ingresaste con éxito!");
 					} else {
 						const errorData = await resp.json();
-						toast.error(errorData.msg || "¡Revisa tu correo o contraseña!"); 
+						toast.error(errorData.msg || "¡Revisa tu correo o contraseña!");
 					}
 				} catch (error) {
 					console.error("Error en el login:", error);
 					toast.error("Error de conexión con el servidor");
 				}
-			},
+			},			
 
 			
 			logout: () => {

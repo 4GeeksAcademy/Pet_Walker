@@ -54,25 +54,45 @@ export const CreateProfileWalker = () => {
         });
     };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+
+    //     if (formData.contraseña !== formData.confirmarContraseña) {
+    //         setError("Las contraseñas no coinciden");
+    //         return;
+    //     }
+
+    //     try {
+    //         // Subir imagen a Firebase y obtener URL
+    //         const profileImageURL = formData.fotoPerfil ? await uploadImage(formData.fotoPerfil) : null;
+    //         console.log("URL de imagen subida:", profileImageURL); // Comprobar URL en consola
+
+    //         // Enviar datos al backend, incluyendo URL de imagen
+    //         await actions.createWalkerProfile({
+    //             ...formData,
+    //             fotoPerfil: profileImageURL  // Incluir URL en el backend
+    //         });
+    //         setShowModal(true); 
+    //     } catch (error) {
+    //         console.error("Error al crear el perfil:", error);
+    //         toast.error("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
+    //     }
+    // };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        if (formData.contraseña !== formData.confirmarContraseña) {
-            setError("Las contraseñas no coinciden");
-            return;
-        }
-
+    
         try {
-            // Subir imagen a Firebase y obtener URL
             const profileImageURL = formData.fotoPerfil ? await uploadImage(formData.fotoPerfil) : null;
-            console.log("URL de imagen subida:", profileImageURL); // Comprobar URL en consola
-
-            // Enviar datos al backend, incluyendo URL de imagen
-            await actions.createWalkerProfile({
-                ...formData,
-                fotoPerfil: profileImageURL  // Incluir URL en el backend
-            });
-            setShowModal(true); 
+    
+            // Crea el perfil del dueño
+            await actions.createWalkerProfile({ ...formData, fotoPerfil: profileImageURL });
+    
+            // Llama a `getUserLogged` para obtener el perfil actualizado inmediatamente después del registro
+            await actions.getUserLogged();
+    
+            // Redirige al perfil del dueño
+            navigate("/profile-walker");
         } catch (error) {
             console.error("Error al crear el perfil:", error);
             toast.error("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
@@ -142,6 +162,7 @@ export const CreateProfileWalker = () => {
                                 placeholder="987654321"
                                 required
                             />
+                            <p className="condicionForm m-1">*Deben ser 9 dígitos</p>
                         </div>
                         <div className="mb-3">
                             <label className="form-label fw-bold">Email</label>

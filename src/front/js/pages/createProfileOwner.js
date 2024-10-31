@@ -53,25 +53,45 @@ export const CreateProfileOwner = () => {
         });
     };
 
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    
+    //     try {
+    //         // Subir imagen a Firebase y obtener la URL
+    //         const profileImageURL = formData.fotoPerfil ? await uploadImage(formData.fotoPerfil) : null;
+
+    //         // Guardar el perfil del dueño
+    //         await actions.createOwnerProfile({
+    //             ...formData,
+    //             fotoPerfil: profileImageURL  // Enviar URL de la imagen
+    //         });
+
+    //         setShowModal(true);
+    //     } catch (error) {
+    //         console.error("Error al crear el perfil:", error);
+    //         toast.error("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
+    //     }
+    // };   
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
     
         try {
-            // Subir imagen a Firebase y obtener la URL
             const profileImageURL = formData.fotoPerfil ? await uploadImage(formData.fotoPerfil) : null;
-
-            // Guardar el perfil del dueño
-            await actions.createOwnerProfile({
-                ...formData,
-                fotoPerfil: profileImageURL  // Enviar URL de la imagen
-            });
-
-            setShowModal(true);
+    
+            // Crea el perfil del dueño
+            await actions.createOwnerProfile({ ...formData, fotoPerfil: profileImageURL });
+    
+            // Llama a `getUserLogged` para obtener el perfil actualizado inmediatamente después del registro
+            await actions.getUserLogged();
+    
+            // Redirige al perfil del dueño
+            navigate("/profile-owner");
         } catch (error) {
             console.error("Error al crear el perfil:", error);
             toast.error("Ocurrió un error al guardar el perfil. Por favor, intenta de nuevo.");
         }
-    };    
+    };
 
     const handleCloseModal = () => {
         setShowModal(false);
@@ -83,7 +103,7 @@ export const CreateProfileOwner = () => {
             <Navbar />
             <div className="card px-1 py-4 mt-5 pt-5" 
                 style={{ border: "2px solid #E7F8F3", borderRadius: "0.25rem" }}>
-                <div class="card-body">
+                <div className="card-body">
                     <h1 className="text-center mt-3 mb-5 primaryText">
                     ¡Crea tu perfil de dueño! <br/>
                     </h1>
@@ -136,6 +156,7 @@ export const CreateProfileOwner = () => {
                                 placeholder="987654321"
                                 required
                             />
+                            <p className="condicionForm m-1">*Deben ser 9 dígitos</p>
                         </div>
                         <div className="mb-3">
                             <label className="form-label fw-bold">Email</label>
