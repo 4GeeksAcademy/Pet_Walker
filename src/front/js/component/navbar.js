@@ -1,12 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";  // Importa useNavigate
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
+    const navigate = useNavigate();  // Usa useNavigate para obtener la función de navegación
 
-    // const profileLink = store.user && store.user.tipo === "owner" ? "/profile-owner" : "/profile-walker";
     const profileLink = store.user?.tipo === "owner" ? "/profile-owner" : "/profile-walker";
 
     return (
@@ -26,7 +26,7 @@ export const Navbar = () => {
                         }}
                     />
                 </Link>
-                <h1 className="pt-3 primaryText" style={{color: "#ffffff"}}> Pet Walker </h1>
+                <h1 className="pt-3 primaryText" style={{ color: "#ffffff" }}> Pet Walker </h1>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
@@ -55,7 +55,7 @@ export const Navbar = () => {
                         <div className="login">
                             <button
                                 className="btn btn-danger"
-                                onClick={() => actions.logout()}
+                                onClick={() => actions.logout(navigate)}  // Pasa navigate a logout
                             >
                                 Cerrar sesión
                             </button>
