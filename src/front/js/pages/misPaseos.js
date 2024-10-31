@@ -31,7 +31,7 @@ export const MisPaseos = () => {
     
 
     return (
-        <div className="m-4 mt-5">
+        <div className="m-4 mt-5 min-vh-100">
             <Navbar />
             <div className="text-center mb-4">
                 <h1 className="fw-bold" style={{ color: "#499587", paddingTop: "3rem" }}>Mis Paseos</h1>
@@ -46,7 +46,7 @@ export const MisPaseos = () => {
                                     <FaUserAlt className="me-2" style={{ color: "#499587" }} />
                                     <strong className="textColor">
                                         {userType === "owner" ? "Walker: " : "Owner: "}
-                                    </strong> 
+                                    </strong>
                                     <span style={{ color: "#76C9B2" }}>
                                         {userType === "owner" ? `${paseo.walker_nombre} ${paseo.walker_apellido}` : `${paseo.owner_nombre} ${paseo.owner_apellido}`}
                                     </span>
