@@ -13,7 +13,7 @@ export const CardWalkers = () => {
           </div>
           <div className="ml-3 w-100 p-3 ">
             <div className="textColor ">
-              <h4 className="mb-0 mt-0">Alex HMorrision</h4>
+              <h4 className="mb-0 mt-0">Oliver Johnson</h4>
               <span>Paseador</span>
             </div>
             <div className="p-2 mt-2  d-flex justify-content-between rounded text-white stats"

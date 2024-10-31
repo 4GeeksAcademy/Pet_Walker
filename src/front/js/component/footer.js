@@ -2,13 +2,13 @@ import React from "react";
 
 export const Footer = () => (
 	<footer className="bg-dark text-white">
-		<div className="container py-4">
-			<div className="row">
-				<div className="col-md-4">
+		<div className=" py-4">
+			<div className="d-flex justify-content-around">
+				<div className="col-3">
 					<h5>SOBRE NOSOTROS</h5>
 					<p>Somos una empresa dedicada a ofrecer los mejores servicios de calidad en el sector. Nuestro compromiso es con la satisfacción del cliente y la innovación constante.</p>
 				</div>
-				<div className="col-md-4">
+				<div className="col-3 text-center">
 					<h5>Contacto</h5>
 					<p><strong>Teléfono:</strong> +1 234 567 890</p>
 					<p>
@@ -17,7 +17,7 @@ export const Footer = () => (
 						</a>
 					</p>
 				</div>
-				<div className="col-md-4">
+				<div className="col-3 text-center">
 					<h5>Redes Sociales</h5>
 					<ul className="list-unstyled">
 						<li>
