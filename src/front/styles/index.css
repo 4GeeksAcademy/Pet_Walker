@@ -90,6 +90,20 @@ label{
     border: 1px solid #ef7029;
 }
 
+.btnLock{
+    border-style: none; 
+    font-family: 'League Spartan';
+    background-color: #76c9b2;
+    color: #f0e0d2
+}
+
+.btnLock:hover{
+    background-color: #76c9b2;
+    font-family: 'League Spartan';
+    color: #ef7029;
+    border: 1px solid #ef7029;
+}
+
 .btnSecondary{
     /* background-color: #ffecce;
     color: white; */
@@ -142,6 +156,8 @@ label{
       radial-gradient(var(--c2) 70%,var(--c1) 72%)
        0 0/var(--s) var(--s);
 }
+
+
 /* ESTILO Y CONFIGURACIÓN DE TABS */
 .tab {
     border: 1px solid #0f8c8c;

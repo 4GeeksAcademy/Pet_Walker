@@ -45,7 +45,7 @@ export const Login = () => {
                                             ...user,
                                             contraseña: event.target.value
                                         })} />
-                                        <button className="btn btn-info"
+                                        <button className="btn btn-info m-1 btnLock"
                                             onClick={() => setShowPassword(!showPassword)}
                                         >{showPassword ? "🔒" : "👀"}</button>
                                     </div>
