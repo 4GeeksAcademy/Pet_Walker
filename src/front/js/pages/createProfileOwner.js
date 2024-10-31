@@ -136,6 +136,7 @@ export const CreateProfileOwner = () => {
                                 placeholder="987654321"
                                 required
                             />
+                            <p className="condicionForm m-1">*Deben ser 9 dígitos</p>
                         </div>
                         <div className="mb-3">
                             <label className="form-label fw-bold">Email</label>
