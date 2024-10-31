@@ -1,11 +1,11 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";  // Importa useNavigate
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../store/appContext";
 
 export const Navbar = () => {
     const { store, actions } = useContext(Context);
-    const navigate = useNavigate();  // Usa useNavigate para obtener la función de navegación
+    const navigate = useNavigate();
 
     const profileLink = store.user?.tipo === "owner" ? "/profile-owner" : "/profile-walker";
 
