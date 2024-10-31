@@ -150,35 +150,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			},			
 			
-			// login: async (email, contraseña) => {
-			// 	try {
-			// 		const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
-			// 			method: "POST",
-			// 			headers: {
-			// 				"Content-Type": "application/json"
-			// 			},
-			// 			body: JSON.stringify({ email, contraseña })
-			// 		});
-			
-			// 		if (resp.ok) {
-			// 			const data = await resp.json();
-			// 			localStorage.setItem("token", data.token);
-			// 			setStore({ token: data.token, user: { ...data.user, tipo: data.tipo_usuario } });
-			
-			// 			// Llama a `getUserLogged` después de iniciar sesión para asegurarte de tener los datos actualizados
-			// 			await getActions().getUserLogged();
-			
-			// 			toast.success("¡Ingresaste con éxito!");
-			// 		} else {
-			// 			const errorData = await resp.json();
-			// 			toast.error(errorData.msg || "¡Revisa tu correo o contraseña!");
-			// 		}
-			// 	} catch (error) {
-			// 		console.error("Error en el login:", error);
-			// 		toast.error("Error de conexión con el servidor");
-			// 	}
-			// },		
-			
 			login: async (email, contraseña) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + "/api/login", {
@@ -194,8 +165,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						localStorage.setItem("token", data.token);
 						setStore({ token: data.token, user: { ...data.user, tipo: data.tipo_usuario } });
 			
-						// Llama a `getUserLogged` después de iniciar sesión para asegurarte de tener los datos actualizados
-						await getActions().getUserLogged();  // Asegurarse de que el contexto se actualice
+						// Llama a `getUserLogged` para obtener el perfil completo
+						await getActions().getUserLogged();
 			
 						toast.success("¡Ingresaste con éxito!");
 					} else {
@@ -209,37 +180,56 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			
 			
-
-
 			logout: (navigate) => {
-				localStorage.removeItem("token"); 
+				localStorage.removeItem("token");
 				setStore({
 					token: null,
-					user: null
+					user: null, // Limpia el estado del usuario
+					owner: null,
+					walker: null
 				});
-				toast.success("¡Sesión cerrada exitosamente!"); 
-			
-				// Redirigir a la pantalla principal
+				toast.success("¡Sesión cerrada exitosamente!");
 				navigate("/");
 			},
 			
 
 
+			// getUserLogged: async () => {
+			// 	if (!getStore().token) return
+			// 	const resp = await fetch(process.env.BACKEND_URL + "/api/user", {
+			// 		headers: {
+			// 			Authorization: "Bearer " + getStore().token
+			// 		}
+			// 	});
+			// 	if (resp.ok) {
+			// 		toast.success("User logged in! 🎉");
+			// 	} else {
+			// 		localStorage.removeItem("token");
+			// 		setStore({ token: null });
+			// 	}
+			// 	const data = await resp.json();
+			// 	setStore({ user: data });
+			// },
+
+
 			getUserLogged: async () => {
-				if (!getStore().token) return
+				const token = getStore().token;
+				if (!token) return;
+				
 				const resp = await fetch(process.env.BACKEND_URL + "/api/user", {
 					headers: {
-						Authorization: "Bearer " + getStore().token
+						Authorization: `Bearer ${token}`
 					}
 				});
+			
 				if (resp.ok) {
-					toast.success("User logged in! 🎉");
+					const data = await resp.json();
+					setStore({ user: data });
 				} else {
 					localStorage.removeItem("token");
-					setStore({ token: null });
+					setStore({ token: null, user: null });
+					toast.error("Error al cargar los datos del usuario");
 				}
-				const data = await resp.json();
-				setStore({ user: data });
 			},
 
 			updateWalkerHabilidades: async (walkerId, habilidades) => {
@@ -411,13 +401,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                     toast.error("Error de conexión al obtener el walker.");
                 }
             },
-
 			getPaseosByOwner: async (email) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + `/api/owner/${email}/paseos`, {
 						method: "GET",
 						headers: {
-							"Content-Type": "application/json"
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${getStore().token}`
 						}
 					});
 					
@@ -427,20 +417,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ paseos: data });
 						console.log("Paseos del owner:", data);
 					} else {
-						toast.error("Error al obtener los paseos.");
+						console.error("Error al obtener paseos:", data);
+						throw new Error("Error al obtener paseos del owner");
 					}
 				} catch (error) {
-					console.error("Error al obtener las paseos:", error);
-					toast.error("Error de conexión al obtener las paseos.");
+					console.error("Error al obtener los paseos:", error);
+					toast.error("Error de conexión al obtener los paseos del owner");
+					throw error;
 				}
-			},	
+			},
 
 			getPaseosByWalker: async (email) => {
 				try {
 					const resp = await fetch(process.env.BACKEND_URL + `/api/walker/${email}/paseos`, {
 						method: "GET",
 						headers: {
-							"Content-Type": "application/json"
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${getStore().token}`
 						}
 					});
 					
@@ -450,13 +443,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore({ paseos: data });
 						console.log("Paseos del walker:", data);
 					} else {
-						toast.error("Error al obtener los paseos.");
+						console.error("Error al obtener paseos:", data);
+						throw new Error("Error al obtener paseos del walker");
 					}
 				} catch (error) {
-					console.error("Error al obtener las paseos:", error);
-					toast.error("Error de conexión al obtener las paseos.");
+					console.error("Error al obtener los paseos:", error);
+					toast.error("Error de conexión al obtener los paseos del walker");
+					throw error;
 				}
-			},	
+			},
 			
 
             // cambiarEstadoPaseo: async (paseoId) => {

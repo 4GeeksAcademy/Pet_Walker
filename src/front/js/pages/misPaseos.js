@@ -10,23 +10,25 @@ import { FaDog, FaUserAlt } from "react-icons/fa";
 
 export const MisPaseos = () => {
     const { store, actions } = useContext(Context);
-    const [userType, setUserType] = useState(null);  // Estado para almacenar el tipo de usuario
+    const [userType, setUserType] = useState(null);  
 
     const user = store.user ? store.user : {};
     const paseos = store.paseos ? store.paseos : [];
 
     useEffect(() => {
         if (user.email) {
-            // Determinar si el usuario es Owner o Walker y cargar los paseos correspondientes
             if (user.tipo === "owner") {
-                actions.getPaseosByOwner(user.email);
-                setUserType("owner");
+                actions.getPaseosByOwner(user.email)
+                    .then(() => setUserType("owner"))
+                    .catch(error => console.error("Error al cargar paseos de owner:", error));
             } else if (user.tipo === "walker") {
-                actions.getPaseosByWalker(user.email);
-                setUserType("walker");
+                actions.getPaseosByWalker(user.email)
+                    .then(() => setUserType("walker"))
+                    .catch(error => console.error("Error al cargar paseos de walker:", error));
             }
         }
     }, [user.email, user.tipo]);
+    
 
     return (
         <div className="m-4 mt-5">
