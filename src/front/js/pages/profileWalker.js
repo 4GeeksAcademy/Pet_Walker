@@ -76,7 +76,7 @@ export const ProfileWalker = () => {
     const periods = ["mañana", "tarde", "noche"];
 
     return (
-        <div className="my-5 regBackground profile-info">
+        <div className="my-5 regBackground profile-info min-vh-100">
             <div className="my-6">
                 <Navbar />
             </div>

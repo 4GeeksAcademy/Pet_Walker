@@ -30,7 +30,7 @@ export const SearchWalker = () => {
     };
 
     return (
-        <div className="container mt-5">
+        <div className="container mt-5 min-vh-100">
             <Navbar />
             <div className="filter-section mt-4 mb-4 pt-5">
                 <h2 style={{ color: "#f77032" }} className="text-center">Buscar a un Paseador</h2>
@@ -121,7 +121,7 @@ export const SearchWalker = () => {
                 <div className="row pt-4">
                     {(store.filteredWalkers.length > 0 ? store.filteredWalkers : store.allWalkers).map((walker, index) => {
                         console.log("Foto de perfil:", walker.fotoPerfil); // Agregar este console.log para ver si fotoPerfil tiene la URL
-                        
+
                         return (
                             <div key={index} className="col-md-6 mb-4">
                                 <div className="card d-flex flex-row align-items-center p-3" style={{ boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", borderRadius: "8px", border: "2px solid #E7F8F3" }}>
