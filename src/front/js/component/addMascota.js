@@ -58,10 +58,9 @@ export const AddMascota = () => {
 
     return (
         <div className="mt-4 text-center">
-            <button type="button" className="btn btnPrimary" onClick={() => setShowModal(true)}>
+            <button type="button" className="btn btnPrimary my-5" onClick={() => setShowModal(true)}>
                 <FaDog className="me-2" /> ¡Agregar nueva mascota!
             </button>
-
             {showModal && (
                 <div className={`modal fade show`} style={{ display: 'block' }} role="dialog">
                     <div className="modal-dialog">

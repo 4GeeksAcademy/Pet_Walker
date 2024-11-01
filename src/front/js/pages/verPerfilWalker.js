@@ -99,27 +99,27 @@ export const VerPerfilWalker = () => {
                         </tbody>
                     </table>
 
-                    <div className="gallery-section mt-5">
-                        <h2 className="text-center">
-                            <FaPaw className="me-2" />Galería de Fotos
-                        </h2>
-                        <div className="d-flex flex-wrap justify-content-center mt-4">
-                            {walker.galeria && walker.galeria.length > 0 ? (
-                                walker.galeria.map((foto, index) => (
-                                    <div key={index} className="m-2" style={{ borderRadius: "8px", overflow: "hidden", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)" }}>
-                                        <img
-                                            src={foto}
-                                            alt={`Galería de ${walker.nombre}`}
-                                            className="img-fluid rounded"
-                                            style={{ width: "200px", height: "200px", objectFit: "cover" }}
-                                        />
-                                    </div>
-                                ))
-                            ) : (
-                                <p className="text-muted">No hay fotos en la galería.</p>
-                            )}
-                        </div>
+                <div className="gallery-section mt-5">
+                    <h2 className="text-center">
+                        <FaPaw className="me-2" />Galería de Fotos
+                    </h2>
+                    <div className="d-flex flex-wrap justify-content-center mt-4">
+                        {walker.galeria && walker.galeria.length > 0 ? (
+                            walker.galeria.map((foto, index) => (
+                                <div key={index} className="m-2" style={{ borderRadius: "8px", overflow: "hidden", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)" }}>
+                                    <img
+                                        src={foto}
+                                        alt={`Galería de ${walker.nombre}`}
+                                        className="img-fluid rounded"
+                                        style={{ width: "200px", height: "200px", objectFit: "cover" }}
+                                    />
+                                </div>
+                            ))
+                        ) : (
+                            <p className="text-muted">No hay fotos en la galería.</p>
+                        )}
                     </div>
+                </div>
 
                 </div>
 
