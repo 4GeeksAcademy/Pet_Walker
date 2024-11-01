@@ -17,9 +17,9 @@ export const OwnerProfile = () => {
     }, [user.email]);
 
     return (
-        <div className="profile-info m-4 mt-5 min-vh-100">
+        <div className="profile-info mt-5 min-vh-100">
             <Navbar />
-            <div className="text-center mb-4">
+            <div className="text-center mb-4 mt-6">
                 <h1 className="fw-bold" style={{ color: "#499587", paddingTop: "3rem" }} >Mi Perfil</h1>
             </div>
 
