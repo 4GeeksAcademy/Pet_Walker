@@ -32,7 +32,7 @@ export const AddMascota = () => {
                 throw new Error("No se encontró el correo electrónico del usuario");
             }
             await actions.createMascota(email, formData.nombre, formData.raza, formData.edad, formData.detalles);
-            
+
             // Resetear el formulario después de agregar la mascota
             setFormData({
                 nombre: '',
@@ -59,7 +59,7 @@ export const AddMascota = () => {
     return (
         <div className="mt-4 text-center">
             <button type="button" className="btn btnPrimary" onClick={() => setShowModal(true)}>
-                <FaDog className="me-2" /> ¡Agrega tu mascota!
+                <FaDog className="me-2" /> ¡Agregar nueva mascota!
             </button>
 
             {showModal && (
@@ -74,8 +74,8 @@ export const AddMascota = () => {
                                 <form onSubmit={handleSubmit}>
                                     <div className="mb-3">
                                         <label className="form-label fw-bold">Nombre</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             className="form-control"
                                             name="nombre"
                                             value={formData.nombre}
@@ -85,8 +85,8 @@ export const AddMascota = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label fw-bold">Raza</label>
-                                        <input 
-                                            type="text" 
+                                        <input
+                                            type="text"
                                             className="form-control"
                                             name="raza"
                                             value={formData.raza}
@@ -96,8 +96,8 @@ export const AddMascota = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label className="form-label fw-bold">Edad</label>
-                                        <input 
-                                            type="number" 
+                                        <input
+                                            type="number"
                                             className="form-control"
                                             name="edad"
                                             value={formData.edad}
@@ -107,16 +107,16 @@ export const AddMascota = () => {
                                     </div>
                                     <div className="mb-3">
                                         <label htmlFor="exampleFormControlTextarea1" className="form-label fw-bold">Detalles</label>
-                                        <textarea 
-                                            className="form-control" 
+                                        <textarea
+                                            className="form-control"
                                             id="exampleFormControlTextarea1"
                                             rows="5"
-                                            name="detalles" 
-                                            value={formData.detalles} 
-                                            onChange={handleChange} 
-                                            placeholder="Detalla las necesidades y actitudes de tu perrito. ¡Lo queremos conocer para saber cómo cuidarlo!" 
+                                            name="detalles"
+                                            value={formData.detalles}
+                                            onChange={handleChange}
+                                            placeholder="Detalla las necesidades y actitudes de tu perrito. ¡Lo queremos conocer para saber cómo cuidarlo!"
                                             maxLength="800"
-                                            required 
+                                            required
                                         />
                                     </div>
                                     <div className="d-flex justify-content-center">
