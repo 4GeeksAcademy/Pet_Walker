@@ -17,15 +17,15 @@ export const OwnerProfile = () => {
     }, [user.email]);
 
     return (
-        <div className="profile-info m-4 mt-5 min-vh-100">
+        <div className="profile-info mt-5 min-vh-100">
             <Navbar />
-            <div className="text-center mb-4">
+            <div className="text-center mb-4 mt-6">
                 <h1 className="fw-bold" style={{ color: "#499587", paddingTop: "3rem" }} >Mi Perfil</h1>
             </div>
 
-            <div className="row">
-                <div className="col-md-4">
-                    <div className="card p-4 d-flex align-items-center" style={{ height: '100%', borderColor: "#F0E0D2" }}>
+            <div className="row ">
+                <div className="col-md-4 ">
+                    <div className="card mb-1 mx-3 p-4 d-flex align-items-center" style={{ height: '100%', borderColor: "#F0E0D2" }}>
                         <img
                             className="img-fluid rounded-circle mb-3 profile-photo"
                             src={user.fotoPerfil || "https://i0.wp.com/lanoticia.com/wp-content/uploads/2021/08/AdobeStock_116173569.jpg?fit=1200%2C800&ssl=1"}
@@ -38,7 +38,7 @@ export const OwnerProfile = () => {
                 </div>
 
                 <div className="col-md-8">
-                    <div className="card p-4 mb-4" style={{ height: '48%', borderColor: "#F0E0D2" }}>
+                    <div className="card p-4 mb-3 mx-3" style={{ height: '48%', borderColor: "#F0E0D2" }}>
                         <h5 className="fw-bold" style={{ color: "#499587" }}>Detalles del Usuario</h5>
                         <p style={{ color: "#76C9B2" }}><strong className="textColor">Edad:  </strong>
                             {user.edad || "Edad no disponible"}
@@ -46,7 +46,7 @@ export const OwnerProfile = () => {
                         <p style={{ color: "#76C9B2" }}><strong className="textColor">Teléfono:</strong> {user.telefono || "Teléfono no disponible"}</p>
                     </div>
 
-                    <div className="card p-4" style={{ height: '48%', borderColor: "#F0E0D2", overflowY: "auto", maxHeight: "250px" }}>
+                    <div className="card p-4 mx-3" style={{ height: '48%', borderColor: "#F0E0D2", overflowY: "auto", maxHeight: "250px" }}>
                         <h5 className="fw-bold" style={{ color: "#499587", marginBottom: "1rem" }}>
                             <FaPaw className="me-2" style={{ color: "#499587" }} /> Mis Mascotas
                         </h5>
