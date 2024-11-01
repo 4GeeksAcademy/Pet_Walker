@@ -37,7 +37,7 @@ export const VerPerfilWalker = () => {
     const periods = ["mañana", "tarde", "noche"];
 
     return (
-        <div className="my-5 regBackground">
+        <div className="regBackground">
             <Navbar />
             <div className="profile-section my-5 pt-5 mt-5">
                 <div className="card d-flex my-5 mx-auto p-3 flex-row align-items-center" style={{ maxWidth: "700px", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", borderRadius: "8px", border: "2px solid #E7F8F3" }}>
@@ -75,7 +75,7 @@ export const VerPerfilWalker = () => {
                     <h2>Acerca de mí</h2>
                     <p style={{ color: "#499587" }}>{walker.bio || "No se ha proporcionado una descripción."}</p>
 
-                    <h2>Horarios</h2>
+                    <h2 className="pt-4">Horarios</h2>
                     <table className="table table-bordered" style={{ borderColor: "#499587", color: "#499587" }}>
                         <thead>
                             <tr>
@@ -101,7 +101,7 @@ export const VerPerfilWalker = () => {
 
                     <div className="gallery-section mt-5">
                         <h2 className="text-center">
-                            <FaPaw className="me-2" />Galería de Fotos
+                            <FaPaw className="me-2 " />Galería de Fotos
                         </h2>
                         <div className="d-flex flex-wrap justify-content-center mt-4">
                             {walker.galeria && walker.galeria.length > 0 ? (
