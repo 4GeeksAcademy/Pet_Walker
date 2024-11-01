@@ -2,8 +2,8 @@ import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";  // Importamos el contexto para acceder a las acciones
 
 export const AddHabilidad = ({ selectedHabilidades, setSelectedHabilidades }) => {
-    const [habilidad, setHabilidad] = useState(""); 
-    const [showModal, setShowModal] = useState(false); 
+    const [habilidad, setHabilidad] = useState("");
+    const [showModal, setShowModal] = useState(false);
     const { store, actions } = useContext(Context); // Accedemos al contexto de acciones
 
     const habilidadesDisponibles = [
@@ -19,7 +19,7 @@ export const AddHabilidad = ({ selectedHabilidades, setSelectedHabilidades }) =>
         if (habilidad && !selectedHabilidades.includes(habilidad)) {
             setSelectedHabilidades([...selectedHabilidades, habilidad]);
         }
-        setHabilidad(""); 
+        setHabilidad("");
     };
 
     const handleDeleteHabilidad = (index) => {
@@ -29,12 +29,12 @@ export const AddHabilidad = ({ selectedHabilidades, setSelectedHabilidades }) =>
     // Guardamos las habilidades y hacemos la llamada al backend
     const handleSaveHabilidades = () => {
         actions.updateWalkerHabilidades(store.user.id, selectedHabilidades); // Actualizamos las habilidades en el backend
-        setShowModal(false); 
+        setShowModal(false);
     };
 
     return (
         <div>
-            <button className="btn btnPrimary mt-2" onClick={() => setShowModal(true)}>
+            <button className="btn btnPrimary mt-1" onClick={() => setShowModal(true)}>
                 Agregar Habilidad
             </button>
 

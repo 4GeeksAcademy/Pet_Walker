@@ -54,6 +54,10 @@ footer{
     background-color: #3F4551;
 }
 
+th{
+    color:#499587
+}
+
 label{
     font-family: 'Avenir', sans-serif;
     color: #499587
