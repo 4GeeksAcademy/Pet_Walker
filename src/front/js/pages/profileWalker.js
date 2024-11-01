@@ -147,7 +147,7 @@ export const ProfileWalker = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="border-0 d-flex my-2 flex-column w-25">
+                        <div className="border-0 d-flex my-2 flex-column w-25 text-center">
                             <label className="form-label fw-bold d-flex justify-content-center">Subir fotos</label>
                             <input
                                 type="file"
