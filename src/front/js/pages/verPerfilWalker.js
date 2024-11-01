@@ -73,15 +73,15 @@ export const VerPerfilWalker = () => {
             <div className="card profile-info d-flex align-items-center justify-content-center">
                 <div className="col-12 tab p-5">
                     <h2>Acerca de mí</h2>
-                    <p style={{color: "#499587"}}>{walker.bio || "No se ha proporcionado una descripción."}</p>
+                    <p style={{ color: "#499587" }}>{walker.bio || "No se ha proporcionado una descripción."}</p>
 
                     <h2>Horarios</h2>
-                    <table className="table table-bordered" style={{color: "#3F4551"}}>
+                    <table className="table table-bordered" style={{ borderColor: "#499587", color: "#499587" }}>
                         <thead>
                             <tr>
-                                <th>Día</th>
+                                <th style={{ color: "#499587" }}>Día</th>
                                 {periods.map((period) => (
-                                    <th key={period}>{period.charAt(0).toUpperCase() + period.slice(1)}</th>
+                                    <th key={period} style={{ color: "#499587" }}>{period.charAt(0).toUpperCase() + period.slice(1)}</th>
                                 ))}
                             </tr>
                         </thead>
@@ -98,29 +98,31 @@ export const VerPerfilWalker = () => {
                             ))}
                         </tbody>
                     </table>
+
+                    <div className="gallery-section mt-5">
+                        <h2 className="text-center">
+                            <FaPaw className="me-2" />Galería de Fotos
+                        </h2>
+                        <div className="d-flex flex-wrap justify-content-center mt-4">
+                            {walker.galeria && walker.galeria.length > 0 ? (
+                                walker.galeria.map((foto, index) => (
+                                    <div key={index} className="m-2" style={{ borderRadius: "8px", overflow: "hidden", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)" }}>
+                                        <img
+                                            src={foto}
+                                            alt={`Galería de ${walker.nombre}`}
+                                            className="img-fluid rounded"
+                                            style={{ width: "200px", height: "200px", objectFit: "cover" }}
+                                        />
+                                    </div>
+                                ))
+                            ) : (
+                                <p className="text-muted">No hay fotos en la galería.</p>
+                            )}
+                        </div>
+                    </div>
+
                 </div>
 
-                <div className="gallery-section mt-5">
-                    <h2 className="text-center">
-                        <FaPaw className="me-2" />Galería de Fotos
-                    </h2>
-                    <div className="d-flex flex-wrap justify-content-center mt-4">
-                        {walker.galeria && walker.galeria.length > 0 ? (
-                            walker.galeria.map((foto, index) => (
-                                <div key={index} className="m-2" style={{ borderRadius: "8px", overflow: "hidden", boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)" }}>
-                                    <img
-                                        src={foto}
-                                        alt={`Galería de ${walker.nombre}`}
-                                        className="img-fluid rounded"
-                                        style={{ width: "200px", height: "200px", objectFit: "cover" }}
-                                    />
-                                </div>
-                            ))
-                        ) : (
-                            <p className="text-muted">No hay fotos en la galería.</p>
-                        )}
-                    </div>
-                </div>
             </div>
         </div>
     );
