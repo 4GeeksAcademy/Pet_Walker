@@ -80,7 +80,7 @@ export const ProfileWalker = () => {
             <div className="my-6">
                 <Navbar />
             </div>
-            <div className="my-10 d-flex mx-auto">
+            <div className="my-5 d-flex mx-auto">
                 <div className="card d-flex my-5 mx-auto p-2 justify-content flex-row">
                     <div className="mx-2 my-2">
                         <img
@@ -137,9 +137,7 @@ export const ProfileWalker = () => {
                             <h5 style={{ color: "#499587" }}>{bio}</h5>
                         </div>
                     </div>
-
                     <div className={toggle === 2 ? "show-content" : "content"}>
-                        <h1>Galería de fotos</h1>
                         <div className="card-group border-0 mx-auto">
                             {galleryURLs.map((url, index) => (
                                 <div key={index} className="card border-0 bg-transparent">
@@ -147,18 +145,22 @@ export const ProfileWalker = () => {
                                 </div>
                             ))}
                         </div>
-                        <div className="border-0 d-flex my-2 flex-column w-25 text-center">
-                            <label className="form-label fw-bold d-flex justify-content-center">Subir fotos</label>
-                            <input
-                                type="file"
-                                name="fotosWalker"
-                                accept=".jpg, .jpeg, .png"
-                                multiple
-                                className="btn btnPrimary"
-                                onChange={(event) => setNewGalleryImages(Array.from(event.target.files))}
-                            />
-                            <button className="btn btnPrimary mt-2" onClick={handleUploadImages}>Actualizar fotos</button>
+
+                        <div className="d-flex justify-content-center">
+                            <div className="border-0 d-flex my-2 flex-column w-25 text-center">
+                                <label className="form-label fw-bold d-flex justify-content-center mb-4">Subir fotos</label>
+                                <input
+                                    type="file"
+                                    name="fotosWalker"
+                                    accept=".jpg, .jpeg, .png"
+                                    multiple
+                                    className="btn btnPrimary"
+                                    onChange={(event) => setNewGalleryImages(Array.from(event.target.files))}
+                                />
+                                <button className="btn btnPrimary mt-2" onClick={handleUploadImages}>Actualizar fotos</button>
+                            </div>
                         </div>
+
                     </div>
 
                     <div className={toggle === 3 ? "show-content" : "content"}>
