@@ -304,6 +304,9 @@ def agendar_paseo():
     )
 
     try:
+        recipients = [email]
+        send_email(emailContent.contentRegisterRide,emailContent.textRegisterRide, emailContent.subjectRegisterRide, recipients)
+    
         db.session.add(nuevo_paseo)
         db.session.commit()
         return jsonify({'message': 'Paseo agendado exitosamente!'}), 201

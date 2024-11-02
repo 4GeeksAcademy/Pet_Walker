@@ -46,3 +46,21 @@ textRegisterPet = """text"""
 
 subjectRegisterPet =  "Registro de mascota"
 
+# variables registro Paseo
+
+contentRegisterRide = """
+        <html>
+            <body>
+                <h1 style="color:green;">Tu  Paseo ha sido agendado exitosamente 🐕!</h1>
+                <p>El paseador se pondra en contacto contigo</p>
+                <p>This email is sent using <b>TPetWalker Backend</b> and Gmail's SMTP server.</p>
+            </body>
+        </html>
+    """
+
+textRegisterRide = """text"""
+
+subjectRegisterRide =  "Paseo Agendado"
+
+
+
