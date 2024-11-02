@@ -164,13 +164,15 @@ export const ProfileWalker = () => {
                     </div>
 
                     <div className={toggle === 3 ? "show-content" : "content"}>
-                        <h1>Horarios</h1>
-                        <button
-                            className="btn btnSecondary mb-3"
-                            onClick={() => setIsEditingSchedule(!isEditingSchedule)}
-                        >
-                            {isEditingSchedule ? "Guardar horarios" : "Editar horarios"}
-                        </button>
+
+                        <div className="d-flex justify-content-between">
+                            <h1>Horarios</h1>
+                            <button
+                                className="btn btnSecondary mb-3"
+                                onClick={() => setIsEditingSchedule(!isEditingSchedule)} >
+                                {isEditingSchedule ? "Guardar horarios" : "Editar horarios"}
+                            </button>
+                        </div>
                         <table className="table table-bordered" style={{ borderColor: "#499587", color: "#499587" }}>
                             <thead>
                                 <tr >
