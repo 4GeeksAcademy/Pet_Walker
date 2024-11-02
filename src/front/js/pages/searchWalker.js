@@ -130,7 +130,7 @@ export const SearchWalker = () => {
                                             src={walker.fotoPerfil || "https://via.placeholder.com/150"} // Usa fotoPerfil de walker
                                             alt={`Foto de ${walker.nombre}`}
                                             className="img-fluid rounded"
-                                            style={{ width: "100%", height: "auto", objectFit: "cover", borderRadius: "8px" }}
+                                            style={{ width: "200px", height: "150px", objectFit: "cover", borderRadius: "8px" }}
                                         />
                                     </div>
                                     <div className="col-8 ps-3 ">
