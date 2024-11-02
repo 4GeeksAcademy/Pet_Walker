@@ -137,7 +137,7 @@ def register_walker():
     db.session.commit()
 
     recipients = [email]
-    send_email(emailContent.contentRegisterOwner,emailContent.textRegisterOwner, emailContent.subjectRegisterOwner, recipients)
+    send_email(emailContent.contentRegisterWalker,emailContent.textRegisterWalker, emailContent.subjectRegisterWalker, recipients)
 
     return jsonify({
         "walker": new_walker.serialize(),
@@ -165,7 +165,7 @@ def register_mascota():
         edad=edad, detalles=detalles)
     
     recipients = [email]
-    send_email(emailContent.contentRegisterOwner,emailContent.textRegisterOwner, emailContent.subjectRegisterOwner, recipients)
+    send_email(emailContent.contentRegisterPet,emailContent.textRegisterPet, emailContent.subjectRegisterPet, recipients)
     
     db.session.add(new_mascota)
     db.session.commit()

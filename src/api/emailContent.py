@@ -16,7 +16,7 @@ subjectRegisterOwner =  "Bienvenido a PetWalker"
 
 # variables registro Walker
 
-contentRegisterOwner = """
+contentRegisterWalker = """
         <html>
             <body>
                 <h1 style="color:green;">Bienvenido tu cuenta ha sido creada exitosamente 🐕!</h1>
@@ -26,13 +26,13 @@ contentRegisterOwner = """
         </html>
     """
 
-textRegisterOwner = """text"""
+textRegisterWalker = """text"""
 
-subjectRegisterOwner =  "Bienvenido a PetWalker"
+subjectRegisterWalker =  "Bienvenido a PetWalker"
 
 # variables registro Mascota
 
-contentRegisterOwner = """
+contentRegisterPet = """
         <html>
             <body>
                 <h1 style="color:green;">Tu  mascota ha sido registrada exitosamente 🐕!</h1>
@@ -42,7 +42,7 @@ contentRegisterOwner = """
         </html>
     """
 
-textRegisterOwner = """text"""
+textRegisterPet = """text"""
 
-subjectRegisterOwner =  "Registro de mascota"
+subjectRegisterPet =  "Registro de mascota"
 
